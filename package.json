@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "web3-garden",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A community-driven digital garden for people to create, curate, cultivate and discuss content related to Web3",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Anakorn Kyavatanakij <anakornk@tonghualabs.com>",
   "dependencies": {
     "gatsby": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
@@ -37,9 +37,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/hashpire/web3-garden"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/hashpire/web3-garden/issues"
   }
 }
