@@ -1,7 +1,7 @@
-import React from "react"
-import { Link } from "gatsby"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import React from 'react';
+import { Link } from 'gatsby';
+import Layout from '../components/layout';
+import Seo from '../components/seo';
 
 const Tpl = () => (
   <Layout>
@@ -9,6 +9,6 @@ const Tpl = () => (
     <h1>Hello from tpl</h1>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
-)
+);
 
-export default Tpl
+export default Tpl;
