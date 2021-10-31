@@ -6,7 +6,7 @@ import Seo from '../components/seo';
 const Tpl = () => (
   <Layout>
     <Seo title="Tpl" />
-    <h1>Hello from tpl</h1>
+    <h1>Hello from template</h1>
     <Link to="/">Go back to the homepage</Link>
   </Layout>
 );
