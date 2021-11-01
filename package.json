@@ -53,8 +53,8 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx",
-    "lint:fix": "yarn lint --fix",
+    "lint": "eslint --ignore-path .gitignore . --ext ts,tsx,js,jsx",
+    "lint:fix": "eslint --ignore-path .gitignore . --ext ts,tsx,js,jsx --fix",
     "postinstall": "husky install"
   },
   "repository": {
