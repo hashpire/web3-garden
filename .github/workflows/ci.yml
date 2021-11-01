@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build
+        run: yarn build
+
       - name: Check types
         run: yarn type-check
 
