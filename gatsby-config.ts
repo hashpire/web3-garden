@@ -35,4 +35,13 @@ export const plugins = [
   // To learn more, visit: https://gatsby.dev/offline
   `gatsby-plugin-offline`,
   `gatsby-plugin-typescript`,
+  {
+    resolve: `gatsby-plugin-typegen`,
+    options: {
+      emitSchema: {
+        'src/__generated__/gatsby-introspection.json': true,
+        'src/__generated__/gatsby-schema.graphql': true,
+      },
+    },
+  },
 ];
