@@ -15,6 +15,14 @@ export const plugins = [
       path: `${__dirname}/src/images`,
     },
   },
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `garden`,
+      path: `${__dirname}/src/garden`,
+    },
+  },
+  `gatsby-transformer-remark`,
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   {
