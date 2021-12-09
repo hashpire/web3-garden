@@ -22,7 +22,24 @@ export const plugins = [
       path: `${__dirname}/src/garden`,
     },
   },
-  `gatsby-transformer-remark`,
+  {
+    resolve: `gatsby-transformer-remark`,
+    options: {
+      plugins: [
+        {
+          resolve: `gatsby-remark-prismjs`,
+          options: {
+            showLineNumbers: true,
+            prompt: {
+              user: 'root',
+              host: 'localhost',
+              global: false,
+            },
+          },
+        },
+      ],
+    },
+  },
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   {
