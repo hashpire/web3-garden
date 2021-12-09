@@ -14,5 +14,5 @@
     "emitDecoratorMetadata": true,
     "resolveJsonModule": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "gatsby-*.ts"]
 }
