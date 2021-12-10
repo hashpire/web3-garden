@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layouts/MainLayout';
 import { PageProps } from 'gatsby';
-import Seo from '../components/seo';
+import Seo from '../components/Seo';
 
 export type NoteTemplatePageContext = {
   id: string;

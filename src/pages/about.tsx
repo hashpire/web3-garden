@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../components/layouts/MainLayout';
-import Seo from '../components/seo';
+import Seo from '../components/Seo';
 import { StaticImage } from 'gatsby-plugin-image';
 
 const AboutPage: React.FC<PageProps<GatsbyTypes.AboutPageQuery>> = ({ data, path }) => (

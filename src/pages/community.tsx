@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps, Link, graphql } from 'gatsby';
 import Layout from '../components/layouts/MainLayout';
-import Seo from '../components/seo';
+import Seo from '../components/Seo';
 
 const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({ data }) => {
   const contributors = data.site?.siteMetadata?.contributors;
