@@ -1,10 +1,20 @@
 import { GatsbyNode } from 'gatsby';
 import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
+import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
 
 type GatsbyNodeQuery = {
   site: {
-    siteMetadata?: { gardenBasePath?: string };
+    siteMetadata?: {
+      garden?: {
+        basePath?: string;
+      };
+      feed?: {
+        basePath?: string;
+        useIndex?: boolean;
+        notesPerPage?: number;
+      };
+    };
   };
   allMarkdownRemark: {
     edges: Array<{
@@ -16,15 +26,23 @@ type GatsbyNodeQuery = {
     }>;
   };
 };
+
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   const result = await graphql<GatsbyNodeQuery>(
     `
       {
         site {
           siteMetadata {
-            gardenBasePath
+            garden {
+              basePath
+            }
+            feed {
+              basePath
+              useIndex
+              notesPerPage
+            }
           }
         }
         allMarkdownRemark {
@@ -48,12 +66,15 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     return;
   }
 
-  const gardenBasePath = result.data?.site?.siteMetadata?.gardenBasePath || '';
-  const posts = result.data?.allMarkdownRemark?.edges || [];
+  // extract query result
+  const { feed, garden } = result.data?.site?.siteMetadata || {};
+  const notes = result.data?.allMarkdownRemark?.edges || [];
 
+  // create garden
+  const { basePath: gardenBasePath = '/garden' } = garden || {};
   const noteTemplate = path.resolve('./src/templates/NoteTemplate.tsx');
 
-  posts.forEach(({ node }) => {
+  notes.forEach(({ node }) => {
     const { id, html } = node;
     const fileName = node.parent?.name;
 
@@ -64,5 +85,34 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         context: { id, html },
       });
     }
+  });
+
+  // create feed
+  const { notesPerPage = 10, basePath: feedBasePath = `/page`, useIndex: useIndexAsFeed = true } = feed || {};
+  const feedTempate = path.resolve('./src/templates/FeedTemplate.tsx');
+  const feedRootPath = useIndexAsFeed ? '/' : feedBasePath;
+  const numPages = Math.ceil(notes.length / notesPerPage);
+
+  createRedirect({
+    fromPath: `${feedBasePath}/1`,
+    toPath: feedRootPath,
+  });
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    const page = i + 1;
+
+    createPage<FeedTemplatePageContext>({
+      path: page === 1 ? feedRootPath : `${feedBasePath}/${page}`,
+      component: feedTempate,
+      context: {
+        limit: notesPerPage,
+        skip: i * notesPerPage,
+        numPages,
+        currentPage: page,
+        feedBasePath,
+        feedRootPath,
+        gardenBasePath: gardenBasePath,
+      },
+    });
   });
 };

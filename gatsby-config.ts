@@ -5,7 +5,14 @@ export const siteMetadata = {
   description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
   author: `@gatsbyjs`,
   siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
-  gardenBasePath: '/garden',
+  garden: {
+    basePath: '/garden',
+  },
+  feed: {
+    basePath: `/page`,
+    useIndex: true,
+    notesPerPage: 2,
+  },
   contributors,
 };
 
