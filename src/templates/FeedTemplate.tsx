@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
-import Layout from '../components/layout';
+import Layout from '../components/layouts/MainLayout';
 
 export type FeedTemplatePageContext = {
   limit: number;

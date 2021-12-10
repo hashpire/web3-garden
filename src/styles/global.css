@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .gatsby-highlight-code-line {
   background-color: #feb;
   display: block;

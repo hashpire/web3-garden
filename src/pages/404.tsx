@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
-import Layout from '../components/layout';
+import Layout from '../components/layouts/MainLayout';
 import Seo from '../components/seo';
 
 const NotFoundPage: React.FC<PageProps> = () => (
