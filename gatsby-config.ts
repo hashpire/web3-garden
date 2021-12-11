@@ -20,6 +20,14 @@ export const plugins = [
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-image`,
   {
+    resolve: 'gatsby-plugin-react-svg',
+    options: {
+      rule: {
+        include: /\.inline\.svg$/,
+      },
+    },
+  },
+  {
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `images`,
