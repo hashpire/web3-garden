@@ -1,10 +1,10 @@
 import React from 'react';
-import GithubSvg from '../../../icons/github.inline.svg';
-import FacebookSvg from '../../../icons/facebook.inline.svg';
-import EmailSvg from '../../../icons/email.inline.svg';
+import GithubSvg from '@icons/github.inline.svg';
+import FacebookSvg from '@icons/facebook.inline.svg';
+import EmailSvg from '@icons/email.inline.svg';
 // import InstagramSvg from '../../../icons/instagram.inline.svg';
 // import TwitterSvg from '../../../icons/twitter.inline.svg';
-import Badge from '../../Badge';
+import Badge from '@/components/Badge';
 import classNames from 'classnames';
 
 type ContributorCardProps = {
