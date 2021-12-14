@@ -5,6 +5,9 @@
   "version": "0.1.0",
   "author": "Anakorn Kyavatanakij <anakornk@tonghualabs.com>",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "classnames": "^2.3.1",
     "gatsby": "^4.0.0",
     "gatsby-plugin-gatsby-cloud": "^4.0.0",
     "gatsby-plugin-image": "^2.0.0",
@@ -19,6 +22,7 @@
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-transformer-remark": "^5.3.0",
     "gatsby-transformer-sharp": "^4.0.0",
+    "lodash.range": "^3.2.0",
     "prismjs": "^1.25.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -29,6 +33,7 @@
   "devDependencies": {
     "@commitlint/cli": "^13.2.1",
     "@commitlint/config-conventional": "^13.2.0",
+    "@types/lodash.range": "^3.2.6",
     "@types/node": "^16.11.6",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",

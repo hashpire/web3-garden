@@ -89,7 +89,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
   // create feed
   const { notesPerPage = 10, basePath: feedBasePath = `/page`, useIndex: useIndexAsFeed = true } = feed || {};
-  const feedTempate = path.resolve('./src/templates/FeedTemplate.tsx');
+  const feedTempate = path.resolve('./src/templates/FeedTemplate/index.tsx');
   const feedRootPath = useIndexAsFeed ? '/' : feedBasePath;
   const numPages = Math.ceil(notes.length / notesPerPage);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '../components/layouts/MainLayout';
+import NoteLayout from '../components/layouts/NoteLayout';
 import { PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 
@@ -12,9 +12,9 @@ export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplate
   const { html } = pageContext;
 
   return (
-    <Layout>
+    <NoteLayout>
       <Seo title="Note" />
       <div dangerouslySetInnerHTML={{ __html: html }} />
-    </Layout>
+    </NoteLayout>
   );
 }
