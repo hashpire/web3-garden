@@ -29,17 +29,17 @@ export default function ListCard({
       <article className="flex h-36 items-center md:h-44">
         <div className="flex flex-col w-3/4 lg:w-4/6 px-2 h-full">
           <ContributorList contributors={contributors} />
-          <h3 className="block text-base font-semibold text-neutral-1 line-clamp-2 lg:text-xl ">{title}</h3>
-          <p className="block text-sm font-normal text-neutral-3 line-clamp-2">{description}</p>
+          <h3 className="block text-base font-semibold text-neutral-100 line-clamp-2 lg:text-xl ">{title}</h3>
+          <p className="block text-sm font-normal text-neutral-500 line-clamp-2">{description}</p>
           {/* <div className="block line-clamp-1 lg:hidden">
           {tags.map((tag, key) => (
-            <span key={key} className="mr-2 text-xs text-neutral-3 font-normal">
+            <span key={key} className="mr-2 text-xs text-neutral-500 font-normal">
               #{tag.name}
             </span>
           ))}
         </div> */}
           <div className="mt-auto">
-            <span className="text-xs text-neutral-3 font-normal">{publishedAt}</span>
+            <span className="text-xs text-neutral-500 font-normal">{publishedAt}</span>
             {/* <span className="hidden lg:inline-block lg:line-clamp-1">
             {tags.slice(0, 3).map((tag, key) => (
               <Tag key={key} name={tag.name} className="ml-2" />

@@ -20,11 +20,11 @@ export default function ContributorList({ contributors }: ContributorListProps) 
         />
       ))}
       {contributors.length === 1 && (
-        <span className="text-xs font-semibold text-neutral-1 ml-2">{contributors[0].name}</span>
+        <span className="text-xs font-semibold text-neutral-100 ml-2">{contributors[0].name}</span>
       )}
       {contributors.length > limit && (
-        <div className="flex items-center justify-center w-7 h-7 bg-primary-light border border-neutral-1 rounded-full -ml-2">
-          <span className="text-xs text-neutral-3">+{contributors.length - 5}</span>
+        <div className="flex items-center justify-center w-7 h-7 bg-background border border-neutral-100 rounded-full -ml-2">
+          <span className="text-xs text-neutral-500">+{contributors.length - 5}</span>
         </div>
       )}
     </div>

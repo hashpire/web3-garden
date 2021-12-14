@@ -43,19 +43,19 @@ export default function ContributorCard({
   return (
     <div
       className={classNames(
-        'relative flex flex-col items-center h-72 w-60 px-6 pb-6 bg-primary-light border border-neutral-4 rounded-3xl',
+        'relative flex flex-col items-center h-72 w-60 px-6 pb-6 bg-background border border-neutral-500 rounded-3xl',
         className,
       )}
     >
       <img
         src={profileImageUrl}
         alt={displayName}
-        className="absolute -top-10 h-20 w-20 rounded-full object-cover border-4 border-neutral-2 shadow-1"
+        className="absolute -top-10 h-20 w-20 rounded-full object-cover border-4 border-neutral-200 shadow-1"
       />
       <div className="mt-16 h-full flex flex-col justify-between items-center">
         <Badge title={'Contributor'} />
-        <h3 className="block text-xl text-neutral-2 font-semibold text-center">{displayName}</h3>
-        <p className="block text-sm text-neutral-3 text-center line-clamp-3">{shortIntro}</p>
+        <h3 className="block text-xl text-neutral-200 font-semibold text-center">{displayName}</h3>
+        <p className="block text-sm text-neutral-500 text-center line-clamp-3">{shortIntro}</p>
         <ul className="flex items-center space-x-2">
           {github && (
             <li className="flex flex-col justify-center">

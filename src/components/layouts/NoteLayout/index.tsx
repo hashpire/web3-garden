@@ -9,7 +9,7 @@ export type NoteLayoutProps = {
 
 const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
   return (
-    <div className="flex flex-col h-screen bg-primary-light">
+    <div className="flex flex-col h-screen bg-background">
       <Header siteTitle={`Garden`} />
       <div className="flex-1 flex flex-row overflow-hidden">
         <LeftPane className="w-1/5" />

@@ -27,19 +27,19 @@ export default function Pagination({
   const prevPage = currentPage - 1 === 1 ? feedRootPath : `${feedBasePath}/${currentPage - 1}`;
   const nextPage = `${feedBasePath}/${currentPage + 1}`;
 
-  let caretLeft = <CaretLeftSvg className={classNames('h-8 w-8', { 'text-neutral-500': isFirst })} />;
+  let caretLeft = <CaretLeftSvg className={classNames('h-8 w-8', { 'text-neutral-400': isFirst })} />;
   if (!isFirst) {
     caretLeft = (
-      <Link to={prevPage} rel="prev" className="block text-neutral-1 hover:opacity-80">
+      <Link to={prevPage} rel="prev" className="block text-neutral-100 hover:opacity-80">
         {caretLeft}
       </Link>
     );
   }
 
-  let caretRight = <CaretRightSvg className={classNames('h-8 w-8', { 'text-neutral-500': isLast })} />;
+  let caretRight = <CaretRightSvg className={classNames('h-8 w-8', { 'text-neutral-400': isLast })} />;
   if (!isLast) {
     caretRight = (
-      <Link to={nextPage} rel="next" className="block text-neutral-1 hover:opacity-80">
+      <Link to={nextPage} rel="next" className="block text-neutral-100 hover:opacity-80">
         {caretRight}
       </Link>
     );
@@ -49,7 +49,7 @@ export default function Pagination({
     <ul className={classNames('flex justify-center items-center', className)}>
       <li>{caretLeft}</li>
       {createPageRange(currentPage, numPages, pageRange).map((page, index) => {
-        const pageLink = <span className="text-sm font-semibold text-secondary">{page}</span>;
+        const pageLink = <span className="text-sm font-semibold text-neutral-100">{page}</span>;
 
         return (
           <li key={`i-${index}`} className="mx-2">
@@ -58,8 +58,8 @@ export default function Pagination({
                 to={page === 1 ? feedRootPath : `${feedBasePath}/${page}`}
                 className={classNames(
                   'flex items-center justify-center w-9 h-9',
-                  'rounded-full border border-transparent hover:border-accent',
-                  { 'border-accent bg-accent': page == currentPage },
+                  'rounded-full border border-transparent hover:border-primary',
+                  { 'border-primary bg-primary': page == currentPage },
                 )}
               >
                 {pageLink}

@@ -8,7 +8,7 @@ import TwitterSvg from '../../icons/twitter.inline.svg';
 
 const MainPageFooter: React.FC<{}> = () => {
   return (
-    <footer className="p-10 flex flex-col items-center justify-center space-y-4 bg-gradient-to-r from-primary-light to-primary">
+    <footer className="p-10 flex flex-col items-center justify-center space-y-4 bg-gradient-to-r from-background to-background-darker">
       <img src={hashpireTH} alt="hashpire by tonguhaulabs logo" className="w-36" />
       <ul className="flex space-x-2">
         <li className="flex flex-col justify-center">
@@ -36,7 +36,7 @@ const MainPageFooter: React.FC<{}> = () => {
           </a>
         </li>
       </ul>
-      <div className="text-base text-neutral-4">Copyright © Hashpire 2021.</div>
+      <div className="text-base text-neutral-400">Copyright © Hashpire 2021.</div>
     </footer>
   );
 };
