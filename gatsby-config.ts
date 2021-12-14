@@ -56,6 +56,14 @@ export const plugins = [
             },
           },
         },
+        {
+          resolve: `gatsby-remark-classes`,
+          options: {
+            classMap: {
+              'heading[depth=2]': 'text-yellow-500 hover:text-blue-500',
+            },
+          },
+        },
       ],
     },
   },

@@ -56,4 +56,5 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
+  safelist: ['text-yellow-500', 'hover:text-blue-500'],
 };

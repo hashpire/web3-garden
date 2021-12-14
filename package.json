@@ -18,6 +18,7 @@
     "gatsby-plugin-sharp": "^4.0.0",
     "gatsby-plugin-typegen": "^2.2.4",
     "gatsby-plugin-typescript": "^4.0.0",
+    "gatsby-remark-classes": "^1.0.2",
     "gatsby-remark-prismjs": "^6.3.0",
     "gatsby-source-filesystem": "^4.0.0",
     "gatsby-transformer-remark": "^5.3.0",
