@@ -1,8 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 import HashpireLogoSvg from '../images/hashpire-logo-dark.inline.svg';
-import LeftPaneSvg from '../icons/left-pane.inline.svg';
-import RightPaneSvg from '../icons/right-pane.inline.svg';
+import LeftPaneSvg from '@icons/left-pane.inline.svg';
+import RightPaneSvg from '@icons/right-pane.inline.svg';
 import { Link } from 'gatsby';
 
 type HeaderProps = {
