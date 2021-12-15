@@ -1,0 +1,91 @@
+import React from 'react';
+import classNames from 'classnames';
+import Badge from '@/components/Badge';
+import GithubSvg from '@icons/github.inline.svg';
+import FacebookSvg from '@icons/facebook.inline.svg';
+import TwitterSvg from '@icons/twitter.inline.svg';
+import EmailSvg from '@icons/email.inline.svg';
+import WebsiteSvg from '@icons/website.inline.svg';
+
+type ContactInfo = {
+  github?: string;
+  facebook?: string;
+  twitter?: string;
+  email?: string;
+  website?: string;
+};
+
+type MemberCardProps = {
+  imageUrl?: string;
+  position?: string;
+  name: string;
+  shortIntro?: string;
+  contactInfo?: ContactInfo;
+  className?: string;
+};
+
+const icons: Array<{ platform: keyof ContactInfo; Icon: typeof GithubSvg; prefix: string }> = [
+  {
+    platform: 'website',
+    Icon: WebsiteSvg,
+    prefix: '',
+  },
+  {
+    platform: 'email',
+    Icon: EmailSvg,
+    prefix: 'mailto:',
+  },
+  {
+    platform: 'github',
+    Icon: GithubSvg,
+    prefix: 'https://github.com/',
+  },
+  {
+    platform: 'twitter',
+    Icon: TwitterSvg,
+    prefix: 'https://twitter.com/',
+  },
+  {
+    platform: 'facebook',
+    Icon: FacebookSvg,
+    prefix: 'https://facebook.com/',
+  },
+];
+
+export default function MemberCard({ name, position, imageUrl, shortIntro, contactInfo, className }: MemberCardProps) {
+  return (
+    <div
+      className={classNames(
+        'relative flex flex-col items-center h-72 w-60 px-6 pb-6 bg-background border border-neutral-500 rounded-3xl',
+        className,
+      )}
+    >
+      <img
+        src={imageUrl}
+        alt={name}
+        className="absolute object-cover w-20 h-20 border-4 rounded-full -top-10 border-neutral-200 shadow-1"
+      />
+      <div className="flex flex-col items-center justify-between h-full mt-16">
+        <Badge title={position || 'Contributor'} />
+        <h3 className="block text-xl font-semibold text-center text-neutral-200">{name}</h3>
+        <p className="block text-sm text-center text-neutral-500 line-clamp-3">{shortIntro}</p>
+        {contactInfo && (
+          <ul className="flex items-center space-x-2">
+            {icons.map(({ Icon, platform, prefix }) => {
+              const handle = contactInfo[platform];
+              if (!handle) return null;
+
+              return (
+                <li key={platform} className="flex flex-col justify-center">
+                  <a href={`${prefix}${handle}`} className="block text-gray-400 hover:text-gray-500">
+                    <Icon className="w-8 h-8" />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
