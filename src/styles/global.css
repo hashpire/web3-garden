@@ -62,5 +62,5 @@
 }
 
 code[class*="language-"], pre[class*="language-"], :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  @apply bg-background rounded px-1.5 py-0.5 text-base font-normal text-neutral-100
+  @apply bg-background rounded px-1.5 py-0.5 text-base font-normal text-neutral-200
 }

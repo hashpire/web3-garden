@@ -50,7 +50,7 @@ module.exports = {
     'text-3xl',
     // text color
     'text-primary',
-    'text-neutral-100',
+    'text-neutral-200',
     'text-neutral-400',
     'text-red-500',
     // background
