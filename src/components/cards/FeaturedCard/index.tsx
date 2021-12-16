@@ -9,7 +9,7 @@ export type FeaturedCardProps = {
   className?: string;
   title: string;
   url: string;
-  description: string;
+  excerpt: string;
   coverImage: string;
   publishedAt: string;
   contributors: ContributorListProps['contributors'];
@@ -17,7 +17,7 @@ export type FeaturedCardProps = {
 
 export default function FeaturedCard({
   title,
-  description,
+  excerpt,
   coverImage,
   publishedAt,
   contributors,
@@ -38,13 +38,13 @@ export default function FeaturedCard({
         <div className="flex flex-col justify-between">
           <div className="flex flex-col">
             <div className="flex items-center">
-              <FolderSvg className="text-neutral-100 h-8 w-8" />
-              <span className="text-neutral-100 font-semibold line-clamp-1 ml-2">{title}</span>
+              <FolderSvg className="w-8 h-8 text-neutral-100" />
+              <span className="ml-2 font-semibold text-neutral-100 line-clamp-1">{title}</span>
             </div>
-            <span className="line-clamp-2 text-neutral-500 text-sm font-normal mt-1">{description}</span>
+            <span className="mt-1 text-sm font-normal line-clamp-2 text-neutral-500">{excerpt}</span>
           </div>
           <div className="flex items-center mt-3">
-            <span className="text-xs text-neutral-500 font-normal">{publishedAt}</span>
+            <span className="text-xs font-normal text-neutral-500">{publishedAt}</span>
             <div className="w-0.5 h-0.5 rounded-full bg-neutral-400 mx-2" />
             <ContributorList contributors={contributors} />
           </div>

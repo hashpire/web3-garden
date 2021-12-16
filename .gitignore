@@ -69,3 +69,5 @@ yarn-error.log
 .yarn-integrity
 
 src/__generated__/
+src/garden/.obsidian/cache
+src/garden/.obsidian/workspace
