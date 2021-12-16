@@ -11,7 +11,7 @@ type FeaturedSectionProps = {
 export default function FeaturedSection({ className }: FeaturedSectionProps) {
   const data = useStaticQuery<GatsbyTypes.FeaturedSectionQuery>(graphql`
     query FeaturedSection {
-      allMarkdownRemark(filter: { frontmatter: { featured: { eq: true } } }) {
+      allMarkdownRemark(filter: { frontmatter: { featured: { eq: true }, published: { eq: true } } }) {
         edges {
           node {
             id
