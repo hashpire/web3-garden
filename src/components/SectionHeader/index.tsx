@@ -9,8 +9,9 @@ type SectionHeaderProps = {
 export default function SectionHeader({ title, className }: SectionHeaderProps) {
   return (
     <div className={classNames('flex items-center', className)}>
-      <div className="text-2xl text-neutral-100">{title}</div>
-      <div className="flex-grow ml-8 border-2 border-dashed" />
+      <div className="text-2xl text-brand-yellow">{title}</div>
+      <div className="flex-grow ml-8 border-2 border-neutral-500" />
+      <div className="w-3 h-3 rounded-full bg-neutral-500" />
     </div>
   );
 }
