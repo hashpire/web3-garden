@@ -1,6 +1,5 @@
 import React from 'react';
-// import { GithubIcon, FacebookIcon, InstagramIcon, TwitterIcon, MailIcon } from '../../../Icon';
-import hashpireTH from '../../images/hashpire-tonghualabs.png';
+import HashpireThlSvg from '../../images/hashpire-thl.inline.svg';
 import GithubSvg from '../../icons/github.inline.svg';
 import FacebookSvg from '../../icons/facebook.inline.svg';
 import InstagramSvg from '../../icons/instagram.inline.svg';
@@ -8,8 +7,8 @@ import TwitterSvg from '../../icons/twitter.inline.svg';
 
 const MainPageFooter: React.FC<{}> = () => {
   return (
-    <footer className="p-10 flex flex-col items-center justify-center space-y-4 bg-gradient-to-r from-background to-background-darker">
-      <img src={hashpireTH} alt="hashpire by tonguhaulabs logo" className="w-36" />
+    <footer className="flex flex-col items-center justify-center p-10 space-y-4 bg-gradient-to-r from-background to-background-darker">
+      <HashpireThlSvg className="w-40 h-auto" />
       <ul className="flex space-x-2">
         <li className="flex flex-col justify-center">
           <a href="https://github.com/hashpire" className="block text-gray-400 hover:text-gray-500">
