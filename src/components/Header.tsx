@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Navbar from './Navbar';
-import HashpireLogoSvg from '../images/hashpire-logo-dark.inline.svg';
+import HashpireLogoSvg from '@images/hashpire-logo-dark.inline.svg';
 import LeftPaneSvg from '@icons/left-pane.inline.svg';
 import RightPaneSvg from '@icons/right-pane.inline.svg';
-import { Link } from 'gatsby';
 
 type HeaderProps = {
   siteTitle: string;

@@ -1,10 +1,10 @@
 ---
-slug: '/blog/my-first-post'
 date: '2019-05-04'
-title: 'My first blog post'
+published: true
+featured: true
 ---
 
-test
+# My First Blog Post
 
 ```js
 console.log('test');

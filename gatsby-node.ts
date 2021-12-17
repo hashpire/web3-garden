@@ -130,3 +130,62 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ act
     },
   });
 };
+
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions, schema }) => {
+  const { createTypes } = actions;
+
+  const contributorsTypeDefs = `
+    type ContributorsJson implements Node @dontInfer {
+      name: String!
+      position: String
+      imageUrl: String
+      contactInfo: ContributorsJsonContactInfo
+      shortIntro: String
+    }
+
+    type ContributorsJsonContactInfo {
+      website: String
+      email: String
+      github: String
+      twitter: String
+      facebook: String
+    }
+  `;
+  createTypes(contributorsTypeDefs);
+
+  const frontmatterTypeDefs = [
+    `
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+    }
+    type Frontmatter {
+      published: Boolean
+      featured: Boolean
+      cover_image: String
+    }
+  `,
+    // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
+    schema.buildObjectType({
+      name: 'Frontmatter',
+      fields: {
+        contributors: {
+          type: '[ContributorsJson!]',
+          resolve: (source, _args, context) => {
+            const { contributors } = source;
+            if (!contributors) return null;
+            return contributors.map(async (contributorName: string) => {
+              const result = await context.nodeModel.findOne({
+                type: 'ContributorsJson',
+                query: {
+                  filter: { name: { eq: contributorName } },
+                },
+              });
+              return result || { name: contributorName };
+            });
+          },
+        },
+      },
+    }),
+  ];
+  createTypes(frontmatterTypeDefs);
+};

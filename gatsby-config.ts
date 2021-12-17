@@ -11,7 +11,7 @@ export const siteMetadata = {
   feed: {
     basePath: `/page`,
     useIndex: true,
-    notesPerPage: 2,
+    notesPerPage: 10,
   },
   contributors,
 };
@@ -27,6 +27,13 @@ export const plugins = [
       },
     },
   },
+  `gatsby-transformer-json`,
+  {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      path: `./src/data/`,
+    },
+  },
   {
     resolve: `gatsby-source-filesystem`,
     options: {
@@ -38,7 +45,7 @@ export const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `garden`,
-      path: `${__dirname}/src/garden`,
+      path: `${__dirname}/src/garden/notes`,
     },
   },
   {

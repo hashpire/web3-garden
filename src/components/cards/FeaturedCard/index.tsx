@@ -8,7 +8,7 @@ export type FeaturedCardProps = {
   className?: string;
   title: string;
   url: string;
-  description: string;
+  excerpt: string;
   coverImage: string;
   publishedAt: string;
   contributors: ContributorListProps['contributors'];
@@ -16,7 +16,7 @@ export type FeaturedCardProps = {
 
 export default function FeaturedCard({
   title,
-  description,
+  excerpt,
   coverImage,
   publishedAt,
   contributors,
