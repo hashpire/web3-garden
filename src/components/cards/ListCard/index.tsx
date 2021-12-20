@@ -3,12 +3,13 @@ import React from 'react';
 import ContributorList from '../../ContributorList';
 // import Tag from '../../Tag';
 import type { ContributorListProps } from '../../ContributorList';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 
 type ListCardProps = {
   title: string;
   excerpt: string;
-  coverImage: string;
+  coverImage?: IGatsbyImageData;
   publishedAt: string;
   contributors: ContributorListProps['contributors'];
   url: string;
@@ -30,11 +31,9 @@ export default function ListCard({ title, publishedAt, coverImage, contributors,
         </div>
         <div className="w-1/4 lg:w-2/6 lg:h-full">
           <div className="aspect-w-3 aspect-h-2 lg:aspect-none lg:w-full lg:h-full">
-            <img
-              src={coverImage}
-              alt={title}
-              className="object-cover object-center w-full h-full lg:w-full lg:h-full"
-            />
+            <div className="lg:h-full">
+              {coverImage && <GatsbyImage alt={title} image={coverImage} className="w-full h-full" />}
+            </div>
           </div>
         </div>
       </article>

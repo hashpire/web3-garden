@@ -4,13 +4,14 @@ import FolderSvg from '../../../icons/folder.inline.svg';
 import ContributorList from '../../ContributorList';
 import type { ContributorListProps } from '../../ContributorList';
 import { Link } from 'gatsby';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
 export type FeaturedCardProps = {
   className?: string;
   title: string;
   url: string;
   excerpt: string;
-  coverImage: string;
+  coverImage?: IGatsbyImageData;
   publishedAt: string;
   contributors: ContributorListProps['contributors'];
 };
@@ -26,16 +27,18 @@ export default function FeaturedCard({
 }: FeaturedCardProps) {
   return (
     <Link to={url}>
-      <article
-        className={classNames(
-          'h-80 max-w-md px-6 pb-6 flex flex-col justify-end rounded-2xl shadow-1 border border-neutral-400 bg-center bg-no-repeat bg-cover',
-          className,
-        )}
-        style={{
-          backgroundImage: `linear-gradient(180deg, rgba(30, 30, 30, 0.2) 0%, rgba(30, 30, 30, 0.1) 0.01%, rgba(30, 30, 30, 0.9) 72.97%, #1E1E1E 100%), url(${coverImage})`,
-        }}
-      >
-        <div className="flex flex-col justify-between">
+      <article className={classNames('relative h-80 max-w-md', className)}>
+        <div className="relative w-full h-full">
+          {coverImage && <GatsbyImage alt={title} image={coverImage} className="w-full h-full" />}
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              background:
+                'linear-gradient(180deg, rgba(23, 23, 23, 0) 0.01%, rgba(23, 23, 23, 0.6) 43.23%, rgba(23, 23, 23, 0.9) 71.87%, #171717 100%)',
+            }}
+          ></div>
+        </div>
+        <div className="absolute z-50 flex flex-col justify-between bottom-10 left-10 right-10">
           <div className="flex flex-col">
             <div className="flex items-center">
               <FolderSvg className="w-8 h-8 text-neutral-100" />

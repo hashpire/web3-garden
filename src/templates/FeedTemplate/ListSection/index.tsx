@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import ListCard from '../../../components/cards/ListCard';
 import SectionHeader from '../../../components/SectionHeader';
 import { ContributorListProps } from '@/components/ContributorList';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 type ListSectionProps = {
   className?: string;
@@ -12,7 +13,7 @@ type ListSectionProps = {
     title: string;
     url: string;
     excerpt: string;
-    coverImage?: string;
+    coverImage?: IGatsbyImageData;
     contributors: ContributorListProps['contributors'];
   }>;
 };
@@ -29,10 +30,7 @@ export default function ListSection({ notes, className, title }: ListSectionProp
               url={url}
               title={title}
               excerpt={excerpt}
-              coverImage={
-                coverImage ||
-                'https://images.unsplash.com/photo-1500048993953-d23a436266cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80'
-              }
+              coverImage={coverImage}
               contributors={contributors}
               publishedAt="Aug 20, 2021"
             />

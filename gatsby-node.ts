@@ -2,6 +2,7 @@ import { GatsbyNode } from 'gatsby';
 import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
 import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
+// import { createRemoteFileNode } from 'gatsby-source-filesystem';
 
 type GatsbyNodeQuery = {
   site: {
@@ -161,10 +162,38 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     type Frontmatter {
       published: Boolean
       featured: Boolean
-      cover_image: String
     }
   `,
+    //       test_image: File @link(by: "name")
     // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
+    schema.buildObjectType({
+      name: 'Frontmatter',
+      fields: {
+        cover_image: {
+          type: 'File!',
+          resolve: async (source, _args, context) => {
+            const { cover_image } = source;
+
+            if (cover_image) {
+              const result = await context.nodeModel.findOne({
+                type: 'File',
+                query: {
+                  filter: { base: { eq: cover_image }, sourceInstanceName: { eq: 'gardenFiles' } },
+                },
+              });
+              if (result) return result;
+            }
+
+            return await context.nodeModel.findOne({
+              type: 'File',
+              query: {
+                filter: { base: { eq: 'card-default.png' }, sourceInstanceName: { eq: 'images' } },
+              },
+            });
+          },
+        },
+      },
+    }),
     schema.buildObjectType({
       name: 'Frontmatter',
       fields: {
@@ -189,3 +218,53 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
   ];
   createTypes(frontmatterTypeDefs);
 };
+
+// export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
+//   node,
+//   actions,
+//   store,
+//   cache,
+//   createNodeId,
+//   reporter,
+// }) => {
+//   const { createNodeField, createNode } = actions;
+
+//   // if (node.internal.type === `MarkdownRemark` && node.parent) {
+//   //   const parentNode = getNode(node.parent);
+//   //   if (parentNode && parentNode.internal.type === `File`) {
+//   //     const fileNode = parentNode as FileSystemNode;
+//   //     const fileName = fileNode.relativePath;
+//   //     // do something with fileName
+//   //     console.log(fileName);
+//   //   }
+
+//   //   // create name with folder e.g. X/Y/Z/file-name
+//   //   const value = createFilePath({ node, getNode, trailingSlash: false });
+//   //   console.log('oncreatenode', value);
+//   //   createNodeField({
+//   //     name: `slug`,
+//   //     node,
+//   //     value,
+//   //   });
+//   // }
+
+//   if (node.internal.type === 'MarkdownRemark') {
+//     const frontmatter = node.frontmatter as any;
+//     if (frontmatter.test_image) {
+//       const fileNode = await createRemoteFileNode({
+//         url: frontmatter.test_image, // string that points to the URL of the image
+//         parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+//         createNode, // helper function in gatsby-node to generate the node
+//         createNodeId, // helper function in gatsby-node to generate the node id
+//         cache,
+//         store,
+//         reporter,
+//       });
+
+//       // if the file was created, extend the node with "localFile"
+//       if (fileNode) {
+//         createNodeField({ node, name: 'localFile', value: fileNode.id });
+//       }
+//     }
+//   }
+// };

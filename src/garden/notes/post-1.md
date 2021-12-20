@@ -2,6 +2,7 @@
 date: '2019-05-04'
 published: true
 featured: true
+cover_image: test-image.png
 ---
 
 # My First Blog Post
@@ -49,3 +50,5 @@ hw = "Hello World!"
 echo $hw
 Hello World!
 ```
+
+[Test](./post-2)

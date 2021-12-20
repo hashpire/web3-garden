@@ -17,7 +17,11 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
             id
             excerpt
             frontmatter {
-              cover_image
+              cover_image {
+                childImageSharp {
+                  gatsbyImageData(width: 200, aspectRatio: 1.5)
+                }
+              }
               contributors {
                 name
                 imageUrl
@@ -49,10 +53,7 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
               title={node.parent?.name || ''}
               url={'/about'}
               excerpt={node.excerpt || ''}
-              coverImage={
-                node.frontmatter?.cover_image ||
-                'https://images.unsplash.com/photo-1566132127697-4524fea60007?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-              }
+              coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
               contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
               publishedAt="2014-07-18"
               className="m-auto"

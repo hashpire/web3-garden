@@ -17,3 +17,8 @@ console.log('test');
 <iframe src="http://www.example.com/" width="600" height="400"></iframe>
 
 [[安]]
+
+![](test-image.png)
+
+
+![[Pasted image 20211217151103.png]]
