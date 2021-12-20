@@ -29,13 +29,16 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
             frontmatter {
               cover_image {
                 childImageSharp {
-                  gatsbyImageData(width: 200, aspectRatio: 1.5)
+                  gatsbyImageData
                 }
               }
               contributors {
                 name
                 imageUrl
               }
+            }
+            fields {
+              gitAuthorTime(formatString: "YYYY-MM-DD")
             }
             parent {
               ... on File {
@@ -59,6 +62,8 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
       <div className="grid grid-cols-1 gap-10 mt-10 md:grid-cols-2">
         {notes.map((note) => {
           const { node } = note;
+          const { gitAuthorTime = '' } = node?.fields || {};
+
           return (
             <FeaturedCard
               key={node.id}
@@ -67,7 +72,7 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
               excerpt={node.excerpt || ''}
               coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
               contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
-              publishedAt="2014-07-18"
+              publishedAt={gitAuthorTime}
               className="max-w-lg m-auto"
             />
           );

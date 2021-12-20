@@ -32,13 +32,21 @@ export default function FeedTemplate({
           title={isFirst ? 'Notes' : undefined}
           notes={posts.map((post) => {
             const { node } = post;
-            const { id, excerpt = '', frontmatter, parent } = node;
+            const { id, excerpt = '', frontmatter, parent, fields } = node;
             const title = parent?.name || ''; // TODO: or get from frontmatter
             const url = `${gardenBasePath}/${title}`;
             const { cover_image } = frontmatter || {};
             const contributors = frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || [];
-
-            return { id, title, url, excerpt, coverImage: cover_image?.childImageSharp?.gatsbyImageData, contributors };
+            const { gitAuthorTime: publishedAt } = fields || {};
+            return {
+              id,
+              title,
+              url,
+              excerpt,
+              coverImage: cover_image?.childImageSharp?.gatsbyImageData,
+              contributors,
+              publishedAt,
+            };
           })}
         />
         <Pagination
@@ -73,6 +81,9 @@ export const query = graphql`
               name
               imageUrl
             }
+          }
+          fields {
+            gitAuthorTime(formatString: "YYYY-MM-DD")
           }
           excerpt(truncate: true, pruneLength: 300)
           parent {

@@ -15,6 +15,7 @@ type ListSectionProps = {
     excerpt: string;
     coverImage?: IGatsbyImageData;
     contributors: ContributorListProps['contributors'];
+    publishedAt?: string;
   }>;
 };
 
@@ -23,7 +24,7 @@ export default function ListSection({ notes, className, title }: ListSectionProp
     <section className={classNames(className)}>
       {title && <SectionHeader title={title} className="mb-10" />}
       <div className="space-y-6 md:space-y-16">
-        {notes.map(({ id, title, url, excerpt, coverImage, contributors }) => {
+        {notes.map(({ id, title, url, excerpt, coverImage, contributors, publishedAt }) => {
           return (
             <>
               <ListCard
@@ -33,7 +34,7 @@ export default function ListSection({ notes, className, title }: ListSectionProp
                 excerpt={excerpt}
                 coverImage={coverImage}
                 contributors={contributors}
-                publishedAt="Aug 20, 2021"
+                publishedAt={publishedAt || ''}
               />
               <hr className="block border-background md:hidden" />
             </>
