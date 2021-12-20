@@ -6,13 +6,16 @@
  */
 
 import * as React from 'react';
+import classNames from 'classnames';
 import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../Header';
 import Footer from '../Footer';
 
-type LayoutProps = {};
+type LayoutProps = {
+  fullWidth?: boolean;
+};
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<LayoutProps> = ({ fullWidth, children }) => {
   const data = useStaticQuery<GatsbyTypes.SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
@@ -33,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         //   padding: `0 1.0875rem 1.45rem`,
 
         // }}
-        className="flex-grow px-4 py-6 md:p-6 lg:p-9"
+        className={classNames(`flex-grow ${!fullWidth && 'px-4 py-6 md:p-6 lg:p-9'}`)}
       >
         <main>{children}</main>
       </div>
