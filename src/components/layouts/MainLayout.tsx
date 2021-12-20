@@ -11,11 +11,9 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Header from '../Header';
 import Footer from '../Footer';
 
-type LayoutProps = {
-  fullWidth?: boolean;
-};
+type LayoutProps = {};
 
-const Layout: React.FC<LayoutProps> = ({ fullWidth, children }) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   const data = useStaticQuery<GatsbyTypes.SiteTitleQueryQuery>(graphql`
     query SiteTitleQuery {
       site {
@@ -29,15 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ fullWidth, children }) => {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header siteTitle={data.site?.siteMetadata?.title || `Title`} />
-      <div
-        // style={{
-        //   margin: `0 auto`,
-        //   maxWidth: 960,
-        //   padding: `0 1.0875rem 1.45rem`,
-
-        // }}
-        className={classNames(`flex-grow ${!fullWidth && 'px-4 py-6 md:p-6 lg:p-9'}`)}
-      >
+      <div className={classNames('flex-grow')}>
         <main>{children}</main>
       </div>
       <Footer />

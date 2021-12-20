@@ -25,10 +25,10 @@ export default function FeedTemplate({
 
   return (
     <Layout>
-      <div className="max-w-4xl mx-auto">
+      <div className="px-4 py-12 lg:p-16 lg:mx-auto lg:max-w-4xl">
         {isFirst && <FeaturedSection />}
         <ListSection
-          className="mt-20"
+          className={isFirst ? 'mt-12' : undefined}
           title={isFirst ? 'Notes' : undefined}
           notes={posts.map((post) => {
             const { node } = post;
@@ -46,7 +46,7 @@ export default function FeedTemplate({
           numPages={numPages}
           feedRootPath={feedRootPath}
           feedBasePath={feedBasePath}
-          className="mt-10"
+          className="mt-10 lg:mt-16"
         />
       </div>
     </Layout>
