@@ -1,6 +1,7 @@
 ---
 date: 2021-12-02T13:43
 published: true
+cover_image: what-is-blockchain.jpeg
 contributors:
   - Alice
   - Bob
