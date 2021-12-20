@@ -74,7 +74,38 @@ export const plugins = [
           resolve: `gatsby-remark-classes`,
           options: {
             classMap: {
-              'heading[depth=2]': 'text-yellow-500 hover:text-blue-500',
+              // h1
+              'heading[depth=1]': 'font-bold text-3xl text-neutral-200',
+              // h2
+              'heading[depth=2]': 'font-semibold text-2xl  text-neutral-200',
+              // h3
+              'heading[depth=3]': 'font-semibold text-xl text-neutral-200',
+              // h4
+              'heading[depth=4]': 'font-semibold text-base text-neutral-200',
+              // h5
+              'heading[depth=5]': 'font-semibold text-sm text-neutral-200',
+              // h6
+              'heading[depth=6]': 'font-semibold text-xs text-neutral-200',
+              // p
+              paragraph: 'text-base font-normal text-neutral-200',
+              // a
+              link: 'text-primary text-sm font-normal hover:underline active:text-primary-dark',
+              // table
+              table: 'text-base font-normal text-neutral-200 border border-brand-grey',
+              tableCell: 'border border-brand-grey py-1 px-2',
+              'tableRow:first-child > tableCell': 'text-primary font-semibold',
+              // strong
+              strong: 'font-bold',
+              // blockquote
+              blockquote: 'border-l-2 border-brand-yellow pl-6',
+              'blockquote > paragraph': 'text-base text-neutral-400 font-medium',
+              'blockquote > blockquote': 'ml-6 mt-6',
+              // img
+              image: 'w-full rounded-lg',
+              // ul
+              'list[ordered=false]': 'ml-5 list-disc text-base font-normal text-neutral-200 marker:text-primary',
+              // ol
+              'list[ordered=true]': 'ml-5 list-decimal text-base font-normal text-neutral-200 marker:text-primary',
             },
           },
         },

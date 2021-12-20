@@ -6,5 +6,5 @@ type RightPaneProps = {
 };
 
 export default function RightPane({ className }: RightPaneProps) {
-  return <aside className={classNames('w-1/5 bg-yellow-500', className)}>right</aside>;
+  return <aside className={classNames('', className)}>right</aside>;
 }

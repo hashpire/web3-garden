@@ -36,5 +36,51 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
-  safelist: ['text-yellow-500', 'hover:text-blue-500'],
+  safelist: [
+    // font weight
+    'font-normal',
+    'font-semibold',
+    'font-bold',
+    // text size
+    'text-xs',
+    'text-sm',
+    'text-base',
+    'text-xl',
+    'text-2xl',
+    'text-3xl',
+    // text color
+    'text-primary',
+    'text-neutral-200',
+    'text-neutral-400',
+    'text-red-500',
+    // background
+    'bg-primary',
+    // border & rounded
+    'border',
+    'border-brand-grey',
+    'border-brand-yellow',
+    'border-l-2',
+    'rounded-lg',
+    // hover
+    'hover:underline',
+    // active
+    'active:text-primary-dark',
+    // background
+    // width & height
+    'w-full',
+    // margin & padding
+    'py-1',
+    'px-2',
+    'pl-6',
+    'ml-6',
+    'ml-5',
+    'mt-6',
+    // rounded
+    'rounded',
+    // list
+    'list-disc',
+    'list-decimal',
+    // ::marker
+    'marker:text-primary',
+  ],
 };

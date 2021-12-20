@@ -6,5 +6,5 @@ type LeftPaneProps = {
 };
 
 export default function LeftPane({ className }: LeftPaneProps) {
-  return <aside className={classNames('w-1/5 bg-yellow-500', className)}>Left</aside>;
+  return <aside className={classNames('', className)}>Left</aside>;
 }

@@ -11,6 +11,13 @@ type FeaturedSectionProps = {
 export default function FeaturedSection({ className }: FeaturedSectionProps) {
   const data = useStaticQuery<GatsbyTypes.FeaturedSectionQuery>(graphql`
     query FeaturedSection {
+      site {
+        siteMetadata {
+          garden {
+            basePath
+          }
+        }
+      }
       allMarkdownRemark(filter: { frontmatter: { featured: { eq: true }, published: { eq: true } } }) {
         edges {
           node {
@@ -41,17 +48,20 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
   const notes = data.allMarkdownRemark.edges;
   if (notes.length === 0) return null;
 
+  const { basePath: gardenBasePath = '/garden' } = data?.site?.siteMetadata?.garden || {};
+
   return (
     <section className={classNames(className)}>
       <SectionHeader title="Featured" />
       <div className="grid grid-cols-1 mt-10 gap-9 md:grid-cols-2">
         {notes.map((note) => {
           const { node } = note;
+
           return (
             <FeaturedCard
               key={node.id}
               title={node.parent?.name || ''}
-              url={'/about'}
+              url={`${gardenBasePath}/${node.parent?.name}`}
               excerpt={node.excerpt || ''}
               coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
               contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
