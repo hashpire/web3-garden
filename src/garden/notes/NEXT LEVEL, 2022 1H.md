@@ -13,7 +13,7 @@ We have some news: about the FUTURE.
 
 # We will be releasing our 2022 1st half’s game lineups next Friday at Christmas Eve!
 
-![itam team](itam-team.jpeg)
+![next level](https://miro.medium.com/max/700/1*bpBSZigmwwHG-uYTHoqIeg.jpeg)
 
 We have not one, but multiple games each with distinct game plays and genre prepared for you. And yes, one of those games is from an AAA studio.
 

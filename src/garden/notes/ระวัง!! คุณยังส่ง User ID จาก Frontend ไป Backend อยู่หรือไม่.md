@@ -32,4 +32,4 @@ Backend ไม่ควรเชื่อข้อมูล User ID ที่ส
 
 ID Token เป็น JSON Web Token (JWT) ที่เก็บข้อมูล User Information เอาไว้ ซึ่งสามารถดึงได้จากฟังก์ชั่น liff.getIDToken() (ถ้าใช้งานบน External Browser ต้อง Login ก่อน)โดย LIFF app ที่ต้องการใช้งาน ID Token ต้องระบุ openid ในส่วนของ scope ด้วย
 
-![line scope](line-scopes.png)
+![line scope](https://miro.medium.com/max/1400/1*55icadpnYOt89h4LO3RR4A.png)

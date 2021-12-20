@@ -6,10 +6,9 @@ contributors:
   - Droid Dev Talk
   - Android Developer Thailand
 ---
-
 # มาสรุปจาก Droid Dev Talk ตอนที่ 6 เกี่ยวกับ Android Studio กันสักนิด
 
-![driod dev talk](droid-dev-talk.jpeg)
+![driod dev talk](https://miro.medium.com/max/2000/0*ohpK1OTQGjpLjBLC)
 
 เริ่มเลยนะ 5 4 3 2 1
 
@@ -32,4 +31,4 @@ contributors:
 เราชอบเพราะลองพิมพ์ก่อนที่จะพิมพ์ในโค้ด เผื่อแบบใส่ไปแล้ว crash ไง 55555 สามารถเข้าไปส่องใน Tools -> Kotlin -> Kotlin REPL แจ้
 
 **Scratch File**
-![scratch file](scratch-file.png)
+![scratch file](https://miro.medium.com/max/736/1*DUG-EuItThYmZQr4VrEb4A.png)

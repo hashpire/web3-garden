@@ -7,7 +7,6 @@ contributors:
   - Orawan Junsontigul
   - Yod Chinsupakul
 ---
-
 # วันแรกของ LINE MAN Wongnai
 
 ย้อนกลับไปเมื่อ 10 ปีที่แล้ว เมื่อวันที่ 12 กรกฎาคม 2553 ผมก่อตั้ง Wongnai ขึ้นมาพร้อมกับเพื่อนวิศวะจุฬาฯ สามคน — บอยพี ป่าน บอยเอส เพื่อสร้าง “เว็บรีวิวร้านอาหารแบบ Yelp”
@@ -16,7 +15,7 @@ contributors:
 
 สิ้นเดือนนี้จะเป็นวันสุดท้ายของ Wongnai และเป็นวันแรกของ LINE MAN Wongnai
 
-![line wongnai](firstday-of-line-wongnai.png)
+![line wongnai](https://miro.medium.com/max/445/1*hj0Xe4P_-DxO5FnYdUPeQQ.png)
 
 ตอนที่เริ่มทำ Wongnai ตอนนั้นอายุ 27 ต้องยอมรับตามตรงว่าทำไปเพราะความอยากรวย อยากประสบความสำเร็จไวๆ เท่านั้น
 

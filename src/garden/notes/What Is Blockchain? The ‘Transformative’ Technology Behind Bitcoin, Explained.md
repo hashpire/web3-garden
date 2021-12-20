@@ -3,7 +3,6 @@ date: 2021-12-02T13:45
 published: false
 cover_image: what-is-blockchain.jpeg
 ---
-
 # What Is Blockchain? The ‘Transformative’ Technology Behind Bitcoin, Explained
 
 For all you’ve probably heard about [Bitcoin](https://time.com/nextadvisor/investing/cryptocurrency/what-is-bitcoin/), [Ethereum](https://time.com/nextadvisor/investing/cryptocurrency/what-is-ethereum/), and [other cryptocurrencies](https://time.com/nextadvisor/investing/cryptocurrency/types-of-cryptocurrency/) lately, many financial experts say it’s the technology behind crypto you should really be paying attention to.

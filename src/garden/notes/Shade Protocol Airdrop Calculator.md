@@ -5,7 +5,7 @@ contributors:
   - Shade Protocal
 ---
 
-![shade protocal](shade-protocal.png)
+![shade protocal](https://miro.medium.com/max/700/1*D6oSvZVPoJ9yKmvMslSu0g.png)
 
 Greetings Shade community,
 
@@ -34,4 +34,4 @@ Distribution of the airdrop is as follows:
 
 The following is a granular breakdown of airdrop total rewards, base airdrop amount totals, and the airdrop decentralized qualifier bonus.
 
-![analytics shade protocal](analytics-shade-protocal.png)
+![analytics shade protocal](https://miro.medium.com/max/700/1*YWxw615eBSAyQVqaKYIXvQ.png)

@@ -19,7 +19,7 @@ contributors:
 
 Shiba is an Erc20 token on the Ethereum network. İt started out as a meme token similar to dogecoin, and it was primarily marketed as the dogecoin killer. İn its early days, and was going after the same investors that held dogecoin in their personal investment portfolios.
 
-![shina inu](shiba-inu.jpeg)
+![shina inu](https://miro.medium.com/max/700/0*l1cjAMP4mGLN9PBw.jpeg)
 
 They are both based on the same breed of dog, the Shiba Inu, which I think is referenced as the screaming Japanese dog.
 
@@ -41,4 +41,4 @@ Because right now, if you’re trading Shiba token and you’re only trading lik
 
 Hopefully, the big listing that they’re hoping to get on for a centralized exchange is **Robinhood.**
 
-![shiba robinhood](shiba-robinhood.jpg)
+![shiba robinhood](https://miro.medium.com/max/700/0*JuLiLNGZyusoEI8a.jpg)

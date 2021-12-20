@@ -13,7 +13,7 @@ contributors:
 
 # $STARLY Token: Status Update
 
-![starly](starly.jpeg)
+![starly](https://miro.medium.com/max/700/1*RWR-iUVN35rt3AoXcqvaPw.jpeg)
 
 There have been a lot of questions regarding $STARLY token launch date, utility, technical design and other aspects. This is a quick update on the latest decisions regarding our token launch, while we are still working to realign it with our vision, mission and Feng shui.
 
