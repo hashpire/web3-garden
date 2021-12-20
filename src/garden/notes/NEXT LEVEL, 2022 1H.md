@@ -1,7 +1,7 @@
 ---
 date: 2021-12-03T13:43
 published: true
-cover_image: https://miro.medium.com/max/700/1*H4K8LiH6DCQjKqUTqzm0Ww.jpeg
+cover_image: next-level.jpeg
 contributors:
   - Snow
   - Eden
@@ -13,7 +13,7 @@ We have some news: about the FUTURE.
 
 # We will be releasing our 2022 1st half’s game lineups next Friday at Christmas Eve!
 
-![next level](https://miro.medium.com/max/700/1*bpBSZigmwwHG-uYTHoqIeg.jpeg)
+![itam team](itam-team.jpeg)
 
 We have not one, but multiple games each with distinct game plays and genre prepared for you. And yes, one of those games is from an AAA studio.
 

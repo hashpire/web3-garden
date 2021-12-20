@@ -1,7 +1,7 @@
 ---
 date: 2021-12-05T13:43
 published: true
-cover_image: https://miro.medium.com/max/445/1*hj0Xe4P_-DxO5FnYdUPeQQ.png
+cover_image: firstday-of-line-wongnai.png
 contributors:
   - Wongnai Thailand
   - Orawan Junsontigul
@@ -16,7 +16,7 @@ contributors:
 
 สิ้นเดือนนี้จะเป็นวันสุดท้ายของ Wongnai และเป็นวันแรกของ LINE MAN Wongnai
 
-![line wongnai](https://miro.medium.com/max/445/1*hj0Xe4P_-DxO5FnYdUPeQQ.png)
+![line wongnai](firstday-of-line-wongnai.png)
 
 ตอนที่เริ่มทำ Wongnai ตอนนั้นอายุ 27 ต้องยอมรับตามตรงว่าทำไปเพราะความอยากรวย อยากประสบความสำเร็จไวๆ เท่านั้น
 

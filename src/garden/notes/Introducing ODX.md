@@ -1,14 +1,14 @@
 ---
 date: 2021-12-04T13:43
 published: true
-cover_image: https://miro.medium.com/max/2000/1*C7xgLs-6H_wgaxlyBNINyA.png
+cover_image: introducing-odx.png
 contributors:
   - Edward
 ---
 
 # Introducing $ODX
 
-![introducing odx](https://miro.medium.com/max/2000/1*C7xgLs-6H_wgaxlyBNINyA.png)
+![introducing odx](introducing-odx.png)
 
 ## Purpose
 An SRC20 token deployed on the Cirrus sidechain of Stratis managed and distributed by an autonomous governance protocol through liquidity mining and vault certificates. Used for staking in enabled liquidity pools to vote for liquidity mining and collect partial transaction fees to offset risks and gas costs of using the protocol.

@@ -5,7 +5,7 @@ published: true
 
 # Emeris — The Road to Public Launch
 
-![emeris](https://miro.medium.com/max/700/1*2cNzPxCUTxw6niAvH_nukA.png)
+![emeris](emeris.png)
 
 Since the launch of **Emeris Beta** in September 2021, we’ve been hard at work. In fact, many new features and general improvements are almost ready to be rolled out, but we don’t want to rush things. We want to deliver a professional product with a truly superlative user experience — and we need a few more months to get there. To ensure that the platform is stable enough to lift the Beta label and go public, we’re announcing a new public launch window of Spring 2022.
 
@@ -21,7 +21,7 @@ The Internet of Blockchains deserves first-class, professional-looking interface
 
 - **Digital asset management:** Emeris will come with all the basic features that crypto users have come to expect, like asset transfers (including cross-chain transfers), staking (when applicable), and swapping. Better yet, the swapping feature will be powered by the first cross-chain DEX aggregator, enabling users to discover many new assets and benefit from the best possible swap price across the Interchain.
 
-![emeris extension](https://miro.medium.com/max/700/1*iVR1hB22BeLubrMVcHdBQA.png)
+![emeris extension](emeris-extension.png)
 
 ## Emeris Browser Extension
 

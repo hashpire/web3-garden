@@ -1,7 +1,7 @@
 ---
 date: 2021-12-07T13:43
 published: true
-cover_image: https://miro.medium.com/max/700/1*RWR-iUVN35rt3AoXcqvaPw.jpeg
+cover_image: starly.jpeg
 contributors:
   - Edward
   - Alice
@@ -13,7 +13,7 @@ contributors:
 
 # $STARLY Token: Status Update
 
-![starly](https://miro.medium.com/max/700/1*RWR-iUVN35rt3AoXcqvaPw.jpeg)
+![starly](starly.jpeg)
 
 There have been a lot of questions regarding $STARLY token launch date, utility, technical design and other aspects. This is a quick update on the latest decisions regarding our token launch, while we are still working to realign it with our vision, mission and Feng shui.
 

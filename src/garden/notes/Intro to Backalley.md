@@ -1,12 +1,12 @@
 ---
 date: 2021-12-05T13:43
 published: true
-cover_image: https://miro.medium.com/max/700/1*6EciTv1EuuhiRU0WXQwhOA.jpeg
+cover_image: backalley.jpeg
 ---
 
 # Intro to Backalley
 
-![intro to backally](https://miro.medium.com/max/700/1*6EciTv1EuuhiRU0WXQwhOA.jpeg)
+![intro to backally](backalley.jpeg)
 
 Backalley is a launchpad platform built on the Kadena blockchain to democratize access to fundraising through a fair, secure, cheap, and fast decentralized platform. We build on the “fixed swap” pools model, which guarantees fairness by fixing the swap price, benefiting investors and pool owners through more price transparency and balanced ownership.
 
