@@ -25,7 +25,7 @@ export default function FeedTemplate({
 
   return (
     <Layout>
-      <div className="px-4 py-12 lg:p-16 lg:mx-auto lg:max-w-4xl">
+      <div className="px-4 py-12 lg:py-16 lg:mx-auto lg:max-w-4xl">
         {isFirst && <FeaturedSection />}
         <ListSection
           className={isFirst ? 'mt-12' : undefined}
@@ -54,7 +54,12 @@ export default function FeedTemplate({
 }
 export const query = graphql`
   query FeedTemplate($skip: Int!, $limit: Int!) {
-    allMarkdownRemark(limit: $limit, skip: $skip, filter: { frontmatter: { published: { eq: true } } }) {
+    allMarkdownRemark(
+      limit: $limit
+      skip: $skip
+      filter: { frontmatter: { published: { eq: true } } }
+      sort: { fields: [fields___gitAuthorTime], order: [DESC] }
+    ) {
       edges {
         node {
           id
