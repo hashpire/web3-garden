@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import FolderSvg from '../../../icons/folder.inline.svg';
 import ContributorList from '../../ContributorList';
 import type { ContributorListProps } from '../../ContributorList';
 import { Link } from 'gatsby';
@@ -27,7 +26,7 @@ export default function FeaturedCard({
 }: FeaturedCardProps) {
   return (
     <Link to={url}>
-      <article className={classNames('relative h-80 max-w-md', className)}>
+      <article className={classNames('relative h-80', className)}>
         <div className="relative w-full h-full">
           {coverImage && <GatsbyImage alt={title} image={coverImage} className="w-full h-full" />}
           <div
@@ -38,17 +37,14 @@ export default function FeaturedCard({
             }}
           ></div>
         </div>
-        <div className="absolute z-50 flex flex-col justify-between bottom-10 left-10 right-10">
+        <div className="absolute z-50 flex flex-col justify-between bottom-6 left-6 right-6">
           <div className="flex flex-col">
-            <div className="flex items-center">
-              <FolderSvg className="w-8 h-8 text-neutral-100" />
-              <span className="ml-2 font-semibold text-neutral-100 line-clamp-1">{title}</span>
-            </div>
+            <span className="font-semibold text-neutral-100 line-clamp-2">{title}</span>
             <span className="mt-1 text-sm font-normal line-clamp-2 text-neutral-500">{excerpt}</span>
           </div>
           <div className="flex items-center mt-3">
             <span className="text-xs font-normal text-neutral-500">{publishedAt}</span>
-            <div className="w-0.5 h-0.5 rounded-full bg-neutral-400 mx-2" />
+            {contributors.length > 0 && <div className="w-1 h-1 mx-2 rounded-full bg-neutral-400" />}
             <ContributorList contributors={contributors} />
           </div>
         </div>

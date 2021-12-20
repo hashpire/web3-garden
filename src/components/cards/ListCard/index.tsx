@@ -19,16 +19,17 @@ export default function ListCard({ title, publishedAt, coverImage, contributors,
   return (
     <Link to={url} className="block">
       <article className="flex items-center h-32 md:h-40">
-        <div className="flex flex-col w-3/4 h-full px-2 lg:w-4/6">
+        <div className="flex flex-col justify-center w-3/4 h-full pr-2 md:pr-4 md:justify-start lg:w-4/6">
           <div>
             <h3 className="block text-base font-semibold text-neutral-100 line-clamp-2 lg:text-xl">{title}</h3>
             <p className="block mt-2 text-sm font-normal text-neutral-500 line-clamp-2">{excerpt}</p>
           </div>
-          <div className="flex items-center mt-auto">
+          <div className="flex items-center mt-4">
             <span className="text-xs font-normal text-neutral-500">{publishedAt}</span>
             <ContributorList contributors={contributors} className="ml-4" />
           </div>
         </div>
+
         <div className="w-1/4 lg:w-2/6 lg:h-full">
           <div className="aspect-w-3 aspect-h-2 lg:aspect-none lg:w-full lg:h-full">
             <div className="lg:h-full">

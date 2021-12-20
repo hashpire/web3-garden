@@ -18,7 +18,10 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
           }
         }
       }
-      allMarkdownRemark(filter: { frontmatter: { featured: { eq: true }, published: { eq: true } } }) {
+      allMarkdownRemark(
+        filter: { frontmatter: { featured: { eq: true }, published: { eq: true } } }
+        sort: { fields: [fields___gitAuthorTime], order: [DESC] }
+      ) {
         edges {
           node {
             id
@@ -53,10 +56,9 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
   return (
     <section className={classNames(className)}>
       <SectionHeader title="Featured" />
-      <div className="grid grid-cols-1 mt-10 gap-9 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-10 mt-10 md:grid-cols-2">
         {notes.map((note) => {
           const { node } = note;
-
           return (
             <FeaturedCard
               key={node.id}
@@ -66,7 +68,7 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
               coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
               contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
               publishedAt="2014-07-18"
-              className="m-auto"
+              className="max-w-lg m-auto"
             />
           );
         })}

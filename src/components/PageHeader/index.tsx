@@ -10,7 +10,7 @@ export default function PageHeader({ title, className }: PageHeaderProps) {
   return (
     <h1
       className={classNames(
-        'text-4xl font-semibold text-neutral-100 underline decoration-4 decoration-primary underline-offset-8',
+        'text-3xl font-semibold text-neutral-100 underline decoration-4 decoration-primary underline-offset-8 lg:text-4xl',
         className,
       )}
     >

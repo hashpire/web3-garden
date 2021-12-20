@@ -2,6 +2,8 @@ import { GatsbyNode } from 'gatsby';
 import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
 import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
+import { execSync } from 'child_process';
+
 // import { createRemoteFileNode } from 'gatsby-source-filesystem';
 
 type GatsbyNodeQuery = {
@@ -46,7 +48,10 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             }
           }
         }
-        allMarkdownRemark {
+        allMarkdownRemark(
+          filter: { frontmatter: { published: { eq: true } } }
+          sort: { fields: [fields___gitAuthorTime], order: [DESC] }
+        ) {
           edges {
             node {
               id
@@ -219,52 +224,56 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
   createTypes(frontmatterTypeDefs);
 };
 
-// export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
-//   node,
-//   actions,
-//   store,
-//   cache,
-//   createNodeId,
-//   reporter,
-// }) => {
-//   const { createNodeField, createNode } = actions;
-
-//   // if (node.internal.type === `MarkdownRemark` && node.parent) {
-//   //   const parentNode = getNode(node.parent);
-//   //   if (parentNode && parentNode.internal.type === `File`) {
-//   //     const fileNode = parentNode as FileSystemNode;
-//   //     const fileName = fileNode.relativePath;
-//   //     // do something with fileName
-//   //     console.log(fileName);
-//   //   }
-
-//   //   // create name with folder e.g. X/Y/Z/file-name
-//   //   const value = createFilePath({ node, getNode, trailingSlash: false });
-//   //   console.log('oncreatenode', value);
-//   //   createNodeField({
-//   //     name: `slug`,
-//   //     node,
-//   //     value,
-//   //   });
-//   // }
-
-//   if (node.internal.type === 'MarkdownRemark') {
-//     const frontmatter = node.frontmatter as any;
-//     if (frontmatter.test_image) {
-//       const fileNode = await createRemoteFileNode({
-//         url: frontmatter.test_image, // string that points to the URL of the image
-//         parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
-//         createNode, // helper function in gatsby-node to generate the node
-//         createNodeId, // helper function in gatsby-node to generate the node id
-//         cache,
-//         store,
-//         reporter,
-//       });
-
-//       // if the file was created, extend the node with "localFile"
-//       if (fileNode) {
-//         createNodeField({ node, name: 'localFile', value: fileNode.id });
-//       }
-//     }
-//   }
-// };
+export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
+  node,
+  actions,
+  // store,
+  // cache,
+  // createNodeId,
+  // reporter,
+}) => {
+  if (node.internal.type === 'MarkdownRemark') {
+    const gitAuthorTime = execSync(`git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`).toString();
+    actions.createNodeField({
+      node,
+      name: 'gitAuthorTime',
+      value: gitAuthorTime,
+    });
+  }
+  //   const { createNodeField, createNode } = actions;
+  //   // if (node.internal.type === `MarkdownRemark` && node.parent) {
+  //   //   const parentNode = getNode(node.parent);
+  //   //   if (parentNode && parentNode.internal.type === `File`) {
+  //   //     const fileNode = parentNode as FileSystemNode;
+  //   //     const fileName = fileNode.relativePath;
+  //   //     // do something with fileName
+  //   //     console.log(fileName);
+  //   //   }
+  //   //   // create name with folder e.g. X/Y/Z/file-name
+  //   //   const value = createFilePath({ node, getNode, trailingSlash: false });
+  //   //   console.log('oncreatenode', value);
+  //   //   createNodeField({
+  //   //     name: `slug`,
+  //   //     node,
+  //   //     value,
+  //   //   });
+  //   // }
+  //   if (node.internal.type === 'MarkdownRemark') {
+  //     const frontmatter = node.frontmatter as any;
+  //     if (frontmatter.test_image) {
+  //       const fileNode = await createRemoteFileNode({
+  //         url: frontmatter.test_image, // string that points to the URL of the image
+  //         parentNodeId: node.id, // id of the parent node of the fileNode you are going to create
+  //         createNode, // helper function in gatsby-node to generate the node
+  //         createNodeId, // helper function in gatsby-node to generate the node id
+  //         cache,
+  //         store,
+  //         reporter,
+  //       });
+  //       // if the file was created, extend the node with "localFile"
+  //       if (fileNode) {
+  //         createNodeField({ node, name: 'localFile', value: fileNode.id });
+  //       }
+  //     }
+  //   }
+};

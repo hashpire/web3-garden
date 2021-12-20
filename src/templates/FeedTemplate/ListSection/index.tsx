@@ -22,18 +22,21 @@ export default function ListSection({ notes, className, title }: ListSectionProp
   return (
     <section className={classNames(className)}>
       {title && <SectionHeader title={title} className="mb-10" />}
-      <div className="space-y-16">
+      <div className="space-y-6 md:space-y-16">
         {notes.map(({ id, title, url, excerpt, coverImage, contributors }) => {
           return (
-            <ListCard
-              key={id}
-              url={url}
-              title={title}
-              excerpt={excerpt}
-              coverImage={coverImage}
-              contributors={contributors}
-              publishedAt="Aug 20, 2021"
-            />
+            <>
+              <ListCard
+                key={id}
+                url={url}
+                title={title}
+                excerpt={excerpt}
+                coverImage={coverImage}
+                contributors={contributors}
+                publishedAt="Aug 20, 2021"
+              />
+              <hr className="block border-background md:hidden" />
+            </>
           );
         })}
       </div>

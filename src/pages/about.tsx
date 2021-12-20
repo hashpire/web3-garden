@@ -49,7 +49,7 @@ const communityGoals = [
 ];
 
 const AboutPage: React.FC<{}> = () => (
-  <Layout fullWidth>
+  <Layout>
     <Seo title="Hashpire About" />
     {/* Section 1 */}
     <section
@@ -80,7 +80,7 @@ const AboutPage: React.FC<{}> = () => (
         <span className="text-xl font-semibold whitespace-pre-line text-neutral-100 md:text-2xl md:whitespace-normal">
           {`is a community-driven \nDigital Garden`}
         </span>
-        <p className="mt-6 text-base text-primary sm:whitespace-pre-line md:text-xl md:font-semibold md:text-neutral-400 lg:text-primary">
+        <p className="mt-6 text-base text-primary sm:whitespace-pre-line md:text-xl md:font-semibold md:text-neutral-400 ">
           {`A space for people to create, curate, cultivate and discuss content \nrelated to the Decentralize web`}
         </p>
         <div className="mt-16">

@@ -11,22 +11,24 @@ const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({ da
   return (
     <Layout>
       <Seo title="Hashpire Community" />
-      <PageHeader title="Our Community" className="text-center" />
-      <div className="grid max-w-6xl grid-cols-1 mx-auto my-20 gap-x-10 gap-y-28 md:grid-cols-2 lg:grid-cols-3">
-        {contributors &&
-          contributors.map((contributor, index) => {
-            return (
-              <MemberCard
-                key={index}
-                className="m-auto"
-                name={contributor?.name || ''}
-                position={contributor?.position}
-                shortIntro={contributor?.shortIntro}
-                imageUrl={contributor?.imageUrl}
-                contactInfo={contributor?.contactInfo || {}}
-              />
-            );
-          })}
+      <div className="px-4 py-12 lg:p-16 lg:mx-auto lg:max-w-screen-2xl">
+        <PageHeader title="Our Community" className="text-center" />
+        <div className="grid grid-cols-1 mx-auto mt-28 mb-20 gap-y-28 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
+          {contributors &&
+            contributors.map((contributor, index) => {
+              return (
+                <MemberCard
+                  key={index}
+                  className="m-auto"
+                  name={contributor?.name || ''}
+                  position={contributor?.position}
+                  shortIntro={contributor?.shortIntro}
+                  imageUrl={contributor?.imageUrl}
+                  contactInfo={contributor?.contactInfo || {}}
+                />
+              );
+            })}
+        </div>
       </div>
     </Layout>
   );
