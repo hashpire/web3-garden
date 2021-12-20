@@ -49,6 +49,13 @@ export const plugins = [
     },
   },
   {
+    resolve: `gatsby-source-filesystem`,
+    options: {
+      name: `gardenFiles`,
+      path: `${__dirname}/src/garden/Files`,
+    },
+  },
+  {
     resolve: `gatsby-transformer-remark`,
     options: {
       plugins: [

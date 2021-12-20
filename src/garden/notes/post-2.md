@@ -2,6 +2,7 @@
 date: 2021-12-02T13:42
 published: false
 featured: true
+test_image: asdfsdf
 contributors:
   - Anakorn Kyavatanakij
 ---
@@ -75,3 +76,6 @@ alert(message);
 ## Inline code
 
 This web site is using `markedjs/marked`.
+
+[[post-1]]
+[post-1](post-1.md)
