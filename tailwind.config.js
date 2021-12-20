@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -33,6 +35,9 @@ module.exports = {
       // height: {
       //   content: 'calc(100vh - 64px)',
       // },
+      fontFamily: {
+        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
