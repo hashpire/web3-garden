@@ -23,10 +23,10 @@ export default function ListSection({ notes, className, title }: ListSectionProp
   return (
     <section className={classNames(className)}>
       {title && <SectionHeader title={title} className="mb-10" />}
-      <div className="space-y-6 md:space-y-16">
+      <div className="space-y-6 md:space-y-10 lg:space-y-16">
         {notes.map(({ id, title, url, excerpt, coverImage, contributors, publishedAt }) => {
           return (
-            <>
+            <React.Fragment key={id}>
               <ListCard
                 key={id}
                 url={url}
@@ -37,7 +37,7 @@ export default function ListSection({ notes, className, title }: ListSectionProp
                 publishedAt={publishedAt || ''}
               />
               <hr className="block border-background md:hidden" />
-            </>
+            </React.Fragment>
           );
         })}
       </div>

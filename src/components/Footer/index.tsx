@@ -7,7 +7,7 @@ import TwitterSvg from '../../icons/twitter.inline.svg';
 
 const MainPageFooter: React.FC<{}> = () => {
   return (
-    <footer className="flex flex-col items-center justify-center p-10 space-y-4 bg-gradient-to-r from-background to-background-darker">
+    <footer className="flex flex-col items-center justify-center p-10 space-y-4 bg-background">
       <HashpireThlSvg className="w-40 h-auto" />
       <ul className="flex space-x-2">
         <li className="flex flex-col justify-center">

@@ -22,10 +22,10 @@ export default function ListCard({ title, publishedAt, coverImage, contributors,
         <div className="flex flex-col justify-center w-3/4 h-full pr-2 md:pr-4 md:justify-start lg:w-4/6">
           <div>
             <h3 className="block text-base font-semibold text-neutral-100 line-clamp-2 lg:text-xl">{title}</h3>
-            <p className="block mt-2 text-sm font-normal text-neutral-500 line-clamp-2">{excerpt}</p>
+            <p className="block mt-2 text-sm font-normal text-neutral-400 line-clamp-2">{excerpt}</p>
           </div>
           <div className="flex items-center mt-4">
-            <span className="text-xs font-normal text-neutral-500">{publishedAt}</span>
+            <span className="text-xs font-normal text-neutral-400">{publishedAt}</span>
             <ContributorList contributors={contributors} className="ml-4" />
           </div>
         </div>

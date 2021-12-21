@@ -24,7 +24,7 @@ export default function ContributorList({ contributors, className }: Contributor
         />
       ))}
       {contributors.length === 1 && (
-        <span className="ml-2 text-xs font-semibold text-neutral-100">{contributors[0].name}</span>
+        <span className="ml-2 text-xs font-semibold text-neutral-100 line-clamp-2">{contributors[0].name}</span>
       )}
       {contributors.length > limit && (
         <div className="flex items-center justify-center -ml-2 border rounded-full w-7 h-7 bg-background border-neutral-100">

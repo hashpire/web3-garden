@@ -25,7 +25,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   `);
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background-darker">
       <Header siteTitle={data.site?.siteMetadata?.title || `Title`} />
       <div className={classNames('flex-grow')}>
         <main>{children}</main>
