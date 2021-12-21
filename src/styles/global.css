@@ -4,14 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Hashpire
+ * A - Highlight Line Background Color
+ * B - Highlight Line Left Border
+ * C - Background Color of Code Block. (Same as theme)
+ * D - Command Line Prompt Text Color
+ */
+
 .gatsby-highlight-code-line {
-  background-color: #feb;
+  background-color: rgba(245, 245, 245, 0.1); /* A */
   display: block;
   margin-right: -1em;
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  border-left: 0.25em solid #ff9700; /* B */
 }
 
 /**
@@ -19,7 +27,7 @@
  * and overflow that we removed from <pre>.
  */
 .gatsby-highlight {
-  background-color: #fdf6e3;
+  background-color: #2d2d2d; /* C */
   border-radius: 0.3em;
   margin: 0.5em 0;
   padding: 1em;
@@ -47,7 +55,7 @@
 }
 
 .command-line-prompt > span:before {
-  color: #999;
+  color: #999; /* D */
   content: ' ';
   display: block;
   padding-right: 0.8em;
