@@ -12,7 +12,7 @@ export default function Avatar({ className, src, alt }: AvatarProps) {
     <img
       src={src}
       alt={alt}
-      className={classNames('w-7 h-7 rounded-full object-cover border border-neutral-100', className)}
+      className={classNames('w-7 h-7 rounded-full object-cover bg-background border border-neutral-100', className)}
     />
   );
 }

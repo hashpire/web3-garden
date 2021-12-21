@@ -65,11 +65,11 @@ export default function MemberCard({ name, position, imageUrl, shortIntro, conta
         alt={name}
         className="absolute object-cover w-24 h-24 border-4 rounded-full bg-background -top-14 border-neutral-200 shadow-1"
       />
-      <div className="mt-20 h-full flex flex-col items-center justify-between">
+      <div className="flex flex-col items-center justify-between h-full mt-20">
         <div className="flex flex-col items-center">
           <Badge title={position || 'Contributor'} />
           <h3 className="block mt-4 text-xl font-semibold text-center text-neutral-200">{name}</h3>
-          <p className="block mt-2 text-sm text-center text-neutral-500 line-clamp-4">{shortIntro}</p>
+          <p className="block mt-2 text-sm text-center text-neutral-400 line-clamp-4">{shortIntro}</p>
         </div>
         {contactInfo && (
           <ul className="flex items-center space-x-2">
