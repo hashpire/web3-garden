@@ -25,7 +25,7 @@ export default function FeedTemplate({
 
   return (
     <Layout>
-      <div className="px-4 py-12 lg:py-16 lg:mx-auto lg:max-w-4xl">
+      <div className="px-4 py-12 md:px-6 lg:px-0 lg:py-16 lg:mx-auto lg:max-w-4xl">
         {isFirst && <FeaturedSection />}
         <ListSection
           className={isFirst ? 'mt-12' : undefined}
