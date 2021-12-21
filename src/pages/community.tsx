@@ -11,9 +11,9 @@ const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({ da
   return (
     <Layout>
       <Seo title="Hashpire Community" />
-      <div className="px-4 py-12 lg:p-16 lg:mx-auto lg:max-w-screen-2xl">
+      <div className="px-4 py-12 md:px-6 lg:p-16 lg:mx-auto lg:max-w-screen-2xl">
         <PageHeader title="Our Community" className="text-center" />
-        <div className="grid grid-cols-1 mx-auto mt-28 mb-20 gap-y-28 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
+        <div className="grid grid-cols-1 mx-auto mb-20 mt-28 gap-y-28 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
           {contributors &&
             contributors.map((contributor, index) => {
               return (

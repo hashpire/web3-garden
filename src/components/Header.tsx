@@ -12,7 +12,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ siteTitle }) => {
   // px-4 sm:px-6 md:px-8
   return (
-    <header className="flex flex-col px-2 py-2 border-b border-solid lg:px-6 lg:py-0 bg-background border-neutral-500 lg:flex-row">
+    <header className="flex flex-col px-2 py-2 border-b border-solid lg:px-6 lg:py-0 bg-background-darker border-background shadow-2 lg:shadow-none lg:bg-background lg:flex-row">
       <div className="flex items-center h-16">
         {/* <LeftPaneSvg className="block lg:hidden text-neutral-500 w-9 h-9" /> */}
         <Link to="/" className="flex h-full mx-auto">
