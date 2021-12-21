@@ -3,8 +3,8 @@ import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
 import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
 import { execSync } from 'child_process';
-
-// import { createRemoteFileNode } from 'gatsby-source-filesystem';
+import { slugify } from './src/utils/slugify';
+import { FileSystemNode } from 'gatsby-source-filesystem';
 
 type GatsbyNodeQuery = {
   site: {
@@ -24,7 +24,7 @@ type GatsbyNodeQuery = {
       node: {
         id: string;
         html: string;
-        parent?: { name?: string };
+        fields?: { slug?: string };
       };
     }>;
   };
@@ -56,10 +56,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             node {
               id
               html
-              parent {
-                ... on File {
-                  name
-                }
+              fields {
+                slug
               }
             }
           }
@@ -82,11 +80,13 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
   notes.forEach(({ node }) => {
     const { id, html } = node;
-    const fileName = node.parent?.name;
+    const slug = node.fields?.slug;
 
-    if (fileName) {
+    if (slug) {
+      const urlPath = `${gardenBasePath}/${slug}`;
+      console.log(urlPath);
       createPage<NoteTemplatePageContext>({
-        path: `${gardenBasePath}/${fileName}`,
+        path: urlPath,
         component: noteTemplate,
         context: { id, html },
       });
@@ -169,7 +169,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       featured: Boolean
     }
   `,
-    //       test_image: File @link(by: "name")
+    // test_image: File @link(by: "name")
     // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
     schema.buildObjectType({
       name: 'Frontmatter',
@@ -227,37 +227,43 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
   actions,
+  getNode,
   // store,
   // cache,
   // createNodeId,
   // reporter,
 }) => {
-  if (node.internal.type === 'MarkdownRemark') {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === 'MarkdownRemark' && node.parent) {
+    // git author time
     const gitAuthorTime = execSync(`git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`).toString();
     actions.createNodeField({
       node,
       name: 'gitAuthorTime',
       value: gitAuthorTime,
     });
+
+    // slug and title
+    const parentNode = getNode(node.parent);
+    if (parentNode && parentNode.internal.type === `File`) {
+      const fileNode = parentNode as FileSystemNode;
+
+      // const relativeDir = fileNode.relativeDirectory;
+      // const relativePath = fileNode.relativePath;
+      const fileName = fileNode.name;
+      const slug = slugify(fileName);
+
+      createNodeField({
+        name: `slug`,
+        node,
+        value: slug,
+      });
+
+      createNodeField({ name: `title`, node, value: fileName });
+    }
   }
-  //   const { createNodeField, createNode } = actions;
-  //   // if (node.internal.type === `MarkdownRemark` && node.parent) {
-  //   //   const parentNode = getNode(node.parent);
-  //   //   if (parentNode && parentNode.internal.type === `File`) {
-  //   //     const fileNode = parentNode as FileSystemNode;
-  //   //     const fileName = fileNode.relativePath;
-  //   //     // do something with fileName
-  //   //     console.log(fileName);
-  //   //   }
-  //   //   // create name with folder e.g. X/Y/Z/file-name
-  //   //   const value = createFilePath({ node, getNode, trailingSlash: false });
-  //   //   console.log('oncreatenode', value);
-  //   //   createNodeField({
-  //   //     name: `slug`,
-  //   //     node,
-  //   //     value,
-  //   //   });
-  //   // }
+
   //   if (node.internal.type === 'MarkdownRemark') {
   //     const frontmatter = node.frontmatter as any;
   //     if (frontmatter.test_image) {

@@ -38,12 +38,9 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
               }
             }
             fields {
+              title
+              slug
               gitAuthorTime(formatString: "YYYY-MM-DD")
-            }
-            parent {
-              ... on File {
-                name
-              }
             }
           }
         }
@@ -62,13 +59,13 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
       <div className="grid grid-cols-1 gap-10 mt-10 md:grid-cols-2">
         {notes.map((note) => {
           const { node } = note;
-          const { gitAuthorTime = '' } = node?.fields || {};
+          const { gitAuthorTime = '', title = 'No Title', slug = '' } = node?.fields || {};
 
           return (
             <FeaturedCard
               key={node.id}
-              title={node.parent?.name || ''}
-              url={`${gardenBasePath}/${node.parent?.name}`}
+              title={title}
+              url={`${gardenBasePath}/${slug}`}
               excerpt={node.excerpt || ''}
               coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
               contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
