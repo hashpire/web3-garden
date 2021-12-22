@@ -106,6 +106,8 @@ export const plugins = [
               'list[ordered=false]': 'ml-8 list-disc text-base font-normal text-neutral-200 marker:text-primary',
               // ol
               'list[ordered=true]': 'ml-8 list-decimal text-base font-normal text-neutral-200 marker:text-primary',
+              // hr
+              thematicBreak: 'border-brand-grey',
             },
           },
         },
