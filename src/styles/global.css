@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    /* firefox scrollbar styling */
+    scrollbar-color: #3C3C3C #262626;
+  }
+}
+
 /* scrollbar width */
 ::-webkit-scrollbar {
   width: 16px;
