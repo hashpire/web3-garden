@@ -1,5 +1,5 @@
 import React from 'react';
-import NoteLayout from '../components/layouts/NoteLayout';
+import NoteLayout from '../layouts/NoteLayout';
 import { PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 

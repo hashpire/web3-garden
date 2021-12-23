@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Layout from '../components/layouts/MainLayout';
+import Layout from '../layouts/MainLayout';
 import GardenSvg from '../icons/garden.inline.svg';
 import SeedSvg from '../icons/seed.inline.svg';
 import TreeSvg from '../icons/tree.inline.svg';

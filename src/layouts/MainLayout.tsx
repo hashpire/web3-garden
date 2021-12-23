@@ -8,8 +8,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { useStaticQuery, graphql } from 'gatsby';
-import Header from '../Header';
-import Footer from '../Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 type LayoutProps = {};
 

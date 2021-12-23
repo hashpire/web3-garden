@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../Header';
+import React, { useEffect } from 'react';
+import Header from '../../components/Header';
 import DesktopSidebar from './DesktopSidebar';
 import CollapseLeftSvg from '@icons/collapse-left.inline.svg';
 import CollapseRightSvg from '@icons/collapse-right.inline.svg';
-import { useLg, useXl } from '../../../hooks/responsive';
+import { useLg } from '../../hooks/responsive';
 import MobileSidebar from './MobileSidebar';
 import Pane from '@/components/Pane';
 import { Link } from 'gatsby';
+import { useSidebar } from '@/context/sidebar';
 
 export type NoteLayoutProps = {};
 
 const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
   const isLg = useLg();
-  const isXl = useXl();
-  const [mobileSidebar, setMobileSidebar] = useState<'left' | 'right' | null>(null);
-  const [leftDesktopSidebarVisible, setLeftDesktopSidebarVisbile] = useState<boolean>(isXl ? true : false);
-  const [rightDesktopSidebarVisible, setRightDesktopSidebarVisible] = useState<boolean>(isXl ? true : false);
+
+  const { state, dispatch } = useSidebar();
+  const { mobileSidebar, desktopLeftSidebar, desktopRightSidebar } = state;
 
   // lock and unlock body scroll when menu overlay visible
   useEffect(() => {
@@ -31,30 +31,34 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
       <Header
         siteTitle={`Garden`}
         sidePane={{
-          onLeftClick: () => setMobileSidebar((value) => (value ? null : 'left')),
-          onRightClick: () => setMobileSidebar((value) => (value ? null : 'right')),
+          onLeftClick: () => dispatch({ type: 'OPEN_MOBILE_LEFT_SIDEBAR' }),
+          onRightClick: () => dispatch({ type: 'OPEN_MOBILE_RIGHT_SIDEBAR' }),
         }}
       />
       {/* overflow-x-hidden to remove scrollbar during animation */}
       <div className="flex flex-row flex-1 overflow-x-hidden lg:overflow-y-hidden">
         {/* All items in row will take the largest height of them by default. */}
         {isLg ? (
-          <DesktopSidebar isShowing={leftDesktopSidebarVisible}>
+          <DesktopSidebar isShowing={desktopLeftSidebar}>
             <Pane>Left Pane</Pane>
             <Pane>Left Pane</Pane>
             <Link to="/garden/post-1">test</Link>
           </DesktopSidebar>
         ) : (
-          <MobileSidebar isShowing={mobileSidebar === 'left'} direction="right" onClose={() => setMobileSidebar(null)}>
-            <span className="text-white">Left Pane</span>
+          <MobileSidebar
+            isShowing={mobileSidebar === 'left'}
+            direction="right"
+            onClose={() => dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' })}
+          >
+            <Link to="/garden/post-1">test</Link>
           </MobileSidebar>
         )}
         {isLg && (
           <button
             className="flex items-center h-full border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => setLeftDesktopSidebarVisbile((isShowing) => !isShowing)}
+            onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_LEFT_SIDEBAR' })}
           >
-            {leftDesktopSidebarVisible ? (
+            {desktopLeftSidebar ? (
               <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
             ) : (
               <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
@@ -68,9 +72,9 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
         {isLg && (
           <button
             className="flex items-center h-full border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => setRightDesktopSidebarVisible((isShowing) => !isShowing)}
+            onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' })}
           >
-            {rightDesktopSidebarVisible ? (
+            {desktopRightSidebar ? (
               <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
             ) : (
               <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
@@ -78,11 +82,15 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           </button>
         )}
         {isLg ? (
-          <DesktopSidebar isShowing={rightDesktopSidebarVisible}>
+          <DesktopSidebar isShowing={desktopRightSidebar}>
             <span className="text-white">Right Pane</span>
           </DesktopSidebar>
         ) : (
-          <MobileSidebar isShowing={mobileSidebar === 'right'} direction="left" onClose={() => setMobileSidebar(null)}>
+          <MobileSidebar
+            isShowing={mobileSidebar === 'right'}
+            direction="left"
+            onClose={() => dispatch({ type: 'CLOSE_MOBILE_RIGHT_SIDEBAR' })}
+          >
             <span className="text-white">Right Pane</span>
           </MobileSidebar>
         )}

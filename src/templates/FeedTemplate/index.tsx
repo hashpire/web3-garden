@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import Layout from '../../components/layouts/MainLayout';
+import Layout from '../../layouts/MainLayout';
 import FeaturedSection from './FeaturedSection';
 import ListSection from './ListSection';
 import Pagination from '../../components/Pagination';

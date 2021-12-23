@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
-import Layout from '../components/layouts/MainLayout';
+import Layout from '../layouts/MainLayout';
 import Seo from '../components/Seo';
 import MemberCard from '../components/cards/MemberCard';
 import PageHeader from '../components/PageHeader';
