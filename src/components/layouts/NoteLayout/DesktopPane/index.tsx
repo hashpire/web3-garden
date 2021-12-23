@@ -16,10 +16,10 @@ export default function DesktopPane({ className, isShowing, children }: DesktopP
       as="aside"
       enter="transition-all ease-in-out duration-150"
       enterFrom="w-0"
-      enterTo="w-80"
-      entered="w-80"
+      enterTo="w-72"
+      entered="w-72"
       leave="transition-all ease-in-out duration-150"
-      leaveFrom="w-80"
+      leaveFrom="w-72"
       leaveTo="w-0"
       className={classNames('w-72 h-full bg-background', className)}
     >

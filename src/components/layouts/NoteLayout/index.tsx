@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Header';
 import DesktopPane from './DesktopPane';
-import CollapsePane from '../../CollapsePane';
+import CollapseLeftSvg from '@icons/collapse-left.inline.svg';
+import CollapseRightSvg from '@icons/collapse-right.inline.svg';
 import { useLg, useXl } from '../../../hooks/responsive';
 import MobilePane from './MobilePane';
 
@@ -46,21 +47,31 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           </DesktopPane>
         )}
         {isLg && (
-          <CollapsePane
-            direction={leftPaneVisible ? 'left' : 'right'}
-            className="border-r border-brand-grey"
+          <button
+            className="flex items-center h-full border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
             onClick={() => setLeftPaneVisbile((isShowing) => !isShowing)}
-          />
+          >
+            {leftPaneVisible ? (
+              <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
+            ) : (
+              <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
+            )}
+          </button>
         )}
         <main className="flex flex-col flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
           <div className="max-w-4xl mx-auto">{children}</div>
         </main>
         {isLg && (
-          <CollapsePane
-            direction={rightPaneVisible ? 'right' : 'left'}
-            className="border-l border-brand-grey"
+          <button
+            className="flex items-center h-full border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
             onClick={() => setRightPaneVisible((isShowing) => !isShowing)}
-          />
+          >
+            {rightPaneVisible ? (
+              <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
+            ) : (
+              <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
+            )}
+          </button>
         )}
         {!isLg && (
           <MobilePane isShowing={mobilePane === 'right'} direction="left" onClose={() => setMobilePane(null)}>
