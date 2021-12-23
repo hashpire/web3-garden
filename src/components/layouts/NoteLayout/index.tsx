@@ -27,12 +27,13 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
       {/* overflow-x-hidden to remove scrollbar during animation */}
       <div className="flex flex-row flex-1 overflow-x-hidden border-t lg:overflow-y-hidden border-brand-grey">
         {/* All items in row will take the largest height of them by default. */}
-        {!isLg && (
+        {isLg ? (
+          <DesktopPane isShowing={leftPaneVisible}>test</DesktopPane>
+        ) : (
           <MobilePane isShowing={mobilePane === 'left'} direction="right" onClose={() => setMobilePane(null)}>
             <div>Left Pane</div>
           </MobilePane>
         )}
-        {isLg && <DesktopPane isShowing={leftPaneVisible}>test</DesktopPane>}
         {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
         <main className="flex flex-col flex-1 min-w-0 lg:border-l lg:border-r lg:overflow-y-auto bg-background-darker">
           {isLg && <button onClick={() => setLeftPaneVisbile((isShowing) => !isShowing)}>Left</button>}
@@ -41,12 +42,13 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           {!isLg && <button onClick={() => setMobilePane((value) => (value ? null : 'right'))}>Mobile Right</button>}
           {children}
         </main>
-        {!isLg && (
+        {isLg ? (
+          <DesktopPane isShowing={rightPaneVisible}>test</DesktopPane>
+        ) : (
           <MobilePane isShowing={mobilePane === 'right'} direction="left" onClose={() => setMobilePane(null)}>
             <div className="bg-blue-500">Right Pane</div>
           </MobilePane>
         )}
-        {isLg && <DesktopPane isShowing={rightPaneVisible}>test</DesktopPane>}
       </div>
     </div>
   );

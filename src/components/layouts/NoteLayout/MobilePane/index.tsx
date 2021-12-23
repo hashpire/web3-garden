@@ -30,7 +30,7 @@ export default function MobilePane({ className, isShowing, onClose, direction, c
       </Transition.Child>
       {/* Sidebar Implementation via Translate */}
       <Transition.Child
-        enter="transition-all ease-in-out duration-150 transform"
+        enter="transition ease-in-out duration-150 transform"
         enterFrom={classNames(direction === 'left' ? 'translate-x-full' : '-translate-x-full')}
         enterTo="translate-x-0"
         leave="transition ease-in-out duration-150 transform"
