@@ -5,9 +5,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scrollbar-color: theme('colors.scrollbar.DEFAULT');
+  }
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+  @apply w-4;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  @apply bg-background border-y-0 border-r-0 border-l border-solid border-brand-grey;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-grey border-4 border-solid border-transparent rounded-full bg-clip-content;
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500 bg-clip-content;
+}
+
 @layer components {
   .navbar-active {
-    color: #FF9700 !important;
+    @apply text-primary !important;
   }
 }
 
