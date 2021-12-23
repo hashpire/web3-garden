@@ -6,34 +6,28 @@
 
 @layer base {
   html {
-    /* firefox scrollbar styling */
-    scrollbar-color: #3C3C3C #262626;
+    scrollbar-color: theme('scrollbar.colors.DEFAULT');
   }
 }
 
 /* scrollbar width */
 ::-webkit-scrollbar {
-  width: 16px;
+  @apply w-4;
 }
 
 /* track */
 ::-webkit-scrollbar-track {
-  background: #262626; /* bg-background */
-  border-left: 1px solid #3C3C3C; /* brand-grey */
+  @apply bg-background border-y-0 border-r-0 border-l border-solid border-brand-grey;
 }
 
 /* handle */
 ::-webkit-scrollbar-thumb {
-  background: #3C3C3C; /* brand-grey */
-  border-radius: 32px;
-  border: 4px solid transparent;
-  background-clip: content-box;
+  @apply bg-brand-grey border-4 border-solid border-transparent rounded-full bg-clip-content;
 }
 
 /* handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #737373; /* neutral-500 */
-  background-clip: content-box;
+  @apply bg-neutral-500 bg-clip-content;
 }
 
 /**
