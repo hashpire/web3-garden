@@ -25,6 +25,9 @@ module.exports = {
           DEFAULT: '#262626',
           darker: '#1E1E1E',
         },
+        scrollbar: {
+          DEFAULT: '#3C3C3C #262626',
+        },
       },
       boxShadow: {
         1: '0px 1px 2px rgba(0, 0, 0, 0.12)',
@@ -33,11 +36,6 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
         'open-sans': ['Open Sans', ...defaultTheme.fontFamily.sans],
-      },
-    },
-    scrollbar: {
-      colors: {
-        DEFAULT: '#3C3C3C #262626',
       },
     },
   },

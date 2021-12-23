@@ -7,7 +7,7 @@
 
 @layer base {
   html {
-    scrollbar-color: theme('scrollbar.colors.DEFAULT');
+    scrollbar-color: theme('colors.scrollbar.DEFAULT');
   }
 }
 
