@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .navbar-active {
+    color: #FF9700 !important;
+  }
+}
+
 /**
  * Hashpire
  * A - Highlight Line Background Color
