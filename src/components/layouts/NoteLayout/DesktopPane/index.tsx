@@ -21,7 +21,7 @@ export default function DesktopPane({ className, isShowing, children }: DesktopP
       leave="transition-all ease-in-out duration-150"
       leaveFrom="w-80"
       leaveTo="w-0"
-      className={classNames('w-80 h-full bg-lime-400', className)}
+      className={classNames('w-72 h-full bg-background', className)}
     >
       {children}
     </Transition>

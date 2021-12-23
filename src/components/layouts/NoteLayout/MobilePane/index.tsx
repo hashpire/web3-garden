@@ -26,7 +26,7 @@ export default function MobilePane({ className, isShowing, onClose, direction, c
         className="fixed inset-0"
         onClick={onClose}
       >
-        <div className="w-full h-full bg-red-500 opacity-50"></div>
+        <div className="w-full h-full opacity-50 bg-neutral-900"></div>
       </Transition.Child>
       {/* Sidebar Implementation via Translate */}
       <Transition.Child
@@ -38,25 +38,13 @@ export default function MobilePane({ className, isShowing, onClose, direction, c
         leaveTo={classNames(direction === 'left' ? 'translate-x-full' : '-translate-x-full')}
         unmount={false}
         as="div"
-        className={classNames('fixed inset-y-0 bg-green-500 w-80', direction === 'left' ? 'right-0' : 'left-0')}
+        className={classNames(
+          'fixed inset-y-0 bg-background min-w-72 w-4/5 md:w-1/2',
+          direction === 'left' ? 'right-0' : 'left-0',
+        )}
       >
         {children}
       </Transition.Child>
-      {/* Sidebar */}
-      {/* <Transition.Child
-        enter="transition-all ease-in-out duration-150"
-        enterFrom="w-0"
-        enterTo="w-80"
-        entered="w-80"
-        leave="transition-all ease-in-out duration-150"
-        leaveFrom="w-80"
-        leaveTo="w-0"
-        unmount={false}
-        as="div"
-        className="fixed inset-y-0 right-0 bg-green-500 w-80 lg:static lg:inset-auto lg:h-full"
-      >
-        test
-      </Transition.Child> */}
     </Transition>
   );
 }
