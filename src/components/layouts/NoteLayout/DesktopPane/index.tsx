@@ -1,0 +1,29 @@
+import React from 'react';
+import classNames from 'classnames';
+import { Transition } from '@headlessui/react';
+
+type DesktopPaneProps = {
+  className?: string;
+  isShowing: boolean;
+  children: React.ReactNode;
+};
+
+export default function DesktopPane({ className, isShowing, children }: DesktopPaneProps) {
+  return (
+    <Transition
+      show={isShowing}
+      unmount={false}
+      as="aside"
+      enter="transition-all ease-in-out duration-150"
+      enterFrom="w-0"
+      enterTo="w-80"
+      entered="w-80"
+      leave="transition-all ease-in-out duration-150"
+      leaveFrom="w-80"
+      leaveTo="w-0"
+      className={classNames('w-80 h-full bg-lime-400', className)}
+    >
+      {children}
+    </Transition>
+  );
+}

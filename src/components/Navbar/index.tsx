@@ -15,19 +15,31 @@ const Navbar: React.FC<NavbarProps> = () => {
     <nav className="flex flex-grow h-12 lg:h-16">
       <ul className="flex justify-around w-full h-full max-w-lg m-auto lg:max-w-full lg:justify-start">
         <li className="lg:ml-10">
-          <Link to="/" className="flex items-center h-full text-gray-400 hover:text-primary">
+          <Link
+            to="/"
+            className="flex items-center h-full text-gray-400 hover:text-primary"
+            activeClassName="navbar-active"
+          >
             <HomeSvg className="w-7 h-7 lg:w-6 lg:h-6" />
-            <span className="hidden ml-2 text-sm font-semibold md:inline-block ">Home</span>
+            <span className="hidden ml-2 text-sm font-semibold md:inline-block">Home</span>
           </Link>
         </li>
         <li className="lg:ml-10">
-          <Link to="/community" className="flex items-center h-full text-gray-400 hover:text-primary">
+          <Link
+            to="/community"
+            className="flex items-center h-full text-gray-400 hover:text-primary"
+            activeClassName="navbar-active"
+          >
             <PeopleSvg className="w-7 h-7 lg:w-6 lg:h-6" />
-            <span className="hidden ml-2 text-sm font-semibold md:inline-block ">Community</span>
+            <span className="hidden ml-2 text-sm font-semibold md:inline-block">Community</span>
           </Link>
         </li>
         <li className="lg:ml-10">
-          <Link to="/about" className="flex items-center h-full text-gray-400 hover:text-primary">
+          <Link
+            to="/about"
+            className="flex items-center h-full text-gray-400 hover:text-primary"
+            activeClassName="navbar-active"
+          >
             <BulbSvg className="w-7 h-7 lg:w-6 lg:h-6" />
             <span className="hidden ml-2 text-sm font-semibold md:inline-block ">About</span>
           </Link>

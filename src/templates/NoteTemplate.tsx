@@ -14,7 +14,10 @@ export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplate
   return (
     <NoteLayout>
       <Seo title="Note" />
-      <div dangerouslySetInnerHTML={{ __html: html }} className="px-4 py-6 space-y-6 md:p-6 lg:px-12 lg:py-10" />
+      <div
+        dangerouslySetInnerHTML={{ __html: html }}
+        className="px-4 py-6 space-y-6 font-open-sans md:p-6 lg:px-12 lg:py-10"
+      />
     </NoteLayout>
   );
 }
