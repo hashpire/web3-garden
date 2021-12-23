@@ -27,7 +27,7 @@ export default function Pagination({
   const prevPage = currentPage - 1 === 1 ? feedRootPath : `${feedBasePath}/${currentPage - 1}`;
   const nextPage = `${feedBasePath}/${currentPage + 1}`;
 
-  let caretLeft = <CaretLeftSvg className={classNames('h-8 w-8', { 'text-neutral-400': isFirst })} />;
+  let caretLeft = <CaretLeftSvg className={classNames('h-8 w-8', { 'text-neutral-500': isFirst })} />;
   if (!isFirst) {
     caretLeft = (
       <Link to={prevPage} rel="prev" className="block text-neutral-100 hover:opacity-80">
@@ -36,7 +36,7 @@ export default function Pagination({
     );
   }
 
-  let caretRight = <CaretRightSvg className={classNames('h-8 w-8', { 'text-neutral-400': isLast })} />;
+  let caretRight = <CaretRightSvg className={classNames('h-8 w-8', { 'text-neutral-500': isLast })} />;
   if (!isLast) {
     caretRight = (
       <Link to={nextPage} rel="next" className="block text-neutral-100 hover:opacity-80">
@@ -52,7 +52,7 @@ export default function Pagination({
         const pageLink = <span className="text-sm font-semibold text-neutral-100">{page}</span>;
 
         return (
-          <li key={`i-${index}`} className="mx-2">
+          <li key={`i-${index}`} className="mx-2.5">
             {typeof page === 'number' ? (
               <Link
                 to={page === 1 ? feedRootPath : `${feedBasePath}/${page}`}

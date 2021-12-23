@@ -25,18 +25,17 @@ module.exports = {
           DEFAULT: '#262626',
           darker: '#1E1E1E',
         },
+        scrollbar: {
+          DEFAULT: '#3C3C3C #262626',
+        },
       },
       boxShadow: {
         1: '0px 1px 2px rgba(0, 0, 0, 0.12)',
         2: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-        // popup: '4px 4px 40px -1px rgba(0, 0, 0, 0.25)',
-        // input: 'inset 2px 2px 4px rgba(0, 0, 0, 0.12)',
       },
-      // height: {
-      //   content: 'calc(100vh - 64px)',
-      // },
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+        'open-sans': ['Open Sans', ...defaultTheme.fontFamily.sans],
       },
     },
   },
@@ -47,17 +46,21 @@ module.exports = {
     'font-semibold',
     'font-bold',
     // text size
-    'text-xs',
     'text-sm',
     'text-base',
     'text-xl',
     'text-2xl',
     'text-3xl',
+    'text-4xl',
+    // line height,
+    'leading-relaxed',
     // text color
     'text-primary',
     'text-neutral-200',
     'text-neutral-400',
     'text-red-500',
+    // font style
+    'italic',
     // background
     'bg-primary',
     // border & rounded
@@ -77,9 +80,11 @@ module.exports = {
     'py-1',
     'px-2',
     'pl-6',
+    'ml-4',
     'ml-6',
     'ml-5',
     'mt-6',
+    'ml-8',
     // rounded
     'rounded',
     // list
