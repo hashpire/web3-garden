@@ -36,15 +36,14 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
       {/* overflow-x-hidden to remove scrollbar during animation */}
       <div className="flex flex-row flex-1 overflow-x-hidden lg:overflow-y-hidden">
         {/* All items in row will take the largest height of them by default. */}
-        {!isLg && (
-          <MobilePane isShowing={mobilePane === 'left'} direction="right" onClose={() => setMobilePane(null)}>
-            <span className="text-white">Left Pane</span>
-          </MobilePane>
-        )}
-        {isLg && (
+        {isLg ? (
           <DesktopPane isShowing={leftPaneVisible}>
             <span className="text-white">Left Pane</span>
           </DesktopPane>
+        ) : (
+          <MobilePane isShowing={mobilePane === 'left'} direction="right" onClose={() => setMobilePane(null)}>
+            <span className="text-white">Left Pane</span>
+          </MobilePane>
         )}
         {isLg && (
           <button
@@ -58,8 +57,9 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
             )}
           </button>
         )}
-        <main className="flex flex-col flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
-          <div className="max-w-4xl mx-auto">{children}</div>
+        {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
+        <main className="flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
+          <div className="flex flex-col max-w-4xl mx-auto">{children}</div>
         </main>
         {isLg && (
           <button
@@ -73,15 +73,14 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
             )}
           </button>
         )}
-        {!isLg && (
-          <MobilePane isShowing={mobilePane === 'right'} direction="left" onClose={() => setMobilePane(null)}>
-            <span className="text-white">Right Pane</span>
-          </MobilePane>
-        )}
-        {isLg && (
+        {isLg ? (
           <DesktopPane isShowing={rightPaneVisible}>
             <span className="text-white">Right Pane</span>
           </DesktopPane>
+        ) : (
+          <MobilePane isShowing={mobilePane === 'right'} direction="left" onClose={() => setMobilePane(null)}>
+            <span className="text-white">Right Pane</span>
+          </MobilePane>
         )}
       </div>
     </div>

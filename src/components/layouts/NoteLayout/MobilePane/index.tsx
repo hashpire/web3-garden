@@ -23,7 +23,7 @@ export default function MobilePane({ className, isShowing, onClose, direction, c
         leaveFrom="opacity-50"
         leaveTo="opacity-0"
         unmount={false}
-        className="fixed inset-0"
+        className="fixed inset-0 z-10"
         onClick={onClose}
       >
         <div className="w-full h-full opacity-50 bg-neutral-900"></div>
@@ -39,7 +39,7 @@ export default function MobilePane({ className, isShowing, onClose, direction, c
         unmount={false}
         as="div"
         className={classNames(
-          'fixed inset-y-0 bg-background min-w-72 w-4/5 md:w-1/2',
+          'fixed inset-y-0 z-20 bg-background min-w-72 w-4/5 md:w-1/2',
           direction === 'left' ? 'right-0' : 'left-0',
         )}
       >
