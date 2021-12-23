@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Navbar from './Navbar';
 import HashpireLogoSvg from '@images/hashpire-logo-dark.inline.svg';
-import LeftPaneSvg from '@icons/left-pane.inline.svg';
-import RightPaneSvg from '@icons/right-pane.inline.svg';
+import LeftDesktopSidebarSvg from '@icons/left-pane.inline.svg';
+import RightDesktopSidebarSvg from '@icons/right-pane.inline.svg';
 
 type HeaderProps = {
   sidePane?: {
@@ -18,7 +18,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, sidePane }) => {
     <header className="flex flex-col px-2 py-2 border-b border-solid lg:px-6 lg:py-0 bg-background-darker border-background shadow-2 lg:shadow-none lg:bg-background lg:flex-row">
       <div className="flex items-center h-16">
         {sidePane?.onLeftClick && (
-          <LeftPaneSvg
+          <LeftDesktopSidebarSvg
             className="block lg:hidden text-neutral-500 w-9 h-9 hover:text-primary"
             onClick={sidePane.onLeftClick}
           />
@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ siteTitle, sidePane }) => {
           <HashpireLogoSvg className="w-32 h-auto" />
         </Link>
         {sidePane?.onRightClick && (
-          <RightPaneSvg
+          <RightDesktopSidebarSvg
             className="block lg:hidden text-neutral-500 w-9 h-9 hover:text-primary"
             onClick={sidePane.onRightClick}
           />

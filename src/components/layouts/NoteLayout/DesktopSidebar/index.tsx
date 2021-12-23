@@ -2,13 +2,13 @@ import React from 'react';
 import classNames from 'classnames';
 import { Transition } from '@headlessui/react';
 
-type DesktopPaneProps = {
+type DesktopSidebarProps = {
   className?: string;
   isShowing: boolean;
   children: React.ReactNode;
 };
 
-export default function DesktopPane({ className, isShowing, children }: DesktopPaneProps) {
+export default function DesktopSidebar({ className, isShowing, children }: DesktopSidebarProps) {
   return (
     <Transition
       show={isShowing}

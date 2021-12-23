@@ -1,56 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../Header';
-import DesktopPane from './DesktopPane';
+import DesktopSidebar from './DesktopSidebar';
 import CollapseLeftSvg from '@icons/collapse-left.inline.svg';
 import CollapseRightSvg from '@icons/collapse-right.inline.svg';
 import { useLg, useXl } from '../../../hooks/responsive';
-import MobilePane from './MobilePane';
+import MobileSidebar from './MobileSidebar';
+import Pane from '@/components/Pane';
+import { Link } from 'gatsby';
 
 export type NoteLayoutProps = {};
 
 const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
   const isLg = useLg();
   const isXl = useXl();
-  const [mobilePane, setMobilePane] = useState<'left' | 'right' | null>(null);
-  const [leftPaneVisible, setLeftPaneVisbile] = useState<boolean>(isXl ? true : false);
-  const [rightPaneVisible, setRightPaneVisible] = useState<boolean>(isXl ? true : false);
+  const [mobileSidebar, setMobileSidebar] = useState<'left' | 'right' | null>(null);
+  const [leftDesktopSidebarVisible, setLeftDesktopSidebarVisbile] = useState<boolean>(isXl ? true : false);
+  const [rightDesktopSidebarVisible, setRightDesktopSidebarVisible] = useState<boolean>(isXl ? true : false);
 
   // lock and unlock body scroll when menu overlay visible
   useEffect(() => {
-    if (mobilePane) {
+    if (mobileSidebar) {
       document.body.classList.add('overflow-hidden');
     } else {
       document.body.classList.remove('overflow-hidden');
     }
-  }, [mobilePane]);
+  }, [mobileSidebar]);
 
   return (
     <div className="flex flex-col min-h-screen lg:h-screen">
       <Header
         siteTitle={`Garden`}
         sidePane={{
-          onLeftClick: () => setMobilePane((value) => (value ? null : 'left')),
-          onRightClick: () => setMobilePane((value) => (value ? null : 'right')),
+          onLeftClick: () => setMobileSidebar((value) => (value ? null : 'left')),
+          onRightClick: () => setMobileSidebar((value) => (value ? null : 'right')),
         }}
       />
       {/* overflow-x-hidden to remove scrollbar during animation */}
       <div className="flex flex-row flex-1 overflow-x-hidden lg:overflow-y-hidden">
         {/* All items in row will take the largest height of them by default. */}
         {isLg ? (
-          <DesktopPane isShowing={leftPaneVisible}>
-            <span className="text-white">Left Pane</span>
-          </DesktopPane>
+          <DesktopSidebar isShowing={leftDesktopSidebarVisible}>
+            <Pane>Left Pane</Pane>
+            <Pane>Left Pane</Pane>
+            <Link to="/garden/post-1">test</Link>
+          </DesktopSidebar>
         ) : (
-          <MobilePane isShowing={mobilePane === 'left'} direction="right" onClose={() => setMobilePane(null)}>
+          <MobileSidebar isShowing={mobileSidebar === 'left'} direction="right" onClose={() => setMobileSidebar(null)}>
             <span className="text-white">Left Pane</span>
-          </MobilePane>
+          </MobileSidebar>
         )}
         {isLg && (
           <button
             className="flex items-center h-full border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => setLeftPaneVisbile((isShowing) => !isShowing)}
+            onClick={() => setLeftDesktopSidebarVisbile((isShowing) => !isShowing)}
           >
-            {leftPaneVisible ? (
+            {leftDesktopSidebarVisible ? (
               <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
             ) : (
               <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
@@ -64,9 +68,9 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
         {isLg && (
           <button
             className="flex items-center h-full border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => setRightPaneVisible((isShowing) => !isShowing)}
+            onClick={() => setRightDesktopSidebarVisible((isShowing) => !isShowing)}
           >
-            {rightPaneVisible ? (
+            {rightDesktopSidebarVisible ? (
               <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
             ) : (
               <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
@@ -74,13 +78,13 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           </button>
         )}
         {isLg ? (
-          <DesktopPane isShowing={rightPaneVisible}>
+          <DesktopSidebar isShowing={rightDesktopSidebarVisible}>
             <span className="text-white">Right Pane</span>
-          </DesktopPane>
+          </DesktopSidebar>
         ) : (
-          <MobilePane isShowing={mobilePane === 'right'} direction="left" onClose={() => setMobilePane(null)}>
+          <MobileSidebar isShowing={mobileSidebar === 'right'} direction="left" onClose={() => setMobileSidebar(null)}>
             <span className="text-white">Right Pane</span>
-          </MobilePane>
+          </MobileSidebar>
         )}
       </div>
     </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { Transition } from '@headlessui/react';
 
-type MobilePaneProps = {
+type MobileSidebarProps = {
   className?: string;
   isShowing: boolean;
   onClose?: () => void;
@@ -10,7 +10,7 @@ type MobilePaneProps = {
   children: React.ReactNode;
 };
 
-export default function MobilePane({ className, isShowing, onClose, direction, children }: MobilePaneProps) {
+export default function MobileSidebar({ className, isShowing, onClose, direction, children }: MobileSidebarProps) {
   return (
     <Transition show={isShowing} className={classNames(className)} unmount={false} as="aside">
       {/* Background overlay */}
