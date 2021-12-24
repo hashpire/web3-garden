@@ -13,7 +13,6 @@ export type NoteLayoutProps = {};
 
 const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
   const isLg = useLg();
-
   const { state, dispatch } = useSidebar();
   const { mobileSidebar, desktopLeftSidebar, desktopRightSidebar } = state;
 
@@ -39,11 +38,24 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
       <div className="flex flex-row flex-1 overflow-x-hidden lg:overflow-y-hidden">
         {/* All items in row will take the largest height of them by default. */}
         {isLg ? (
-          <DesktopSidebar isShowing={desktopLeftSidebar}>
-            <Pane>Left Pane</Pane>
-            <Pane>Left Pane</Pane>
-            <Link to="/garden/post-1">test</Link>
-          </DesktopSidebar>
+          /* desktop left sieder */
+          <aside className="flex">
+            <button
+              className="flex items-center h-full border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
+              onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_LEFT_SIDEBAR' })}
+            >
+              {desktopLeftSidebar ? (
+                <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
+              ) : (
+                <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
+              )}
+            </button>
+            <DesktopSidebar isShowing={desktopLeftSidebar}>
+              <Pane>Left Pane</Pane>
+              <Pane>Left Pane</Pane>
+              <Link to="/garden/post-1">test</Link>
+            </DesktopSidebar>
+          </aside>
         ) : (
           <MobileSidebar
             isShowing={mobileSidebar === 'left'}
@@ -53,38 +65,27 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
             <Link to="/garden/post-1">test</Link>
           </MobileSidebar>
         )}
-        {isLg && (
-          <button
-            className="flex items-center h-full border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_LEFT_SIDEBAR' })}
-          >
-            {desktopLeftSidebar ? (
-              <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
-            ) : (
-              <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
-            )}
-          </button>
-        )}
         {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
         <main className="flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
           <div className="flex flex-col max-w-4xl mx-auto">{children}</div>
         </main>
-        {isLg && (
-          <button
-            className="flex items-center h-full border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
-            onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' })}
-          >
-            {desktopRightSidebar ? (
-              <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
-            ) : (
-              <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
-            )}
-          </button>
-        )}
         {isLg ? (
-          <DesktopSidebar isShowing={desktopRightSidebar}>
-            <span className="text-white">Right Pane</span>
-          </DesktopSidebar>
+          /* desktop right sider */
+          <aside className="flex">
+            <DesktopSidebar isShowing={desktopRightSidebar}>
+              <span className="text-white">Right Pane</span>
+            </DesktopSidebar>
+            <button
+              className="flex items-center h-full border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
+              onClick={() => dispatch({ type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' })}
+            >
+              {desktopRightSidebar ? (
+                <CollapseRightSvg className="w-7 h-7 text-neutral-100" />
+              ) : (
+                <CollapseLeftSvg className="w-7 h-7 text-neutral-100" />
+              )}
+            </button>
+          </aside>
         ) : (
           <MobileSidebar
             isShowing={mobileSidebar === 'right'}

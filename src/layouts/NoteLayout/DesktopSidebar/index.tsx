@@ -13,7 +13,6 @@ export default function DesktopSidebar({ className, isShowing, children }: Deskt
     <Transition
       show={isShowing}
       unmount={false}
-      as="aside"
       enter="transition-all ease-in-out duration-150"
       enterFrom="w-0"
       enterTo="w-72"
