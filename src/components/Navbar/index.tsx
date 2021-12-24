@@ -7,14 +7,17 @@ import GithubSvg from '../../icons/github.inline.svg';
 import FacebookSvg from '../../icons/facebook.inline.svg';
 import InstagramSvg from '../../icons/instagram.inline.svg';
 import TwitterSvg from '../../icons/twitter.inline.svg';
+import classNames from 'classnames';
 
-type NavbarProps = {};
+type NavbarProps = {
+  className?: string;
+};
 
-const Navbar: React.FC<NavbarProps> = () => {
+const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <nav className="flex flex-grow h-12 lg:h-16">
-      <ul className="flex justify-around w-full h-full max-w-lg m-auto lg:max-w-full lg:justify-start">
-        <li className="lg:ml-10">
+    <nav className={(classNames('flex h-16'), className)}>
+      <ul className="flex h-full">
+        <li className="ml-auto lg:ml-10">
           <Link
             to="/"
             className="flex items-center h-full text-gray-400 hover:text-primary"
@@ -24,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <span className="hidden ml-2 text-sm font-semibold md:inline-block">Home</span>
           </Link>
         </li>
-        <li className="lg:ml-10">
+        <li className="ml-10">
           <Link
             to="/community"
             className="flex items-center h-full text-gray-400 hover:text-primary"
@@ -34,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <span className="hidden ml-2 text-sm font-semibold md:inline-block">Community</span>
           </Link>
         </li>
-        <li className="lg:ml-10">
+        <li className="ml-10">
           <Link
             to="/about"
             className="flex items-center h-full text-gray-400 hover:text-primary"

@@ -2,39 +2,19 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Navbar from './Navbar';
 import HashpireLogoSvg from '@images/hashpire-logo-dark.inline.svg';
-import LeftDesktopSidebarSvg from '@icons/left-pane.inline.svg';
-import RightDesktopSidebarSvg from '@icons/right-pane.inline.svg';
 
-type HeaderProps = {
-  sidePane?: {
-    onLeftClick: () => void;
-    onRightClick: () => void;
-  };
-  siteTitle: string;
-};
+type HeaderProps = {};
 
-const Header: React.FC<HeaderProps> = ({ siteTitle, sidePane }) => {
+const Header: React.FC<HeaderProps> = () => {
   return (
-    <header className="flex flex-col px-2 py-2 border-b border-solid lg:px-6 lg:py-0 bg-background-darker border-background shadow-2 lg:shadow-none lg:bg-background lg:flex-row">
+    <header className="flex px-6 border-b border-solid bg-background border-background shadow-2 lg:shadow-none">
       <div className="flex items-center h-16">
-        {sidePane?.onLeftClick && (
-          <LeftDesktopSidebarSvg
-            className="block lg:hidden text-neutral-500 w-9 h-9 hover:text-primary"
-            onClick={sidePane.onLeftClick}
-          />
-        )}
         <Link to="/" className="flex h-full mx-auto">
-          <span className="sr-only">{siteTitle}</span>
+          <span className="sr-only">Hashpire</span>
           <HashpireLogoSvg className="w-32 h-auto" />
         </Link>
-        {sidePane?.onRightClick && (
-          <RightDesktopSidebarSvg
-            className="block lg:hidden text-neutral-500 w-9 h-9 hover:text-primary"
-            onClick={sidePane.onRightClick}
-          />
-        )}
       </div>
-      <Navbar />
+      <Navbar className="flex-1" />
     </header>
   );
 };
