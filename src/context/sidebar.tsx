@@ -17,7 +17,12 @@ type Dispatch = (action: Action) => void;
 type State = { mobileSidebar: 'left' | 'right' | null; desktopLeftSidebar: boolean; desktopRightSidebar: boolean };
 type SidebarProviderProps = { children: React.ReactNode };
 
-const SidebarStateContext = React.createContext<{ state: State; dispatch: Dispatch } | undefined>(undefined);
+const SidebarStateContext = React.createContext<{ state: State; dispatch: Dispatch }>({
+  state: { mobileSidebar: null, desktopLeftSidebar: false, desktopRightSidebar: false },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  dispatch: () => {},
+});
+// Note: Gatsby Build will fail if no default value provided - https://github.com/gatsbyjs/gatsby/issues/12104
 
 function sidebarReducer(state: State, action: Action): State {
   switch (action.type) {
@@ -69,9 +74,6 @@ function SidebarProvider({ children }: SidebarProviderProps) {
 
 function useSidebar() {
   const context = useContext(SidebarStateContext);
-  if (context === undefined) {
-    throw new Error('useSidebar must be used within a SidebarProvider');
-  }
   return context;
 }
 
