@@ -89,7 +89,6 @@ module.exports = {
     'my-3.5',
     'my-5',
     'my-6',
-    'mx-0',
     // rounded
     'rounded',
     // list
