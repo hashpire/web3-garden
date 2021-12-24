@@ -87,29 +87,29 @@ export const plugins = [
           options: {
             classMap: {
               // h1
-              'heading[depth=1]': 'text-4xl font-bold text-primary leading-relaxed',
+              'heading[depth=1]': 'text-4xl font-bold text-primary leading-relaxed my-3.5 mx-0',
               // h2
-              'heading[depth=2]': 'text-3xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=2]': 'text-3xl text-neutral-200 font-bold leading-relaxed my-6 mx-0',
               // h3
-              'heading[depth=3]': 'text-2xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=3]': 'text-2xl text-neutral-200 font-bold leading-relaxed my-5 mx-0',
               // h4
-              'heading[depth=4]': 'text-xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=4]': 'text-xl text-neutral-200 font-bold leading-relaxed my-6 mx-0',
               // h5
-              'heading[depth=5]': 'text-base text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=5]': 'text-base text-neutral-200 font-bold leading-relaxed my-6 mx-0',
               // h6
-              'heading[depth=6]': 'text-sm text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=6]': 'text-sm text-neutral-200 font-bold leading-relaxed my-6 mx-0',
               // p
-              paragraph: 'text-base font-normal text-neutral-200 leading-relaxed',
+              paragraph: 'my-6 mx-0 text-base font-normal text-neutral-200 leading-relaxed',
               // a
               link: 'text-primary text-sm font-normal hover:underline active:text-primary-dark',
               // table
               table: 'text-base font-normal text-neutral-200 border border-brand-grey',
               tableCell: 'border border-brand-grey py-1 px-2',
-              'tableRow:first-child > tableCell': 'text-primary font-semibold',
+              'tableRow:first-child > tableCell': 'text-primary font-semibold text-center',
               // strong
               strong: 'font-bold',
               // blockquote
-              blockquote: 'ml-4 border-l-2 border-brand-yellow pl-6 italic',
+              blockquote: 'my-6 ml-4 border-l-2 border-brand-yellow pl-6 italic',
               'blockquote > paragraph': 'text-base text-neutral-400 font-medium',
               'blockquote > blockquote': 'ml-4 mt-4',
               // img
