@@ -5,8 +5,7 @@ import MobileSidebar from './MobileSidebar';
 import Pane from '@/components/Pane';
 import { Link } from 'gatsby';
 import { useSidebar } from '@/context/sidebar';
-import LeftDesktopSidebarSvg from '@icons/left-pane.inline.svg';
-import RightDesktopSidebarSvg from '@icons/right-pane.inline.svg';
+import MobileRibbon from './MobileRibbon';
 
 export type NoteLayoutProps = {};
 
@@ -50,19 +49,13 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
       )}
       {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
       <article className="flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
-        <div className="flex flex-col max-w-4xl mx-auto">
-          <div className="flex justify-between p-2">
-            <LeftDesktopSidebarSvg
-              className="block text-neutral-500 w-9 h-9 hover:text-primary"
-              onClick={() => dispatch({ type: 'OPEN_MOBILE_LEFT_SIDEBAR' })}
-            />
-            <RightDesktopSidebarSvg
-              className="block text-neutral-500 w-9 h-9 hover:text-primary"
-              onClick={() => dispatch({ type: 'OPEN_MOBILE_RIGHT_SIDEBAR' })}
-            />
-          </div>
-          {children}
-        </div>
+        {!isLg && (
+          <MobileRibbon
+            onLeftSidebarClick={() => dispatch({ type: 'OPEN_MOBILE_LEFT_SIDEBAR' })}
+            onRightSidebarClick={() => dispatch({ type: 'OPEN_MOBILE_RIGHT_SIDEBAR' })}
+          />
+        )}
+        <div className="flex flex-col max-w-4xl mx-auto">{children}</div>
       </article>
       {isLg ? (
         <DesktopSidebar
