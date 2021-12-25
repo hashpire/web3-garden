@@ -14,7 +14,7 @@ const NotFoundPage: React.FC<PageProps> = () => (
       backgroundImage: `url(${backgroundDot})`,
     }}
   >
-    <Header siteTitle="404: Not found" />
+    <Header />
     <Seo title="404: Not found" />
     <main className="flex flex-col justify-center flex-grow px-6 text-center md:py-16">
       <NotfoundSvg className="mx-auto" />
