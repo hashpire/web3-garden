@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import DesktopSidebar from './DesktopSidebar';
 import { useLg } from '../../hooks/responsive';
 import MobileSidebar from './MobileSidebar';
-import Pane from '@/components/Pane';
-import { Link } from 'gatsby';
 import { useSidebar } from '@/context/sidebar';
 import MobileRibbon from './MobileRibbon';
 
-export type NoteLayoutProps = {};
+export type NoteLayoutProps = {
+  leftSidebarContent?: React.ReactNode;
+  rightSidebarContent?: React.ReactNode;
+};
 
-const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
+const NoteLayout: React.FC<NoteLayoutProps> = ({ children, leftSidebarContent, rightSidebarContent }) => {
   const isLg = useLg();
 
   const { state, dispatch } = useSidebar();
@@ -34,9 +35,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           isShowing={desktopLeftSidebar}
           onToggle={() => dispatch({ type: 'TOGGLE_DESKTOP_LEFT_SIDEBAR' })}
         >
-          <Pane>Left Pane</Pane>
-          <Pane>Left Pane</Pane>
-          <Link to="/garden/post-1">test</Link>
+          {leftSidebarContent}
         </DesktopSidebar>
       ) : (
         <MobileSidebar
@@ -44,7 +43,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           isShowing={mobileSidebar === 'left'}
           onClose={() => dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' })}
         >
-          <Link to="/garden/post-1">test</Link>
+          {leftSidebarContent}
         </MobileSidebar>
       )}
       {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
@@ -63,9 +62,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           isShowing={desktopRightSidebar}
           onToggle={() => dispatch({ type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' })}
         >
-          <Pane>Left Pane</Pane>
-          <Pane>Left Pane</Pane>
-          <Link to="/garden/post-1">test</Link>
+          {rightSidebarContent}
         </DesktopSidebar>
       ) : (
         <MobileSidebar
@@ -73,7 +70,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children }) => {
           isShowing={mobileSidebar === 'right'}
           onClose={() => dispatch({ type: 'CLOSE_MOBILE_RIGHT_SIDEBAR' })}
         >
-          <span className="text-white">Right Pane</span>
+          {rightSidebarContent}
         </MobileSidebar>
       )}
     </main>

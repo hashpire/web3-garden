@@ -24,6 +24,7 @@ type GatsbyNodeQuery = {
       node: {
         id: string;
         html: string;
+        headings: Array<{ depth: number; id: string; value: string }>;
         fields?: { slug?: string };
       };
     }>;
@@ -56,6 +57,11 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             node {
               id
               html
+              headings {
+                id
+                depth
+                value
+              }
               fields {
                 slug
               }
@@ -79,7 +85,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const noteTemplate = path.resolve('./src/templates/NoteTemplate.tsx');
 
   notes.forEach(({ node }) => {
-    const { id, html } = node;
+    const { id, html, headings } = node;
     const slug = node.fields?.slug;
 
     if (slug) {
@@ -88,7 +94,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       createPage<NoteTemplatePageContext>({
         path: urlPath,
         component: noteTemplate,
-        context: { id, html },
+        context: { id, html, headings },
       });
     }
   });
