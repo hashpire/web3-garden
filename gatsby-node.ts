@@ -3,7 +3,7 @@ import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
 import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
 import { execSync } from 'child_process';
-import { slugify } from './src/utils/slugify';
+import { slugify } from './src/gatsby/slugify';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 
 type GatsbyNodeQuery = {

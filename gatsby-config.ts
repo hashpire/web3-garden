@@ -1,4 +1,5 @@
 import contributors from './contributors.json';
+import { transformUrl } from './src/gatsby/remark-transform-url';
 
 export const siteMetadata = {
   title: `Gatsby Default Starter`,
@@ -59,6 +60,12 @@ export const plugins = [
     resolve: `gatsby-transformer-remark`,
     options: {
       plugins: [
+        {
+          resolve: 'gatsby-remark-url',
+          options: {
+            transformUrl: transformUrl,
+          },
+        },
         {
           resolve: `gatsby-remark-autolink-headers`,
           options: {
