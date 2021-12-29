@@ -1,32 +1,39 @@
 import React from 'react';
 import NoteLayout from '../layouts/NoteLayout';
-import { Link, PageProps } from 'gatsby';
+import { PageProps } from 'gatsby';
 import Seo from '../components/Seo';
-import Pane from '@/components/Pane';
 import TableOfContents from '@/components/TableOfContents';
+import LinksPane from '@/components/LinksPane';
 
 export type NoteTemplatePageContext = {
   id: string;
   html: string;
   headings: Array<{ depth: number; id: string; value: string }>;
+  outboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
+  inboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
 };
 
 // TODO: title + content for sidebar
 export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplatePageContext>) {
-  const { html, headings } = pageContext;
+  const { html, headings, inboundReferences, outboundReferences } = pageContext;
 
   return (
     <NoteLayout
       leftSidebarContent={
         <>
           <TableOfContents headings={headings} />
-          <Pane title="Table of Contents">Left Pane</Pane>
-          <Link to="/garden/post-1">test</Link>
         </>
       }
       rightSidebarContent={
         <>
-          <Pane title="Table of Contents">Right Pane</Pane>
+          <LinksPane
+            title="Incoming Links"
+            links={inboundReferences.map((r) => ({ title: r.fields?.title || '', url: `/garden/${r.fields?.slug}` }))}
+          />
+          <LinksPane
+            title="Outgoing Links"
+            links={outboundReferences.map((r) => ({ title: r.fields?.title || '', url: `/garden/${r.fields?.slug}` }))}
+          />
         </>
       }
     >

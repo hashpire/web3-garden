@@ -160,6 +160,12 @@ export const plugins = [
       ],
     },
   },
+  {
+    resolve: `gatsby-transformer-markdown-references`,
+    options: {
+      types: ['MarkdownRemark'],
+    },
+  },
   `gatsby-transformer-sharp`,
   `gatsby-plugin-sharp`,
   {

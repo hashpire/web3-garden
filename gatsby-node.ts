@@ -26,6 +26,8 @@ type GatsbyNodeQuery = {
         html: string;
         headings: Array<{ depth: number; id: string; value: string }>;
         fields?: { slug?: string };
+        outboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
+        inboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
       };
     }>;
   };
@@ -65,6 +67,24 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
               fields {
                 slug
               }
+              outboundReferences {
+                ... on MarkdownRemark {
+                  id
+                  fields {
+                    slug
+                    title
+                  }
+                }
+              }
+              inboundReferences {
+                ... on MarkdownRemark {
+                  id
+                  fields {
+                    slug
+                    title
+                  }
+                }
+              }
             }
           }
         }
@@ -85,7 +105,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const noteTemplate = path.resolve('./src/templates/NoteTemplate.tsx');
 
   notes.forEach(({ node }) => {
-    const { id, html, headings } = node;
+    const { id, html, headings, inboundReferences, outboundReferences } = node;
     const slug = node.fields?.slug;
 
     if (slug) {
@@ -94,7 +114,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       createPage<NoteTemplatePageContext>({
         path: urlPath,
         component: noteTemplate,
-        context: { id, html, headings },
+        context: { id, html, headings, inboundReferences, outboundReferences },
       });
     }
   });

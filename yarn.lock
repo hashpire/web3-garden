@@ -6485,6 +6485,11 @@ gatsby-transformer-json@^4.4.0:
     "@babel/runtime" "^7.15.4"
     bluebird "^3.7.2"
 
+gatsby-transformer-markdown-references@^0.1.8:
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-markdown-references/-/gatsby-transformer-markdown-references-0.1.8.tgz#ab725e9e545e611a53096fc529e987c792561ff6"
+  integrity sha512-hpFYtdyeIklr5hgPqmjsyCErnPH+nHGEAPizdQ1HqmarTC5a0NlLpwbq/OYPg8J2MnGeBUaF0riC+XrLNaFgNA==
+
 gatsby-transformer-remark@^5.3.0:
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-5.4.0.tgz#967a35b1088ede570ea23382bb4c2eba0e4293bb"
