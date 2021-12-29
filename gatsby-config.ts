@@ -1,5 +1,6 @@
 import contributors from './contributors.json';
-import { transformUrl } from './src/gatsby/remark-transform-url';
+// import { transformUrl } from './src/gatsby/remark-transform-url';
+import { wikilinkToLinkText, wikilinkToUrl } from './src/gatsby/remark-wikilink';
 
 export const siteMetadata = {
   title: `Gatsby Default Starter`,
@@ -61,9 +62,35 @@ export const plugins = [
     options: {
       plugins: [
         {
-          resolve: 'gatsby-remark-url',
+          resolve: `gatsby-remark-enhanced-wikilink`,
+          // must be before copy-linked-files and images. as below uses images and links from here
           options: {
-            transformUrl: transformUrl,
+            stripBrackets: true,
+            wikilinkToUrl,
+            wikilinkToLinkText,
+            imageExtensions: ['png', 'jpg', 'jpeg'],
+            linkFileExtensions: ['png', 'jpg', 'jpeg', 'pdf'],
+          },
+        },
+        // {
+        //   resolve: 'gatsby-remark-url',
+        //   options: {
+        //     transformUrl: transformUrl,
+        //   },
+        // },
+        {
+          // optimize image first
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 896,
+          },
+        },
+        {
+          // left over images
+          resolve: 'gatsby-remark-copy-linked-files',
+          options: {
+            destinationDir: 'public',
+            ignoreFileExtensions: [], // default value: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`]
           },
         },
         {
