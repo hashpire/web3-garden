@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import TriangleDownSvg from '@icons/triangle-down.inline.svg';
 import TriangleLeftSvg from '@icons/triangle-right.inline.svg';
 import Pane from '../Pane';
+import classNames from 'classnames';
 
 type Headings = Array<{ depth: number; id: string; value: string }>;
 
@@ -16,23 +17,29 @@ function TreeItem({ title, children, id }: TreeItemProps) {
   const toggleShow = useCallback(() => setShow((state) => !state), []);
 
   return (
-    <div className="py-1">
-      <a
-        className="flex items-center py-0.5  pl-5 cursor-pointer opacity-50 hover:rounded text-neutral-200 hover:bg-primary hover:text-white"
-        href={`#${id}`}
-      >
+    <div>
+      <div className="flex items-center pl-6">
         {children && (
-          <div onClick={toggleShow} className="pl-1.5 -ml-5">
-            {show ? (
-              <TriangleDownSvg className="w-2 h-2" />
-            ) : (
-              <TriangleLeftSvg className="w-2 h-2" />
-            )}
+          <div onClick={toggleShow} className="-ml-6">
+            <div className="flex items-center justify-center w-6 h-6 cursor-pointer text-neutral-400 hover:text-primary">
+              {show ? (
+                <TriangleDownSvg className="w-3.5 h-3.5" />
+              ) : (
+                <TriangleLeftSvg className="w-3.5 h-3.5" />
+              )}
+            </div>
           </div>
         )}
-        <span className="ml-2"> {title}</span>
-      </a>
-      {show && <div className="pl-4">{children}</div>}
+        <a
+          className="ml-1 text-neutral-400 hover:text-primary "
+          href={`#${id}`}
+        >
+          <span className="text-sm"> {title}</span>
+        </a>
+      </div>
+      <div className={classNames('pl-4 space-y-3 mt-3', !show && 'hidden')}>
+        {children}
+      </div>
     </div>
   );
 }
@@ -72,5 +79,9 @@ function createTree(headings: Headings) {
 export default function TableOfContents({ headings }: TableOfContentsProps) {
   const tree = useMemo(() => createTree(headings), [headings]);
 
-  return <Pane title="Table of Contents">{tree}</Pane>;
+  return (
+    <Pane title="Table of Contents">
+      <div className="space-y-3">{tree}</div>
+    </Pane>
+  );
 }
