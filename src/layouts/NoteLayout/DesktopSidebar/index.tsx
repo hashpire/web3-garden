@@ -36,14 +36,17 @@ export default function DesktopSidebar({
       <Transition
         show={isShowing}
         unmount={false}
-        enter="transition-all ease-in-out duration-150"
+        enter="transition-all ease-in-out duration-500"
         enterFrom="w-0"
         enterTo="w-72"
         entered="w-72"
-        leave="transition-all ease-in-out duration-150"
+        leave="transition-all ease-in-out duration-500"
         leaveFrom="w-72"
         leaveTo="w-0"
-        className={classNames('w-72 h-full bg-background', className)}
+        className={classNames(
+          'w-72 h-full bg-background overflow-x-hidden',
+          className,
+        )}
       >
         {children}
       </Transition>
