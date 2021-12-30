@@ -6,7 +6,10 @@ type SectionHeaderProps = {
   className?: string;
 };
 
-export default function SectionHeader({ title, className }: SectionHeaderProps) {
+export default function SectionHeader({
+  title,
+  className,
+}: SectionHeaderProps) {
   return (
     <div className={classNames('flex items-center', className)}>
       <h2 className="text-2xl font-semibold text-brand-yellow">{title}</h2>

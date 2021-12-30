@@ -23,7 +23,11 @@ function TreeItem({ title, children, id }: TreeItemProps) {
       >
         {children && (
           <div onClick={toggleShow} className="pl-1.5 -ml-5">
-            {show ? <TriangleDownSvg className="w-2 h-2" /> : <TriangleLeftSvg className="w-2 h-2" />}
+            {show ? (
+              <TriangleDownSvg className="w-2 h-2" />
+            ) : (
+              <TriangleLeftSvg className="w-2 h-2" />
+            )}
           </div>
         )}
         <span className="ml-2"> {title}</span>

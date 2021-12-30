@@ -11,31 +11,45 @@ const MainPageFooter: React.FC<{}> = () => {
       <HashpireThlSvg className="w-40 h-auto" />
       <ul className="flex space-x-2">
         <li className="flex flex-col justify-center">
-          <a href="https://github.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://github.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on GitHub</span>
             <GithubSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="flex flex-col justify-center">
-          <a href="https://facebook.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://facebook.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Facebook</span>
             <FacebookSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="flex flex-col justify-center">
-          <a href="https://instagram.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://instagram.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Instagram</span>
             <InstagramSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="flex flex-col justify-center">
-          <a href="https://github.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://github.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Twitter</span>
             <TwitterSvg className="w-8 h-8" />
           </a>
         </li>
       </ul>
-      <div className="text-base text-neutral-400">Copyright © Hashpire 2021.</div>
+      <div className="text-base text-neutral-400">
+        Copyright © Hashpire 2021.
+      </div>
     </footer>
   );
 };

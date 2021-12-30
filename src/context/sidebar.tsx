@@ -14,11 +14,22 @@ type Action =
   | { type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' };
 
 type Dispatch = (action: Action) => void;
-type State = { mobileSidebar: 'left' | 'right' | null; desktopLeftSidebar: boolean; desktopRightSidebar: boolean };
+type State = {
+  mobileSidebar: 'left' | 'right' | null;
+  desktopLeftSidebar: boolean;
+  desktopRightSidebar: boolean;
+};
 type SidebarProviderProps = { children: React.ReactNode };
 
-const SidebarStateContext = React.createContext<{ state: State; dispatch: Dispatch }>({
-  state: { mobileSidebar: null, desktopLeftSidebar: false, desktopRightSidebar: false },
+const SidebarStateContext = React.createContext<{
+  state: State;
+  dispatch: Dispatch;
+}>({
+  state: {
+    mobileSidebar: null,
+    desktopLeftSidebar: false,
+    desktopRightSidebar: false,
+  },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   dispatch: () => {},
 });
@@ -69,7 +80,11 @@ function SidebarProvider({ children }: SidebarProviderProps) {
 
   // NOTE: *might* need to memoize this value
   const value = { state, dispatch };
-  return <SidebarStateContext.Provider value={value}>{children}</SidebarStateContext.Provider>;
+  return (
+    <SidebarStateContext.Provider value={value}>
+      {children}
+    </SidebarStateContext.Provider>
+  );
 }
 
 function useSidebar() {

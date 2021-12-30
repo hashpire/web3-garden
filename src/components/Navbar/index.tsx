@@ -24,7 +24,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             activeClassName="navbar-active"
           >
             <HomeSvg className="w-7 h-7 lg:w-6 lg:h-6" />
-            <span className="hidden ml-2 text-sm font-semibold md:inline-block">Home</span>
+            <span className="hidden ml-2 text-sm font-semibold md:inline-block">
+              Home
+            </span>
           </Link>
         </li>
         <li className="ml-10">
@@ -34,7 +36,9 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             activeClassName="navbar-active"
           >
             <PeopleSvg className="w-7 h-7 lg:w-6 lg:h-6" />
-            <span className="hidden ml-2 text-sm font-semibold md:inline-block">Community</span>
+            <span className="hidden ml-2 text-sm font-semibold md:inline-block">
+              Community
+            </span>
           </Link>
         </li>
         <li className="ml-10">
@@ -44,29 +48,43 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
             activeClassName="navbar-active"
           >
             <BulbSvg className="w-7 h-7 lg:w-6 lg:h-6" />
-            <span className="hidden ml-2 text-sm font-semibold md:inline-block ">About</span>
+            <span className="hidden ml-2 text-sm font-semibold md:inline-block ">
+              About
+            </span>
           </Link>
         </li>
         <li className="hidden lg:ml-auto lg:flex lg:flex-col lg:justify-center">
-          <a href="https://github.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://github.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on GitHub</span>
             <GithubSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="hidden lg:ml-4 lg:flex lg:flex-col lg:justify-center">
-          <a href="https://facebook.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://facebook.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Facebook</span>
             <FacebookSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="hidden lg:ml-4 :flex :flex-col lg:justify-center">
-          <a href="https://instagram.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://instagram.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Instagram</span>
             <InstagramSvg className="w-8 h-8" />
           </a>
         </li>
         <li className="hidden lg:ml-4 lg:flex lg:flex-col lg:justify-center">
-          <a href="https://github.com/hashpire" className="block text-gray-400 hover:text-gray-500">
+          <a
+            href="https://github.com/hashpire"
+            className="block text-gray-400 hover:text-gray-500"
+          >
             <span className="sr-only">Hashpire on Twitter</span>
             <TwitterSvg className="w-8 h-8" />
           </a>

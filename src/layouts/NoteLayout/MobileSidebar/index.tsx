@@ -10,9 +10,20 @@ type MobileSidebarProps = {
   children: React.ReactNode;
 };
 
-export default function MobileSidebar({ className, isShowing, onClose, direction, children }: MobileSidebarProps) {
+export default function MobileSidebar({
+  className,
+  isShowing,
+  onClose,
+  direction,
+  children,
+}: MobileSidebarProps) {
   return (
-    <Transition show={isShowing} className={classNames(className)} unmount={false} as="aside">
+    <Transition
+      show={isShowing}
+      className={classNames(className)}
+      unmount={false}
+      as="aside"
+    >
       {/* Background overlay */}
       <Transition.Child
         enter="transition-opacity ease-in-out duration-300"
@@ -31,11 +42,15 @@ export default function MobileSidebar({ className, isShowing, onClose, direction
       {/* Sidebar Implementation via Translate */}
       <Transition.Child
         enter="transition ease-in-out duration-150 transform"
-        enterFrom={classNames(direction === 'left' ? 'translate-x-full' : '-translate-x-full')}
+        enterFrom={classNames(
+          direction === 'left' ? 'translate-x-full' : '-translate-x-full',
+        )}
         enterTo="translate-x-0"
         leave="transition ease-in-out duration-150 transform"
         leaveFrom="translate-x-0"
-        leaveTo={classNames(direction === 'left' ? 'translate-x-full' : '-translate-x-full')}
+        leaveTo={classNames(
+          direction === 'left' ? 'translate-x-full' : '-translate-x-full',
+        )}
         unmount={false}
         as="div"
         className={classNames(

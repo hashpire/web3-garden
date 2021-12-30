@@ -10,7 +10,11 @@ export type NoteLayoutProps = {
   rightSidebarContent?: React.ReactNode;
 };
 
-const NoteLayout: React.FC<NoteLayoutProps> = ({ children, leftSidebarContent, rightSidebarContent }) => {
+const NoteLayout: React.FC<NoteLayoutProps> = ({
+  children,
+  leftSidebarContent,
+  rightSidebarContent,
+}) => {
   const isLg = useLg();
 
   const { state, dispatch } = useSidebar();
@@ -50,8 +54,12 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({ children, leftSidebarContent, r
       <article className="flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
         {!isLg && (
           <MobileRibbon
-            onLeftSidebarClick={() => dispatch({ type: 'OPEN_MOBILE_LEFT_SIDEBAR' })}
-            onRightSidebarClick={() => dispatch({ type: 'OPEN_MOBILE_RIGHT_SIDEBAR' })}
+            onLeftSidebarClick={() =>
+              dispatch({ type: 'OPEN_MOBILE_LEFT_SIDEBAR' })
+            }
+            onRightSidebarClick={() =>
+              dispatch({ type: 'OPEN_MOBILE_RIGHT_SIDEBAR' })
+            }
           />
         )}
         <div className="flex flex-col max-w-4xl mx-auto">{children}</div>

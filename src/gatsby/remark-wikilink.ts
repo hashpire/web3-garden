@@ -11,13 +11,24 @@ const slugifyHeading = GithubSlugger.slug;
 
 export const wikilinkToUrl = ({ fileName, heading }: WikilinkArgs) => {
   return (
-    (fileName && heading && `${slugify(fileName)}#${slugifyHeading(heading)}`) ||
+    (fileName &&
+      heading &&
+      `${slugify(fileName)}#${slugifyHeading(heading)}`) ||
     (fileName && slugify(fileName)) ||
     (heading && `#${slugifyHeading(heading)}`) ||
     '#'
   );
 };
 
-export const wikilinkToLinkText = ({ fileName, heading, alias }: WikilinkArgs): string => {
-  return alias || (fileName && heading && `${fileName} > ${heading}`) || fileName || `> ${heading}`;
+export const wikilinkToLinkText = ({
+  fileName,
+  heading,
+  alias,
+}: WikilinkArgs): string => {
+  return (
+    alias ||
+    (fileName && heading && `${fileName} > ${heading}`) ||
+    fileName ||
+    `> ${heading}`
+  );
 };

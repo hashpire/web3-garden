@@ -20,8 +20,16 @@ export type NoteTemplatePageContext = {
   gardenBasePath: string;
 };
 
-export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplatePageContext>) {
-  const { html, headings, inboundReferences, outboundReferences, gardenBasePath } = pageContext;
+export default function NoteTemplate({
+  pageContext,
+}: PageProps<{}, NoteTemplatePageContext>) {
+  const {
+    html,
+    headings,
+    inboundReferences,
+    outboundReferences,
+    gardenBasePath,
+  } = pageContext;
 
   // memoized to prevent rerender when routing with hashtag, which causes sidebar animation flashing bug
   const memoizedValue = useMemo(
@@ -52,7 +60,10 @@ export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplate
         }
       >
         <Seo title="Note" />
-        <div dangerouslySetInnerHTML={{ __html: html }} className="px-4 py-6 font-open-sans md:p-6 lg:px-12 lg:py-10" />
+        <div
+          dangerouslySetInnerHTML={{ __html: html }}
+          className="px-4 py-6 font-open-sans md:p-6 lg:px-12 lg:py-10"
+        />
       </NoteLayout>
     ),
     [html, headings, inboundReferences, outboundReferences],

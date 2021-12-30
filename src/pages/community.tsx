@@ -5,7 +5,9 @@ import Seo from '../components/Seo';
 import MemberCard from '../components/cards/MemberCard';
 import PageHeader from '../components/PageHeader';
 
-const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({ data }) => {
+const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({
+  data,
+}) => {
   const contributors = data.site?.siteMetadata?.contributors;
 
   return (

@@ -1,6 +1,9 @@
 import contributors from './contributors.json';
 // import { transformUrl } from './src/gatsby/remark-transform-url';
-import { wikilinkToLinkText, wikilinkToUrl } from './src/gatsby/remark-wikilink';
+import {
+  wikilinkToLinkText,
+  wikilinkToUrl,
+} from './src/gatsby/remark-wikilink';
 
 export const siteMetadata = {
   title: `Gatsby Default Starter`,
@@ -121,37 +124,48 @@ export const plugins = [
           options: {
             classMap: {
               // h1
-              'heading[depth=1]': 'text-4xl font-bold text-primary leading-relaxed',
+              'heading[depth=1]':
+                'text-4xl font-bold text-primary leading-relaxed',
               // h2
-              'heading[depth=2]': 'text-3xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=2]':
+                'text-3xl text-neutral-200 font-bold leading-relaxed',
               // h3
-              'heading[depth=3]': 'text-2xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=3]':
+                'text-2xl text-neutral-200 font-bold leading-relaxed',
               // h4
-              'heading[depth=4]': 'text-xl text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=4]':
+                'text-xl text-neutral-200 font-bold leading-relaxed',
               // h5
-              'heading[depth=5]': 'text-base text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=5]':
+                'text-base text-neutral-200 font-bold leading-relaxed',
               // h6
-              'heading[depth=6]': 'text-sm text-neutral-200 font-bold leading-relaxed',
+              'heading[depth=6]':
+                'text-sm text-neutral-200 font-bold leading-relaxed',
               // p
-              paragraph: 'text-base font-normal text-neutral-200 leading-relaxed',
+              paragraph:
+                'text-base font-normal text-neutral-200 leading-relaxed',
               // a
               link: 'text-primary text-sm font-normal hover:underline active:text-primary-dark',
               // table
-              table: 'text-base font-normal text-neutral-200 border border-brand-grey',
+              table:
+                'text-base font-normal text-neutral-200 border border-brand-grey',
               tableCell: 'border border-brand-grey py-1 px-2',
               'tableRow:first-child > tableCell': 'text-primary font-semibold',
               // strong
               strong: 'font-bold',
               // blockquote
               blockquote: 'ml-4 border-l-2 border-brand-yellow pl-6 italic',
-              'blockquote > paragraph': 'text-base text-neutral-400 font-medium',
+              'blockquote > paragraph':
+                'text-base text-neutral-400 font-medium',
               'blockquote > blockquote': 'ml-4 mt-4',
               // img
               image: 'w-full rounded-lg',
               // ul
-              'list[ordered=false]': 'ml-8 list-disc text-base font-normal text-neutral-200 marker:text-primary',
+              'list[ordered=false]':
+                'ml-8 list-disc text-base font-normal text-neutral-200 marker:text-primary',
               // ol
-              'list[ordered=true]': 'ml-8 list-decimal text-base font-normal text-neutral-200 marker:text-primary',
+              'list[ordered=true]':
+                'ml-8 list-decimal text-base font-normal text-neutral-200 marker:text-primary',
               // hr
               thematicBreak: 'border-brand-grey',
             },

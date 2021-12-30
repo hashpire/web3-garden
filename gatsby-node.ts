@@ -39,7 +39,11 @@ type GatsbyNodeQuery = {
   };
 };
 
-export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
+export const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql<GatsbyNodeQuery>(
@@ -133,7 +137,11 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   });
 
   // create feed
-  const { notesPerPage = 10, basePath: feedBasePath = `/page`, useIndex: useIndexAsFeed = true } = feed || {};
+  const {
+    notesPerPage = 10,
+    basePath: feedBasePath = `/page`,
+    useIndex: useIndexAsFeed = true,
+  } = feed || {};
   const feedTempate = path.resolve('./src/templates/FeedTemplate/index.tsx');
   const feedRootPath = useIndexAsFeed ? '/' : feedBasePath;
   const numPages = Math.ceil(notes.length / notesPerPage);
@@ -162,7 +170,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   });
 };
 
-export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ actions }) => {
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
+  actions,
+}) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -176,10 +186,11 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ act
   });
 };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions, schema }) => {
-  const { createTypes } = actions;
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  ({ actions, schema }) => {
+    const { createTypes } = actions;
 
-  const contributorsTypeDefs = `
+    const contributorsTypeDefs = `
     type ContributorsJson implements Node @dontInfer {
       name: String!
       position: String
@@ -196,10 +207,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       facebook: String
     }
   `;
-  createTypes(contributorsTypeDefs);
+    createTypes(contributorsTypeDefs);
 
-  const frontmatterTypeDefs = [
-    `
+    const frontmatterTypeDefs = [
+      `
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
     }
@@ -208,66 +219,66 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       featured: Boolean
     }
   `,
-    // test_image: File @link(by: "name")
-    // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
-    schema.buildObjectType({
-      name: 'Frontmatter',
-      fields: {
-        cover_image: {
-          type: 'File!',
-          resolve: async (source, _args, context) => {
-            const { cover_image } = source;
+      // test_image: File @link(by: "name")
+      // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
+      schema.buildObjectType({
+        name: 'Frontmatter',
+        fields: {
+          cover_image: {
+            type: 'File!',
+            resolve: async (source, _args, context) => {
+              const { cover_image } = source;
 
-            if (cover_image) {
-              const result = await context.nodeModel.findOne({
+              if (cover_image) {
+                const result = await context.nodeModel.findOne({
+                  type: 'File',
+                  query: {
+                    filter: {
+                      base: { eq: cover_image },
+                      sourceInstanceName: { eq: 'gardenFiles' },
+                    },
+                  },
+                });
+                if (result) return result;
+              }
+
+              return await context.nodeModel.findOne({
                 type: 'File',
                 query: {
                   filter: {
-                    base: { eq: cover_image },
-                    sourceInstanceName: { eq: 'gardenFiles' },
+                    base: { eq: 'card-default.png' },
+                    sourceInstanceName: { eq: 'images' },
                   },
                 },
               });
-              if (result) return result;
-            }
-
-            return await context.nodeModel.findOne({
-              type: 'File',
-              query: {
-                filter: {
-                  base: { eq: 'card-default.png' },
-                  sourceInstanceName: { eq: 'images' },
-                },
-              },
-            });
+            },
           },
         },
-      },
-    }),
-    schema.buildObjectType({
-      name: 'Frontmatter',
-      fields: {
-        contributors: {
-          type: '[ContributorsJson!]',
-          resolve: (source, _args, context) => {
-            const { contributors } = source;
-            if (!contributors) return null;
-            return contributors.map(async (contributorName: string) => {
-              const result = await context.nodeModel.findOne({
-                type: 'ContributorsJson',
-                query: {
-                  filter: { name: { eq: contributorName } },
-                },
+      }),
+      schema.buildObjectType({
+        name: 'Frontmatter',
+        fields: {
+          contributors: {
+            type: '[ContributorsJson!]',
+            resolve: (source, _args, context) => {
+              const { contributors } = source;
+              if (!contributors) return null;
+              return contributors.map(async (contributorName: string) => {
+                const result = await context.nodeModel.findOne({
+                  type: 'ContributorsJson',
+                  query: {
+                    filter: { name: { eq: contributorName } },
+                  },
+                });
+                return result || { name: contributorName };
               });
-              return result || { name: contributorName };
-            });
+            },
           },
         },
-      },
-    }),
-  ];
-  createTypes(frontmatterTypeDefs);
-};
+      }),
+    ];
+    createTypes(frontmatterTypeDefs);
+  };
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
@@ -282,7 +293,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
 
   if (node.internal.type === 'MarkdownRemark' && node.parent) {
     // git author time
-    const gitAuthorTime = execSync(`git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`).toString();
+    const gitAuthorTime = execSync(
+      `git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`,
+    ).toString();
     actions.createNodeField({
       node,
       name: 'gitAuthorTime',

@@ -18,7 +18,9 @@ const NotFoundPage: React.FC<PageProps> = () => (
     <Seo title="404: Not found" />
     <main className="flex flex-col justify-center flex-grow px-6 text-center md:py-16">
       <NotfoundSvg className="mx-auto" />
-      <span className="block text-3xl font-semibold mt-9 text-primary md:text-4xl md:mt-12">Page not found</span>
+      <span className="block text-3xl font-semibold mt-9 text-primary md:text-4xl md:mt-12">
+        Page not found
+      </span>
       <p className="mt-4 font-semibold whitespace-pre-line tex-base text-neutral-200 md:mt-6 lg:whitespace-normal">
         {`Looks like you’re lost. \nYou just hit a tree that doesn’t exist in the garden`}
       </p>

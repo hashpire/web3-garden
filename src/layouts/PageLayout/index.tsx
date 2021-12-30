@@ -13,7 +13,12 @@ export default function PageLayout({ children, path }: PageLayoutProps) {
   const isLg = useLg();
   const fillViewPort = isLg && !!path.match(/^\/garden/);
   return (
-    <div className={classNames('flex flex-col min-h-screen bg-background-darker', fillViewPort && 'h-screen')}>
+    <div
+      className={classNames(
+        'flex flex-col min-h-screen bg-background-darker',
+        fillViewPort && 'h-screen',
+      )}
+    >
       <Header />
       {children}
       {!fillViewPort && <Footer />}

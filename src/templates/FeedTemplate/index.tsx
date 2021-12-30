@@ -20,7 +20,13 @@ export default function FeedTemplate({
   pageContext,
 }: PageProps<GatsbyTypes.FeedTemplateQuery, FeedTemplatePageContext>) {
   const posts = data.allMarkdownRemark.edges;
-  const { currentPage, numPages, feedBasePath, feedRootPath = feedBasePath, gardenBasePath } = pageContext;
+  const {
+    currentPage,
+    numPages,
+    feedBasePath,
+    feedRootPath = feedBasePath,
+    gardenBasePath,
+  } = pageContext;
   const isFirst = currentPage === 1;
 
   return (
@@ -34,8 +40,16 @@ export default function FeedTemplate({
             const { node } = post;
             const { id, excerpt = '', frontmatter, fields } = node;
             const { cover_image } = frontmatter || {};
-            const contributors = frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || [];
-            const { gitAuthorTime: publishedAt, title = 'No Title', slug = '' } = fields || {};
+            const contributors =
+              frontmatter?.contributors?.map((c) => ({
+                name: c.name,
+                imageUrl: c.imageUrl,
+              })) || [];
+            const {
+              gitAuthorTime: publishedAt,
+              title = 'No Title',
+              slug = '',
+            } = fields || {};
             const url = `${gardenBasePath}/${slug}`;
 
             return {
