@@ -9,12 +9,19 @@ export type NoteTemplatePageContext = {
   id: string;
   html: string;
   headings: Array<{ depth: number; id: string; value: string }>;
-  outboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
-  inboundReferences: Array<{ id: string; fields?: { slug?: string; title?: string } }>;
+  outboundReferences: Array<{
+    id: string;
+    fields?: { slug?: string; title?: string };
+  }>;
+  inboundReferences: Array<{
+    id: string;
+    fields?: { slug?: string; title?: string };
+  }>;
+  gardenBasePath: string;
 };
 
 export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplatePageContext>) {
-  const { html, headings, inboundReferences, outboundReferences } = pageContext;
+  const { html, headings, inboundReferences, outboundReferences, gardenBasePath } = pageContext;
 
   // memoized to prevent rerender when routing with hashtag, which causes sidebar animation flashing bug
   const memoizedValue = useMemo(
@@ -29,13 +36,16 @@ export default function NoteTemplate({ pageContext }: PageProps<{}, NoteTemplate
           <>
             <LinksPane
               title="Incoming Links"
-              links={inboundReferences.map((r) => ({ title: r.fields?.title || '', url: `/garden/${r.fields?.slug}` }))}
+              links={inboundReferences.map((r) => ({
+                title: r.fields?.title || '',
+                url: `${gardenBasePath}/${r.fields?.slug}`,
+              }))}
             />
             <LinksPane
               title="Outgoing Links"
               links={outboundReferences.map((r) => ({
                 title: r.fields?.title || '',
-                url: `/garden/${r.fields?.slug}`,
+                url: `${gardenBasePath}/${r.fields?.slug}`,
               }))}
             />
           </>
