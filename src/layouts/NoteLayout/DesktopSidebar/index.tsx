@@ -52,7 +52,7 @@ export default function DesktopSidebar({
       </Transition>
       {onToggle && direction === 'left' && (
         <button
-          className="flex items-center border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
+          className="flex items-center border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
           onClick={onToggle}
         >
           {isShowing ? (
