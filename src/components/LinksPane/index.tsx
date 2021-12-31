@@ -10,16 +10,15 @@ type LinksPaneProps = {
 export default function LinksPane({ title, links }: LinksPaneProps) {
   return (
     <Pane title={title}>
-      <ul className="flex flex-col space-y-2">
+      <ul className="flex flex-col space-y-3">
         {links.map((link, index) => {
           return (
             <li key={index}>
               <Link
                 to={link.url}
-                className="flex items-center h-full text-neutral-400 hover:text-primary"
-                activeClassName="navbar-active"
+                className="flex text-sm font-normal text-neutral-400 hover:text-primary"
               >
-                <span className="text-sm font-normal"> {link.title}</span>
+                {link.title}
               </Link>
             </li>
           );
