@@ -25,7 +25,7 @@ type GatsbyNodeQuery = {
         id: string;
         html: string;
         headings: Array<{ depth: number; id: string; value: string }>;
-        fields?: { slug?: string };
+        fields?: { slug?: string; title?: string };
         outboundReferences: Array<{
           id: string;
           fields?: { slug?: string; title?: string };
@@ -76,6 +76,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
               }
               fields {
                 slug
+                title
               }
               outboundReferences {
                 ... on MarkdownRemark {
@@ -116,7 +117,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   notes.forEach(({ node }) => {
     const { id, html, headings, inboundReferences, outboundReferences } = node;
-    const slug = node.fields?.slug;
+    const { slug, title = 'Note' } = node.fields || {};
 
     if (slug) {
       const urlPath = `${gardenBasePath}/${slug}`;
@@ -131,6 +132,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           inboundReferences,
           outboundReferences,
           gardenBasePath,
+          title,
         },
       });
     }

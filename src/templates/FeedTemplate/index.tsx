@@ -4,6 +4,7 @@ import Layout from '../../layouts/MainLayout';
 import FeaturedSection from './FeaturedSection';
 import ListSection from './ListSection';
 import Pagination from '../../components/Pagination';
+import Seo from '@/components/Seo';
 
 export type FeedTemplatePageContext = {
   limit: number;
@@ -31,6 +32,7 @@ export default function FeedTemplate({
 
   return (
     <Layout>
+      <Seo title={'Web3 Digital Garden'} />
       <div className="px-4 py-12 md:px-6 lg:px-0 lg:py-16 lg:mx-auto lg:max-w-4xl">
         {isFirst && <FeaturedSection />}
         <ListSection
