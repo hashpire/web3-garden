@@ -12,15 +12,19 @@ export default function MobileRibbon({
   onRightSidebarClick,
 }: MobileRibbonProps) {
   return (
-    <div className="flex justify-between p-2">
-      <LeftSidebarSvg
-        className="block text-neutral-500 w-9 h-9 hover:text-primary"
+    <div className="flex items-center justify-between h-16 px-4 py-2">
+      <div
+        className="flex items-center justify-center w-12 h-12 cursor-pointer text-neutral-500 hover:text-primary"
         onClick={onLeftSidebarClick}
-      />
-      <RightSidebarSvg
-        className="block text-neutral-500 w-9 h-9 hover:text-primary"
+      >
+        <LeftSidebarSvg className="w-7 h-7 " />
+      </div>
+      <div
+        className="flex items-center justify-center w-12 h-12 cursor-pointer text-neutral-500 hover:text-primary"
         onClick={onRightSidebarClick}
-      />
+      >
+        <RightSidebarSvg className="w-7 h-7 " />
+      </div>
     </div>
   );
 }
