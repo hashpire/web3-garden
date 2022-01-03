@@ -36,7 +36,7 @@ export default function ExternalLinks({ className }: ExternalLinksProps) {
   return (
     <ul className={classNames('lg:space-x-4 lg:flex', className)}>
       {links.map(({ href, Icon, screenReaderText }, index) => (
-        <li key={index} className={classNames('flex flex-col justify-center')}>
+        <li key={index}>
           <a href={href} className="block text-gray-400 hover:text-gray-500">
             <span className="sr-only">{screenReaderText}</span>
             <Icon className="w-8 h-8" />
