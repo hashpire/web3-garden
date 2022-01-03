@@ -171,6 +171,7 @@ export const plugins = [
             },
           },
         },
+        `gatsby-plugin-catch-links`,
       ],
     },
   },

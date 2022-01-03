@@ -6142,6 +6142,14 @@ gatsby-page-utils@^2.4.0:
     lodash "^4.17.21"
     micromatch "^4.0.4"
 
+gatsby-plugin-catch-links@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-catch-links/-/gatsby-plugin-catch-links-4.4.0.tgz#fc787cf1a3d11ca1303f8a68aa9676cac850f283"
+  integrity sha512-Me6fnwhV0DekZdrPcouIpSynZTp/unvfMoTXt+br8z1qyxqd+nYrdJGCJyET61yUqtUirFskhaw9DlZgKop88A==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    escape-string-regexp "^1.0.5"
+
 gatsby-plugin-gatsby-cloud@^4.0.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-gatsby-cloud/-/gatsby-plugin-gatsby-cloud-4.4.0.tgz#a71076f01a71086e5b03a1ed7464127d7aadb330"
