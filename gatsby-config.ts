@@ -1,4 +1,3 @@
-import contributors from './contributors.json';
 // import { transformUrl } from './src/gatsby/remark-transform-url';
 import {
   wikilinkToLinkText,
@@ -6,8 +5,8 @@ import {
 } from './src/gatsby/remark-wikilink';
 
 export const siteMetadata = {
-  title: `Gatsby Default Starter`,
-  description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+  title: `Hashpire`,
+  description: `A community-driven Web3 Digital Garden`,
   author: `@gatsbyjs`,
   siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   garden: {
@@ -18,7 +17,6 @@ export const siteMetadata = {
     useIndex: true,
     notesPerPage: 10,
   },
-  contributors,
 };
 
 export const plugins = [
