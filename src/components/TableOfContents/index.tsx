@@ -25,7 +25,7 @@ export type TableOfContentsProps = {
 function TreeItem({ title, children, id, onClick }: TreeItemProps) {
   const [show, setShow] = useState(false);
   const toggleShow = useCallback(() => setShow((state) => !state), []);
-  const handleClick = useCallback(() => onClick && onClick(id), [onClick]);
+  const handleClick = useCallback(() => onClick && onClick(id), [id, onClick]);
 
   return (
     <div>

@@ -83,8 +83,9 @@ export default function NoteTemplate({
       </NoteLayout>
     ),
     [
-      html,
       headings,
+      title,
+      html,
       inboundReferences,
       outboundReferences,
       handleTOCItemClick,

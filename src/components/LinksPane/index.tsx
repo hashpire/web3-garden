@@ -19,7 +19,7 @@ type ReferenceLinkProps = {
 const ReferenceLink = ({ url, title, onClick }: ReferenceLinkProps) => {
   const handleClick = useCallback(() => {
     onClick && onClick(url);
-  }, [onClick]);
+  }, [onClick, url]);
 
   return (
     <span
