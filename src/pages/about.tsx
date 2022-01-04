@@ -6,6 +6,7 @@ import TreeSvg from '../icons/tree.inline.svg';
 import IdeaPotSvg from '../icons/idea-pot.inline.svg';
 import backgroundDot from '../images/background-dot.png';
 import Seo from '@/components/Seo';
+import { Link } from 'gatsby';
 
 const whyjoin = [
   `Meet friendly \nlike-minded people`,
@@ -51,7 +52,7 @@ const AboutPage: React.FC<{}> = () => (
         <span className="text-3xl font-semibold text-primary md:text-4xl">
           hashpire
         </span>
-        <p className="inline text-3xl font-semibold whitespace-pre-line text-neutral-100 md:text-4xl xl:whitespace-normal">{` is \na community-driven Digital Garden`}</p>
+        <p className="inline text-3xl font-semibold whitespace-pre-line text-neutral-100 md:text-4xl xl:whitespace-normal">{` is \na community-driven \nWeb3 Digital Garden`}</p>
         <p className="mt-10 text-base font-semibold text-neutral-400 md:mt-6 md:text-xl md:whitespace-pre-line">
           {`A space for people to create, curate, cultivate and discuss content \nrelated to the Decentralize web`}
         </p>
@@ -108,9 +109,12 @@ const AboutPage: React.FC<{}> = () => (
             </div>
           ))}
         </div>
-        <button className="px-8 py-3 mt-12 text-base font-semibold border text-primary rounded-3xl border-primary hover:text-neutral-200 hover:bg-primary lg:mt-24">
-          Join the community
-        </button>
+        <Link
+          to="/community"
+          className="inline-block px-8 py-3 mt-12 text-base font-semibold border text-primary rounded-3xl border-primary hover:text-neutral-200 hover:bg-primary lg:mt-24"
+        >
+          Join Our Community
+        </Link>
       </div>
     </section>
   </Layout>
