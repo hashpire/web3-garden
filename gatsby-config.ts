@@ -21,6 +21,7 @@ export const siteMetadata = {
 
 export const plugins = [
   `gatsby-plugin-react-helmet`,
+  `gatsby-plugin-catch-links`,
   `gatsby-plugin-image`,
   {
     resolve: 'gatsby-plugin-react-svg',
@@ -171,7 +172,6 @@ export const plugins = [
             },
           },
         },
-        `gatsby-plugin-catch-links`,
       ],
     },
   },
