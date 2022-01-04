@@ -18,6 +18,7 @@ export type TreeItemProps = {
 export type TableOfContentsProps = {
   headings: Headings;
   onItemClick?: TreeItemProps['onClick'];
+  className?: string;
 };
 
 function TreeItem({ title, children, id, onClick }: TreeItemProps) {
@@ -101,6 +102,7 @@ function createTree({
 export default function TableOfContents({
   headings,
   onItemClick,
+  className,
 }: TableOfContentsProps) {
   const tree = useMemo(
     () => createTree({ headings, onItemClick }),
@@ -108,7 +110,7 @@ export default function TableOfContents({
   );
 
   return (
-    <Pane title="Table of Contents">
+    <Pane title="Table of Contents" className={className}>
       <div className="space-y-3">{tree}</div>
     </Pane>
   );

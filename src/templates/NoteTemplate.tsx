@@ -51,6 +51,7 @@ export default function NoteTemplate({
             <TableOfContents
               headings={headings}
               onItemClick={handleTOCItemClick}
+              className="h-full"
             />
           </>
         }
@@ -62,6 +63,7 @@ export default function NoteTemplate({
                 title: r.fields?.title || '',
                 url: `${gardenBasePath}/${r.fields?.slug}`,
               }))}
+              className="h-1/2"
             />
             <LinksPane
               title="Outgoing Links"
@@ -69,6 +71,7 @@ export default function NoteTemplate({
                 title: r.fields?.title || '',
                 url: `${gardenBasePath}/${r.fields?.slug}`,
               }))}
+              className="h-1/2"
             />
           </>
         }

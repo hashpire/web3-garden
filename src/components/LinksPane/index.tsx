@@ -5,11 +5,12 @@ import { Link } from 'gatsby';
 type LinksPaneProps = {
   title: string;
   links: Array<{ title: string; url: string }>;
+  className?: string;
 };
 
-export default function LinksPane({ title, links }: LinksPaneProps) {
+export default function LinksPane({ title, links, className }: LinksPaneProps) {
   return (
-    <Pane title={title}>
+    <Pane title={title} className={className}>
       <ul className="flex flex-col space-y-3">
         {links.map((link, index) => {
           return (
