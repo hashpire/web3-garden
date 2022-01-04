@@ -12,28 +12,15 @@ export type NoteTemplatePageContext = {
   id: string;
   html: string;
   headings: Array<{ depth: number; id: string; value: string }>;
-  outboundReferences: Array<{
-    id: string;
-    fields?: { slug?: string; title?: string };
-  }>;
-  inboundReferences: Array<{
-    id: string;
-    fields?: { slug?: string; title?: string };
-  }>;
-  gardenBasePath: string;
+  outboundReferences: Array<{ url: string; title: string }>;
+  inboundReferences: Array<{ url: string; title: string }>;
 };
 
 export default function NoteTemplate({
   pageContext,
 }: PageProps<{}, NoteTemplatePageContext>) {
-  const {
-    html,
-    headings,
-    inboundReferences,
-    outboundReferences,
-    gardenBasePath,
-    title,
-  } = pageContext;
+  const { html, headings, inboundReferences, outboundReferences, title } =
+    pageContext;
 
   const isLg = useLg();
   const { dispatch } = useSidebar();
@@ -75,19 +62,13 @@ export default function NoteTemplate({
           <>
             <LinksPane
               title="Incoming Links"
-              links={inboundReferences.map((r) => ({
-                title: r.fields?.title || '',
-                url: `${gardenBasePath}/${r.fields?.slug}`,
-              }))}
+              links={inboundReferences}
               className="h-1/2"
               onLinkClick={handleLinkClick}
             />
             <LinksPane
               title="Outgoing Links"
-              links={outboundReferences.map((r) => ({
-                title: r.fields?.title || '',
-                url: `${gardenBasePath}/${r.fields?.slug}`,
-              }))}
+              links={outboundReferences}
               className="h-1/2"
               onLinkClick={handleLinkClick}
             />

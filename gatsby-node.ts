@@ -129,9 +129,14 @@ export const createPages: GatsbyNode['createPages'] = async ({
           id,
           html,
           headings,
-          inboundReferences,
-          outboundReferences,
-          gardenBasePath,
+          inboundReferences: inboundReferences.map((r) => ({
+            title: r.fields?.title || '',
+            url: `${gardenBasePath}/${r.fields?.slug}`,
+          })),
+          outboundReferences: outboundReferences.map((r) => ({
+            title: r.fields?.title || '',
+            url: `${gardenBasePath}/${r.fields?.slug}`,
+          })),
           title,
         },
       });
