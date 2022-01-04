@@ -20,10 +20,10 @@ export default function DesktopSidebar({
   direction = 'left',
 }: DesktopSidebarProps) {
   return (
-    <aside className="flex">
+    <aside className="flex border-t border-brand-grey">
       {onToggle && direction === 'right' && (
         <button
-          className="flex items-center border-r border-brand-grey bg-neutral-900 hover:bg-brand-grey"
+          className="flex items-center bg-neutral-900 hover:bg-brand-grey"
           onClick={onToggle}
         >
           {isShowing ? (
@@ -38,13 +38,13 @@ export default function DesktopSidebar({
         unmount={false}
         enter="transition-all ease-in-out duration-500"
         enterFrom="w-0"
-        enterTo="w-72"
-        entered="w-72"
+        enterTo="w-64"
+        entered="w-64"
         leave="transition-all ease-in-out duration-500"
-        leaveFrom="w-72"
+        leaveFrom="w-64"
         leaveTo="w-0"
         className={classNames(
-          'w-72 h-full bg-background overflow-x-hidden',
+          'w-64 h-full bg-neutral-900 overflow-x-hidden',
           className,
         )}
       >
@@ -52,7 +52,7 @@ export default function DesktopSidebar({
       </Transition>
       {onToggle && direction === 'left' && (
         <button
-          className="flex items-center border-l border-brand-grey bg-neutral-900 hover:bg-brand-grey"
+          className="flex items-center bg-neutral-900 hover:bg-brand-grey"
           onClick={onToggle}
         >
           {isShowing ? (
