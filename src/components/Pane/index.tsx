@@ -10,10 +10,10 @@ type PaneProps = {
 
 export default function Pane({ children, title, className, icon }: PaneProps) {
   return (
-    <div className={classNames('bg-background flex flex-col', className)}>
+    <div className={classNames('flex flex-col', className)}>
       <div className="flex items-center px-4 py-3 bg-background-darker">
         {icon}
-        <span className="ml-2 text-base font-semibold text-neutral-200">
+        <span className="ml-2 text-base font-semibold text-neutral-400">
           {title}
         </span>
       </div>

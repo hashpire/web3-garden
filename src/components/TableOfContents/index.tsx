@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import TriangleDownSvg from '@icons/triangle-down.inline.svg';
 import TriangleLeftSvg from '@icons/triangle-right.inline.svg';
 import Pane from '../Pane';
-import LinkSvg from '@/icons/link.inline.svg';
+import ListBulletSvg from '@/icons/list-bullet.inline.svg';
 import classNames from 'classnames';
 
 export type Heading = { depth: number; id: string; value: string };
@@ -116,7 +116,7 @@ export default function TableOfContents({
     <Pane
       title="Table of Contents"
       className={className}
-      icon={<LinkSvg className="w-6 h-6 text-neutral-200" />}
+      icon={<ListBulletSvg className="w-6 h-6 text-neutral-400" />}
     >
       <div className="space-y-3">{tree}</div>
     </Pane>

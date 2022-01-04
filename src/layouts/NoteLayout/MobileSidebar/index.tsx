@@ -54,7 +54,7 @@ export default function MobileSidebar({
         unmount={false}
         as="div"
         className={classNames(
-          'fixed inset-y-0 z-20 bg-background min-w-72 w-4/5 md:w-1/2',
+          'fixed inset-y-0 z-20 bg-neutral-900 min-w-72 w-4/5 md:w-1/2',
           direction === 'left' ? 'right-0' : 'left-0',
         )}
       >

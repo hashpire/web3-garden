@@ -6,6 +6,8 @@ import TableOfContents from '@/components/TableOfContents';
 import LinksPane from '@/components/LinksPane';
 import { useSidebar } from '@/context/sidebar';
 import { useLg } from '@/hooks/responsive';
+import LinkInSvg from '@/icons/link-in.inline.svg';
+import LinkOutSvg from '@/icons/link-out.inline.svg';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -64,12 +66,14 @@ export default function NoteTemplate({
               title="Incoming Links"
               links={inboundReferences}
               className="h-1/2"
+              icon={<LinkInSvg className="w-6 h-6 text-neutral-400" />}
               onLinkClick={handleLinkClick}
             />
             <LinksPane
               title="Outgoing Links"
               links={outboundReferences}
               className="h-1/2"
+              icon={<LinkOutSvg className="w-6 h-6 text-neutral-400" />}
               onLinkClick={handleLinkClick}
             />
           </>

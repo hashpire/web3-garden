@@ -35,6 +35,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({
       {/* All items in row will take the largest height of them by default. */}
       {isLg ? (
         <DesktopSidebar
+          className="border-l border-brand-grey"
           direction="right"
           isShowing={desktopLeftSidebar}
           onToggle={() => dispatch({ type: 'TOGGLE_DESKTOP_LEFT_SIDEBAR' })}
@@ -51,7 +52,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({
         </MobileSidebar>
       )}
       {/* https://www.w3.org/TR/css-flexbox-1/#min-size-auto */}
-      <article className="flex-1 min-w-0 bg-neutral-900 lg:overflow-y-auto">
+      <article className="flex-1 min-w-0 bg-background-darker lg:border lg:border-brand-grey lg:overflow-y-auto">
         {!isLg && (
           <MobileRibbon
             onLeftSidebarClick={() =>
@@ -66,6 +67,7 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({
       </article>
       {isLg ? (
         <DesktopSidebar
+          className="border-r border-brand-grey"
           direction="left"
           isShowing={desktopRightSidebar}
           onToggle={() => dispatch({ type: 'TOGGLE_DESKTOP_RIGHT_SIDEBAR' })}

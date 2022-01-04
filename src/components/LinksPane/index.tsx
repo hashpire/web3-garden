@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import Pane from '@/components/Pane';
-import LinkSvg from '@/icons/link.inline.svg';
 import classNames from 'classnames';
 
 type LinksPaneProps = {
@@ -8,6 +7,7 @@ type LinksPaneProps = {
   links: Array<{ title: string; url: string }>;
   onLinkClick?: (url: string) => void;
   className?: string;
+  icon: ReactElement;
 };
 
 type ReferenceLinkProps = {
@@ -38,14 +38,11 @@ export default function LinksPane({
   title,
   links,
   className,
+  icon,
   onLinkClick,
 }: LinksPaneProps) {
   return (
-    <Pane
-      title={title}
-      className={className}
-      icon={<LinkSvg className="w-6 h-6 text-neutral-200" />}
-    >
+    <Pane title={title} className={className} icon={icon}>
       <ul className="flex flex-col space-y-3">
         {links.map((link, index) => {
           return (
