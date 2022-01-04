@@ -30,8 +30,8 @@ const NoteLayout: React.FC<NoteLayoutProps> = ({
   }, [mobileSidebar]);
 
   return (
-    <main className="flex flex-row flex-1 overflow-x-hidden">
-      {/* overflow-x-hidden to remove scrollbar during animation */}
+    <main className="flex flex-row flex-1 min-h-0">
+      {/* if animation is translate, overflow-x-hidden need to be added to remove scrollbar during animation, */}
       {/* All items in row will take the largest height of them by default. */}
       {isLg ? (
         <DesktopSidebar
