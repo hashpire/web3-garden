@@ -19,7 +19,9 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
         }
       }
       allMarkdownRemark(
-        filter: { frontmatter: { featured: { eq: true }, published: { eq: true } } }
+        filter: {
+          frontmatter: { featured: { eq: true }, published: { eq: true } }
+        }
         sort: { fields: [fields___gitAuthorTime], order: [DESC] }
       ) {
         edges {
@@ -51,7 +53,8 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
   const notes = data.allMarkdownRemark.edges;
   if (notes.length === 0) return null;
 
-  const { basePath: gardenBasePath = '/garden' } = data?.site?.siteMetadata?.garden || {};
+  const { basePath: gardenBasePath = '/garden' } =
+    data?.site?.siteMetadata?.garden || {};
 
   return (
     <section className={classNames(className)}>
@@ -59,7 +62,11 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
       <div className="grid grid-cols-1 gap-10 mt-10 md:grid-cols-2">
         {notes.map((note) => {
           const { node } = note;
-          const { gitAuthorTime = '', title = 'No Title', slug = '' } = node?.fields || {};
+          const {
+            gitAuthorTime = '',
+            title = 'No Title',
+            slug = '',
+          } = node?.fields || {};
 
           return (
             <FeaturedCard
@@ -67,8 +74,15 @@ export default function FeaturedSection({ className }: FeaturedSectionProps) {
               title={title}
               url={`${gardenBasePath}/${slug}`}
               excerpt={node.excerpt || ''}
-              coverImage={node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData}
-              contributors={node.frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || []}
+              coverImage={
+                node.frontmatter?.cover_image?.childImageSharp?.gatsbyImageData
+              }
+              contributors={
+                node.frontmatter?.contributors?.map((c) => ({
+                  name: c.name,
+                  imageUrl: c.imageUrl,
+                })) || []
+              }
               publishedAt={gitAuthorTime}
               className="max-w-lg m-auto"
             />

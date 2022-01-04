@@ -4,6 +4,7 @@ import Layout from '../../layouts/MainLayout';
 import FeaturedSection from './FeaturedSection';
 import ListSection from './ListSection';
 import Pagination from '../../components/Pagination';
+import Seo from '@/components/Seo';
 
 export type FeedTemplatePageContext = {
   limit: number;
@@ -20,11 +21,18 @@ export default function FeedTemplate({
   pageContext,
 }: PageProps<GatsbyTypes.FeedTemplateQuery, FeedTemplatePageContext>) {
   const posts = data.allMarkdownRemark.edges;
-  const { currentPage, numPages, feedBasePath, feedRootPath = feedBasePath, gardenBasePath } = pageContext;
+  const {
+    currentPage,
+    numPages,
+    feedBasePath,
+    feedRootPath = feedBasePath,
+    gardenBasePath,
+  } = pageContext;
   const isFirst = currentPage === 1;
 
   return (
     <Layout>
+      <Seo title={'Web3 Digital Garden'} />
       <div className="px-4 py-12 md:px-6 lg:px-0 lg:py-16 lg:mx-auto lg:max-w-4xl">
         {isFirst && <FeaturedSection />}
         <ListSection
@@ -34,8 +42,16 @@ export default function FeedTemplate({
             const { node } = post;
             const { id, excerpt = '', frontmatter, fields } = node;
             const { cover_image } = frontmatter || {};
-            const contributors = frontmatter?.contributors?.map((c) => ({ name: c.name, imageUrl: c.imageUrl })) || [];
-            const { gitAuthorTime: publishedAt, title = 'No Title', slug = '' } = fields || {};
+            const contributors =
+              frontmatter?.contributors?.map((c) => ({
+                name: c.name,
+                imageUrl: c.imageUrl,
+              })) || [];
+            const {
+              gitAuthorTime: publishedAt,
+              title = 'No Title',
+              slug = '',
+            } = fields || {};
             const url = `${gardenBasePath}/${slug}`;
 
             return {

@@ -24,7 +24,11 @@ type MemberCardProps = {
   className?: string;
 };
 
-const icons: Array<{ platform: keyof ContactInfo; Icon: typeof GithubSvg; prefix: string }> = [
+const icons: Array<{
+  platform: keyof ContactInfo;
+  Icon: typeof GithubSvg;
+  prefix: string;
+}> = [
   {
     platform: 'website',
     Icon: WebsiteSvg,
@@ -52,7 +56,14 @@ const icons: Array<{ platform: keyof ContactInfo; Icon: typeof GithubSvg; prefix
   },
 ];
 
-export default function MemberCard({ name, position, imageUrl, shortIntro, contactInfo, className }: MemberCardProps) {
+export default function MemberCard({
+  name,
+  position,
+  imageUrl,
+  shortIntro,
+  contactInfo,
+  className,
+}: MemberCardProps) {
   return (
     <div
       className={classNames(
@@ -68,8 +79,12 @@ export default function MemberCard({ name, position, imageUrl, shortIntro, conta
       <div className="flex flex-col items-center justify-between h-full mt-20">
         <div className="flex flex-col items-center">
           <Badge title={position || 'Contributor'} />
-          <h3 className="block mt-4 text-xl font-semibold text-center text-neutral-200">{name}</h3>
-          <p className="block mt-2 text-sm text-center text-neutral-400 line-clamp-4">{shortIntro}</p>
+          <h3 className="block mt-4 text-xl font-semibold text-center text-neutral-200">
+            {name}
+          </h3>
+          <p className="block mt-2 text-sm text-center text-neutral-400 line-clamp-4">
+            {shortIntro}
+          </p>
         </div>
         {contactInfo && (
           <ul className="flex items-center space-x-2">
@@ -79,7 +94,10 @@ export default function MemberCard({ name, position, imageUrl, shortIntro, conta
 
               return (
                 <li key={platform} className="flex flex-col justify-center">
-                  <a href={`${prefix}${handle}`} className="block text-gray-400 hover:text-gray-500">
+                  <a
+                    href={`${prefix}${handle}`}
+                    className="block text-gray-400 hover:text-gray-500"
+                  >
                     <Icon className="w-8 h-8" />
                   </a>
                 </li>

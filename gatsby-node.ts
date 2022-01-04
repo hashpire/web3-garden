@@ -3,7 +3,7 @@ import path from 'path';
 import type { NoteTemplatePageContext } from './src/templates/NoteTemplate';
 import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
 import { execSync } from 'child_process';
-import { slugify } from './src/utils/slugify';
+import { slugify } from './src/gatsby/slugify';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 
 type GatsbyNodeQuery = {
@@ -24,13 +24,26 @@ type GatsbyNodeQuery = {
       node: {
         id: string;
         html: string;
-        fields?: { slug?: string };
+        headings: Array<{ depth: number; id: string; value: string }>;
+        fields?: { slug?: string; title?: string };
+        outboundReferences: Array<{
+          id: string;
+          fields?: { slug?: string; title?: string };
+        }>;
+        inboundReferences: Array<{
+          id: string;
+          fields?: { slug?: string; title?: string };
+        }>;
       };
     }>;
   };
 };
 
-export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
+export const createPages: GatsbyNode['createPages'] = async ({
+  graphql,
+  actions,
+  reporter,
+}) => {
   const { createPage, createRedirect } = actions;
 
   const result = await graphql<GatsbyNodeQuery>(
@@ -56,8 +69,32 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             node {
               id
               html
+              headings {
+                id
+                depth
+                value
+              }
               fields {
                 slug
+                title
+              }
+              outboundReferences {
+                ... on MarkdownRemark {
+                  id
+                  fields {
+                    slug
+                    title
+                  }
+                }
+              }
+              inboundReferences {
+                ... on MarkdownRemark {
+                  id
+                  fields {
+                    slug
+                    title
+                  }
+                }
               }
             }
           }
@@ -79,8 +116,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const noteTemplate = path.resolve('./src/templates/NoteTemplate.tsx');
 
   notes.forEach(({ node }) => {
-    const { id, html } = node;
-    const slug = node.fields?.slug;
+    const { id, html, headings, inboundReferences, outboundReferences } = node;
+    const { slug, title = 'Note' } = node.fields || {};
 
     if (slug) {
       const urlPath = `${gardenBasePath}/${slug}`;
@@ -88,13 +125,25 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       createPage<NoteTemplatePageContext>({
         path: urlPath,
         component: noteTemplate,
-        context: { id, html },
+        context: {
+          id,
+          html,
+          headings,
+          inboundReferences,
+          outboundReferences,
+          gardenBasePath,
+          title,
+        },
       });
     }
   });
 
   // create feed
-  const { notesPerPage = 10, basePath: feedBasePath = `/page`, useIndex: useIndexAsFeed = true } = feed || {};
+  const {
+    notesPerPage = 10,
+    basePath: feedBasePath = `/page`,
+    useIndex: useIndexAsFeed = true,
+  } = feed || {};
   const feedTempate = path.resolve('./src/templates/FeedTemplate/index.tsx');
   const feedRootPath = useIndexAsFeed ? '/' : feedBasePath;
   const numPages = Math.ceil(notes.length / notesPerPage);
@@ -123,7 +172,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   });
 };
 
-export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ actions }) => {
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
+  actions,
+}) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
@@ -137,10 +188,11 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ act
   });
 };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = ({ actions, schema }) => {
-  const { createTypes } = actions;
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  ({ actions, schema }) => {
+    const { createTypes } = actions;
 
-  const contributorsTypeDefs = `
+    const contributorsTypeDefs = `
     type ContributorsJson implements Node @dontInfer {
       name: String!
       position: String
@@ -157,10 +209,10 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       facebook: String
     }
   `;
-  createTypes(contributorsTypeDefs);
+    createTypes(contributorsTypeDefs);
 
-  const frontmatterTypeDefs = [
-    `
+    const frontmatterTypeDefs = [
+      `
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
     }
@@ -169,60 +221,66 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       featured: Boolean
     }
   `,
-    // test_image: File @link(by: "name")
-    // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
-    schema.buildObjectType({
-      name: 'Frontmatter',
-      fields: {
-        cover_image: {
-          type: 'File!',
-          resolve: async (source, _args, context) => {
-            const { cover_image } = source;
+      // test_image: File @link(by: "name")
+      // Custom resolver needed because `contributors: [ContributorsJson] @link(by: "name")` does not support default value
+      schema.buildObjectType({
+        name: 'Frontmatter',
+        fields: {
+          cover_image: {
+            type: 'File!',
+            resolve: async (source, _args, context) => {
+              const { cover_image } = source;
 
-            if (cover_image) {
-              const result = await context.nodeModel.findOne({
+              if (cover_image) {
+                const result = await context.nodeModel.findOne({
+                  type: 'File',
+                  query: {
+                    filter: {
+                      base: { eq: cover_image },
+                      sourceInstanceName: { eq: 'gardenFiles' },
+                    },
+                  },
+                });
+                if (result) return result;
+              }
+
+              return await context.nodeModel.findOne({
                 type: 'File',
                 query: {
-                  filter: { base: { eq: cover_image }, sourceInstanceName: { eq: 'gardenFiles' } },
+                  filter: {
+                    base: { eq: 'card-default.png' },
+                    sourceInstanceName: { eq: 'images' },
+                  },
                 },
               });
-              if (result) return result;
-            }
-
-            return await context.nodeModel.findOne({
-              type: 'File',
-              query: {
-                filter: { base: { eq: 'card-default.png' }, sourceInstanceName: { eq: 'images' } },
-              },
-            });
+            },
           },
         },
-      },
-    }),
-    schema.buildObjectType({
-      name: 'Frontmatter',
-      fields: {
-        contributors: {
-          type: '[ContributorsJson!]',
-          resolve: (source, _args, context) => {
-            const { contributors } = source;
-            if (!contributors) return null;
-            return contributors.map(async (contributorName: string) => {
-              const result = await context.nodeModel.findOne({
-                type: 'ContributorsJson',
-                query: {
-                  filter: { name: { eq: contributorName } },
-                },
+      }),
+      schema.buildObjectType({
+        name: 'Frontmatter',
+        fields: {
+          contributors: {
+            type: '[ContributorsJson!]',
+            resolve: (source, _args, context) => {
+              const { contributors } = source;
+              if (!contributors) return null;
+              return contributors.map(async (contributorName: string) => {
+                const result = await context.nodeModel.findOne({
+                  type: 'ContributorsJson',
+                  query: {
+                    filter: { name: { eq: contributorName } },
+                  },
+                });
+                return result || { name: contributorName };
               });
-              return result || { name: contributorName };
-            });
+            },
           },
         },
-      },
-    }),
-  ];
-  createTypes(frontmatterTypeDefs);
-};
+      }),
+    ];
+    createTypes(frontmatterTypeDefs);
+  };
 
 export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
   node,
@@ -237,7 +295,9 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
 
   if (node.internal.type === 'MarkdownRemark' && node.parent) {
     // git author time
-    const gitAuthorTime = execSync(`git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`).toString();
+    const gitAuthorTime = execSync(
+      `git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`,
+    ).toString();
     actions.createNodeField({
       node,
       name: 'gitAuthorTime',

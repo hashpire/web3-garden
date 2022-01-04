@@ -39,7 +39,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
   safelist: [
     // font weight
     'font-normal',

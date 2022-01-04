@@ -24,22 +24,39 @@ export default function Pagination({
 }: PaginationProps) {
   const isFirst = currentPage === 1;
   const isLast = currentPage === numPages;
-  const prevPage = currentPage - 1 === 1 ? feedRootPath : `${feedBasePath}/${currentPage - 1}`;
+  const prevPage =
+    currentPage - 1 === 1 ? feedRootPath : `${feedBasePath}/${currentPage - 1}`;
   const nextPage = `${feedBasePath}/${currentPage + 1}`;
 
-  let caretLeft = <CaretLeftSvg className={classNames('h-8 w-8', { 'text-neutral-500': isFirst })} />;
+  let caretLeft = (
+    <CaretLeftSvg
+      className={classNames('h-8 w-8', { 'text-neutral-500': isFirst })}
+    />
+  );
   if (!isFirst) {
     caretLeft = (
-      <Link to={prevPage} rel="prev" className="block text-neutral-100 hover:opacity-80">
+      <Link
+        to={prevPage}
+        rel="prev"
+        className="block text-neutral-100 hover:opacity-80"
+      >
         {caretLeft}
       </Link>
     );
   }
 
-  let caretRight = <CaretRightSvg className={classNames('h-8 w-8', { 'text-neutral-500': isLast })} />;
+  let caretRight = (
+    <CaretRightSvg
+      className={classNames('h-8 w-8', { 'text-neutral-500': isLast })}
+    />
+  );
   if (!isLast) {
     caretRight = (
-      <Link to={nextPage} rel="next" className="block text-neutral-100 hover:opacity-80">
+      <Link
+        to={nextPage}
+        rel="next"
+        className="block text-neutral-100 hover:opacity-80"
+      >
         {caretRight}
       </Link>
     );
@@ -49,7 +66,9 @@ export default function Pagination({
     <ul className={classNames('flex justify-center items-center', className)}>
       <li>{caretLeft}</li>
       {createPageRange(currentPage, numPages, pageRange).map((page, index) => {
-        const pageLink = <span className="text-sm font-semibold text-neutral-100">{page}</span>;
+        const pageLink = (
+          <span className="text-sm font-semibold text-neutral-100">{page}</span>
+        );
 
         return (
           <li key={`i-${index}`} className="mx-2.5">
