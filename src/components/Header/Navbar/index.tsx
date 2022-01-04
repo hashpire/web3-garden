@@ -35,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
           <li key={index}>
             <Link
               to={to}
-              className="flex items-center justify-center w-16 h-full text-gray-400 md:w-auto hover:text-primary"
+              className="flex items-center justify-center w-14 h-full text-gray-400 md:w-auto hover:text-primary"
               activeClassName="navbar-active"
             >
               <Icon className="w-7 h-7 lg:w-6 lg:h-6" />
