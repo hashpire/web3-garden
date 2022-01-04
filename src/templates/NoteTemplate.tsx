@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import NoteLayout from '../layouts/NoteLayout';
-import { PageProps } from 'gatsby';
+import { navigate, PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 import TableOfContents from '@/components/TableOfContents';
 import LinksPane from '@/components/LinksPane';
@@ -38,9 +38,25 @@ export default function NoteTemplate({
   const isLg = useLg();
   const { dispatch } = useSidebar();
 
-  const handleTOCItemClick = useCallback(() => {
-    !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
-  }, [dispatch, isLg]);
+  const handleTOCItemClick = useCallback(
+    (id: string) => {
+      !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
+      navigate(`#${id}`);
+    },
+    [dispatch, isLg],
+  );
+
+  const handleLinkClick = useCallback(
+    (url: string) => {
+      if (isLg) {
+        navigate(url);
+      } else {
+        dispatch({ type: 'CLOSE_MOBILE_RIGHT_SIDEBAR' });
+        setTimeout(() => navigate(url), 300);
+      }
+    },
+    [dispatch, isLg],
+  );
 
   // memoized to prevent rerender when routing with hashtag, which causes sidebar animation flashing bug
   const memoizedValue = useMemo(
@@ -64,6 +80,7 @@ export default function NoteTemplate({
                 url: `${gardenBasePath}/${r.fields?.slug}`,
               }))}
               className="h-1/2"
+              onLinkClick={handleLinkClick}
             />
             <LinksPane
               title="Outgoing Links"
@@ -72,6 +89,7 @@ export default function NoteTemplate({
                 url: `${gardenBasePath}/${r.fields?.slug}`,
               }))}
               className="h-1/2"
+              onLinkClick={handleLinkClick}
             />
           </>
         }
@@ -83,7 +101,14 @@ export default function NoteTemplate({
         />
       </NoteLayout>
     ),
-    [html, headings, inboundReferences, outboundReferences, handleTOCItemClick],
+    [
+      html,
+      headings,
+      inboundReferences,
+      outboundReferences,
+      handleTOCItemClick,
+      handleLinkClick,
+    ],
   );
 
   return memoizedValue;

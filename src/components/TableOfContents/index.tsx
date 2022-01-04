@@ -40,13 +40,15 @@ function TreeItem({ title, children, id, onClick }: TreeItemProps) {
             </div>
           </div>
         )}
-        <a
-          className="ml-1 text-neutral-400 hover:text-primary "
-          href={`#${id}`}
+        <span
+          className={classNames(
+            'ml-1 text-sm text-neutral-400 ',
+            onClick && 'hover:text-primary cursor-pointer',
+          )}
           onClick={handleClick}
         >
-          <span className="text-sm"> {title}</span>
-        </a>
+          {title}
+        </span>
       </div>
       <div className={classNames('pl-4 space-y-3 mt-3', !show && 'hidden')}>
         {children}
