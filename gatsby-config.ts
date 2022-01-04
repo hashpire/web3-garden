@@ -87,7 +87,7 @@ export const plugins = [
           options: {
             classMap: {
               // h1
-              'heading[depth=1]': 'text-4xl font-bold text-primary leading-relaxed my-3.5',
+              'heading[depth=1]': 'text-4xl font-bold text-primary leading-relaxed my-6',
               // h2
               'heading[depth=2]': 'text-3xl text-neutral-200 font-bold leading-relaxed my-6',
               // h3
@@ -99,7 +99,7 @@ export const plugins = [
               // h6
               'heading[depth=6]': 'text-sm text-neutral-200 font-bold leading-relaxed my-6',
               // p
-              paragraph: 'my-6 text-base font-normal text-neutral-200 leading-relaxed',
+              paragraph: 'my-5 text-base font-normal text-neutral-200 leading-relaxed',
               // a
               link: 'text-primary text-sm font-normal hover:underline active:text-primary-dark',
               // table
