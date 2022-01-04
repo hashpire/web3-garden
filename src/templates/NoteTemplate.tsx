@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import NoteLayout from '../layouts/NoteLayout';
 import { PageProps } from 'gatsby';
 import Seo from '../components/Seo';
 import TableOfContents from '@/components/TableOfContents';
 import LinksPane from '@/components/LinksPane';
+import { useSidebar } from '@/context/sidebar';
+import { useLg } from '@/hooks/responsive';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -33,13 +35,23 @@ export default function NoteTemplate({
     title,
   } = pageContext;
 
+  const isLg = useLg();
+  const { dispatch } = useSidebar();
+
+  const handleTOCItemClick = useCallback(() => {
+    !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
+  }, [dispatch, isLg]);
+
   // memoized to prevent rerender when routing with hashtag, which causes sidebar animation flashing bug
   const memoizedValue = useMemo(
     () => (
       <NoteLayout
         leftSidebarContent={
           <>
-            <TableOfContents headings={headings} />
+            <TableOfContents
+              headings={headings}
+              onItemClick={handleTOCItemClick}
+            />
           </>
         }
         rightSidebarContent={
@@ -68,7 +80,7 @@ export default function NoteTemplate({
         />
       </NoteLayout>
     ),
-    [html, headings, inboundReferences, outboundReferences],
+    [html, headings, inboundReferences, outboundReferences, handleTOCItemClick],
   );
 
   return memoizedValue;

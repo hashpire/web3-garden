@@ -4,17 +4,26 @@ import TriangleLeftSvg from '@icons/triangle-right.inline.svg';
 import Pane from '../Pane';
 import classNames from 'classnames';
 
-type Headings = Array<{ depth: number; id: string; value: string }>;
+export type Heading = { depth: number; id: string; value: string };
 
-type TreeItemProps = { title: string; children: React.ReactNode; id: string };
+export type Headings = Array<Heading>;
 
-type TableOfContentsProps = {
-  headings: Headings;
+export type TreeItemProps = {
+  title: string;
+  children: React.ReactNode;
+  id: string;
+  onClick?: (id: string) => void;
 };
 
-function TreeItem({ title, children, id }: TreeItemProps) {
+export type TableOfContentsProps = {
+  headings: Headings;
+  onItemClick?: TreeItemProps['onClick'];
+};
+
+function TreeItem({ title, children, id, onClick }: TreeItemProps) {
   const [show, setShow] = useState(false);
   const toggleShow = useCallback(() => setShow((state) => !state), []);
+  const handleClick = useCallback(() => onClick && onClick(id), [onClick]);
 
   return (
     <div>
@@ -33,6 +42,7 @@ function TreeItem({ title, children, id }: TreeItemProps) {
         <a
           className="ml-1 text-neutral-400 hover:text-primary "
           href={`#${id}`}
+          onClick={handleClick}
         >
           <span className="text-sm"> {title}</span>
         </a>
@@ -44,7 +54,13 @@ function TreeItem({ title, children, id }: TreeItemProps) {
   );
 }
 
-function createTree(headings: Headings) {
+function createTree({
+  headings,
+  onItemClick,
+}: {
+  headings: Headings;
+  onItemClick?: TreeItemProps['onClick'];
+}) {
   if (headings.length === 0) return null;
 
   // split headings into subtrees
@@ -53,11 +69,14 @@ function createTree(headings: Headings) {
 
   for (let i = 1; i < headings.length; i++) {
     if (headings[i].depth <= headings[lastIndex].depth) {
-      const subTree = createTree(headings.slice(lastIndex + 1, i));
+      const subTree = createTree({
+        headings: headings.slice(lastIndex + 1, i),
+        onItemClick,
+      });
       const { value: title, id } = headings[lastIndex];
 
       items.push(
-        <TreeItem key={lastIndex} title={title} id={id}>
+        <TreeItem key={lastIndex} title={title} id={id} onClick={onItemClick}>
           {subTree}
         </TreeItem>,
       );
@@ -65,10 +84,13 @@ function createTree(headings: Headings) {
     }
   }
 
-  const subTree = createTree(headings.slice(lastIndex + 1));
+  const subTree = createTree({
+    headings: headings.slice(lastIndex + 1),
+    onItemClick,
+  });
   const { value: title, id } = headings[lastIndex];
   items.push(
-    <TreeItem key={lastIndex} title={title} id={id}>
+    <TreeItem key={lastIndex} title={title} id={id} onClick={onItemClick}>
       {subTree}
     </TreeItem>,
   );
@@ -76,8 +98,14 @@ function createTree(headings: Headings) {
   return items;
 }
 
-export default function TableOfContents({ headings }: TableOfContentsProps) {
-  const tree = useMemo(() => createTree(headings), [headings]);
+export default function TableOfContents({
+  headings,
+  onItemClick,
+}: TableOfContentsProps) {
+  const tree = useMemo(
+    () => createTree({ headings, onItemClick }),
+    [headings, onItemClick],
+  );
 
   return (
     <Pane title="Table of Contents">
