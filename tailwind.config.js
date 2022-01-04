@@ -62,8 +62,9 @@ module.exports = {
     'text-neutral-200',
     'text-neutral-400',
     'text-red-500',
-    // font style
+    // text style
     'italic',
+    'text-center',
     // background
     'bg-primary',
     // border & rounded
@@ -88,6 +89,9 @@ module.exports = {
     'ml-5',
     'mt-6',
     'ml-8',
+    'my-3.5',
+    'my-5',
+    'my-6',
     // rounded
     'rounded',
     // list
