@@ -8,6 +8,7 @@ import { useSidebar } from '@/context/sidebar';
 import { useLg } from '@/hooks/responsive';
 import LinkInSvg from '@/icons/link-in.inline.svg';
 import LinkOutSvg from '@/icons/link-out.inline.svg';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -30,7 +31,10 @@ export default function NoteTemplate({
   const handleTOCItemClick = useCallback(
     (id: string) => {
       !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
-      navigate(`#${id}`);
+      scrollTo(`#${id}`);
+      history.pushState(null, '', `#${id}`);
+      // TODO: respect “PREFERS REDUCED MOTION”
+      // navigate(`#${id}`);
     },
     [dispatch, isLg],
   );

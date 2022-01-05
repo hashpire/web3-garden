@@ -12,7 +12,7 @@ export default function MobileRibbon({
   onRightSidebarClick,
 }: MobileRibbonProps) {
   const scrollToTop = useCallback(() => {
-    window.scrollTo(0, 0);
+    window.scroll({ top: 0, behavior: 'smooth' }); // TODO: auto if “PREFERS REDUCED MOTION”
   }, []);
 
   const [stuck, setStuck] = useState(false);

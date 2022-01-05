@@ -99,5 +99,8 @@ module.exports = {
     'list-decimal',
     // ::marker
     'marker:text-primary',
+    // scroll,
+    'scroll-mt-16',
+    'lg:scroll-mt-0',
   ],
 };
