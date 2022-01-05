@@ -4,6 +4,7 @@ import GithubSvg from '@/icons/github.inline.svg';
 import FacebookSvg from '@/icons/facebook.inline.svg';
 import InstagramSvg from '@/icons/instagram.inline.svg';
 import TwitterSvg from '@/icons/twitter.inline.svg';
+import DiscordSvg from '@/icons/discord.inline.svg';
 
 const links = [
   {
@@ -12,19 +13,24 @@ const links = [
     screenReaderText: 'Hashpire on Github',
   },
   {
+    Icon: DiscordSvg,
+    href: 'https://discord.gg/QeJz5Wujc5',
+    screenReaderText: 'Hashpire on Discord',
+  },
+  {
     Icon: FacebookSvg,
     href: 'https://facebook.com/hashpire',
     screenReaderText: 'Hashpire on Facebook',
   },
   {
-    Icon: InstagramSvg,
-    href: 'https://instagram.com/hashpire',
-    screenReaderText: 'Hashpire on Instagram',
-  },
-  {
     Icon: TwitterSvg,
     href: 'https://twitter.com/hashpire',
     screenReaderText: 'Hashpire on Twitter',
+  },
+  {
+    Icon: InstagramSvg,
+    href: 'https://instagram.com/hashpire',
+    screenReaderText: 'Hashpire on Instagram',
   },
 ];
 
@@ -32,7 +38,7 @@ const MainPageFooter: React.FC<{}> = () => {
   return (
     <footer className="flex flex-col items-center justify-center space-y-4 p-9 bg-background">
       <HashpireThlSvg className="w-40 h-auto" />
-      <ul className="flex space-x-2">
+      <ul className="flex space-x-1">
         {links.map(({ href, Icon, screenReaderText }, index) => (
           <li key={index}>
             <a
@@ -40,7 +46,7 @@ const MainPageFooter: React.FC<{}> = () => {
               className="flex items-center justify-center w-12 h-12 text-gray-400 hover:text-gray-500"
             >
               <span className="sr-only">{screenReaderText}</span>
-              <Icon className="w-8 h-8" />
+              <Icon className="w-9 h-9" />
             </a>
           </li>
         ))}
