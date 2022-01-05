@@ -9,7 +9,7 @@ import { useLg } from '@/hooks/responsive';
 import LinkInSvg from '@/icons/link-in.inline.svg';
 import LinkOutSvg from '@/icons/link-out.inline.svg';
 import scrollTo from 'gatsby-plugin-smoothscroll';
-import { usePrefersReducedMotion } from '@/hooks/motion';
+// import { usePrefersReducedMotion } from '@/hooks/motion';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -27,7 +27,7 @@ export default function NoteTemplate({
     pageContext;
 
   const isLg = useLg();
-  const prefersReducedMotion = usePrefersReducedMotion();
+  // const prefersReducedMotion = usePrefersReducedMotion();
 
   const { dispatch } = useSidebar();
 
@@ -35,14 +35,19 @@ export default function NoteTemplate({
     (id: string) => {
       !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
 
-      if (prefersReducedMotion) {
-        navigate(`#${id}`);
-      } else {
-        scrollTo(`#${id}`);
-        history.pushState(null, '', `#${id}`);
-      }
+      // TODO: Disabled because prefersReducedMotion causes sidebar to rerender, which causes animation to flash
+      // if (prefersReducedMotion) {
+      //   navigate(`#${id}`);
+      // } else {
+      scrollTo(`#${id}`);
+      history.pushState(null, '', `#${id}`);
+      // }
     },
-    [dispatch, isLg, prefersReducedMotion],
+    [
+      dispatch,
+      isLg,
+      // prefersReducedMotion
+    ],
   );
 
   const handleLinkClick = useCallback(
