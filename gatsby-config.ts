@@ -7,8 +7,8 @@ import {
 export const siteMetadata = {
   title: `Hashpire`,
   description: `A community-driven Web3 Digital Garden`,
-  author: `@gatsbyjs`,
-  siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+  twitter: `@hashpire`,
+  siteUrl: `https://hashpire.io`, // No trailing slash allowed!
   garden: {
     basePath: '/garden',
   },
@@ -17,6 +17,7 @@ export const siteMetadata = {
     useIndex: true,
     notesPerPage: 10,
   },
+  defaultMetaImage: '/images/meta-default.png', // Path to the image placed in the 'static' folder
 };
 
 export const plugins = [

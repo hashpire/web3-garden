@@ -12,7 +12,10 @@ const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({
 
   return (
     <Layout>
-      <Seo title="Our Community" />
+      <Seo
+        title="Our Community"
+        description="Hashpire is a community of Web3 Enthusiasts"
+      />
       <div className="px-4 py-12 md:px-6 lg:p-16 lg:mx-auto lg:max-w-screen-2xl">
         <PageHeader title="Our Community" className="text-center" />
         <div className="grid grid-cols-1 mx-auto mb-20 mt-28 gap-y-28 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 2xl:grid-cols-4">
