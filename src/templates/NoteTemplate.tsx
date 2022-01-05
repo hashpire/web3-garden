@@ -9,6 +9,7 @@ import { useLg } from '@/hooks/responsive';
 import LinkInSvg from '@/icons/link-in.inline.svg';
 import LinkOutSvg from '@/icons/link-out.inline.svg';
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import { usePrefersReducedMotion } from '@/hooks/motion';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -26,17 +27,22 @@ export default function NoteTemplate({
     pageContext;
 
   const isLg = useLg();
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   const { dispatch } = useSidebar();
 
   const handleTOCItemClick = useCallback(
     (id: string) => {
       !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
-      scrollTo(`#${id}`);
-      history.pushState(null, '', `#${id}`);
-      // TODO: respect “PREFERS REDUCED MOTION”
-      // navigate(`#${id}`);
+
+      if (prefersReducedMotion) {
+        navigate(`#${id}`);
+      } else {
+        scrollTo(`#${id}`);
+        history.pushState(null, '', `#${id}`);
+      }
     },
-    [dispatch, isLg],
+    [dispatch, isLg, prefersReducedMotion],
   );
 
   const handleLinkClick = useCallback(
