@@ -186,15 +186,16 @@ export const plugins = [
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
-      name: `gatsby-starter-default`,
-      short_name: `starter`,
+      name: `Hashpire`,
+      short_name: `Hashpire`,
+      description: 'In Decentralization We Trust',
       start_url: '/',
-      background_color: `#663399`,
+      background_color: `#262626`,
       // This will impact how browsers show your PWA/website
       // https://css-tricks.com/meta-theme-color-and-trickery/
-      // theme_color: `#663399`,
+      theme_color: `#262626`,
       display: `minimal-ui`,
-      icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      icon: `src/images/icon-512x512.png`, // This path is relative to the root of the site.
     },
   },
   // this (optional) plugin enables Progressive Web App + Offline functionality
