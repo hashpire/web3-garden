@@ -5,6 +5,7 @@ import type { FeedTemplatePageContext } from './src/templates/FeedTemplate';
 import { execSync } from 'child_process';
 import { slugify } from './src/gatsby/slugify';
 import { FileSystemNode } from 'gatsby-source-filesystem';
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image';
 
 type GatsbyNodeQuery = {
   site: {
@@ -26,6 +27,12 @@ type GatsbyNodeQuery = {
         html: string;
         headings: Array<{ depth: number; id: string; value: string }>;
         fields?: { slug?: string; title?: string };
+        frontmatter?: {
+          cover_image: {
+            childImageSharp?: { gatsbyImageData: IGatsbyImageData };
+          };
+        };
+        excerpt?: string;
         outboundReferences: Array<{
           id: string;
           fields?: { slug?: string; title?: string };
@@ -78,6 +85,14 @@ export const createPages: GatsbyNode['createPages'] = async ({
                 slug
                 title
               }
+              frontmatter {
+                cover_image {
+                  childImageSharp {
+                    gatsbyImageData(height: 630, width: 1200, layout: FIXED)
+                  }
+                }
+              }
+              excerpt(truncate: true, pruneLength: 160)
               outboundReferences {
                 ... on MarkdownRemark {
                   id
@@ -116,8 +131,17 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const noteTemplate = path.resolve('./src/templates/NoteTemplate.tsx');
 
   notes.forEach(({ node }) => {
-    const { id, html, headings, inboundReferences, outboundReferences } = node;
+    const {
+      id,
+      html,
+      headings,
+      inboundReferences,
+      outboundReferences,
+      excerpt,
+    } = node;
     const { slug, title = 'Note' } = node.fields || {};
+    const { gatsbyImageData } =
+      node.frontmatter?.cover_image.childImageSharp || {};
 
     if (slug) {
       const urlPath = `${gardenBasePath}/${slug}`;
@@ -138,6 +162,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
             url: `${gardenBasePath}/${r.fields?.slug}`,
           })),
           title,
+          metaImage: gatsbyImageData && getSrc(gatsbyImageData),
+          metaDescription: excerpt,
         },
       });
     }

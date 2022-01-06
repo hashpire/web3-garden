@@ -7,8 +7,8 @@ import {
 export const siteMetadata = {
   title: `Hashpire`,
   description: `A community-driven Web3 Digital Garden`,
-  author: `@gatsbyjs`,
-  siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+  twitter: `@hashpire`,
+  siteUrl: `https://hashpire.io`, // No trailing slash allowed!
   garden: {
     basePath: '/garden',
   },
@@ -17,11 +17,13 @@ export const siteMetadata = {
     useIndex: true,
     notesPerPage: 10,
   },
+  defaultMetaImage: '/images/meta-default.png', // Path to the image placed in the 'static' folder
 };
 
 export const plugins = [
   `gatsby-plugin-react-helmet`,
   `gatsby-plugin-catch-links`,
+  `gatsby-plugin-smoothscroll`,
   `gatsby-plugin-image`,
   {
     resolve: 'gatsby-plugin-react-svg',
@@ -122,24 +124,25 @@ export const plugins = [
           resolve: `gatsby-remark-classes`,
           options: {
             classMap: {
+              // note: scroll-mt-16 lg:scroll-mt-0 are added to prevent overlap with stickied mobile ribbon when scrolled
               // h1
               'heading[depth=1]':
-                'text-4xl font-bold text-primary leading-relaxed my-6',
+                'text-4xl font-bold text-primary leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // h2
               'heading[depth=2]':
-                'text-3xl text-neutral-200 font-bold leading-relaxed my-6',
+                'text-3xl text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // h3
               'heading[depth=3]':
-                'text-2xl text-neutral-200 font-bold leading-relaxed my-5',
+                'text-2xl text-neutral-200 font-bold leading-relaxed my-5 scroll-mt-16 lg:scroll-mt-0',
               // h4
               'heading[depth=4]':
-                'text-xl text-neutral-200 font-bold leading-relaxed my-6',
+                'text-xl text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // h5
               'heading[depth=5]':
-                'text-base text-neutral-200 font-bold leading-relaxed my-6',
+                'text-base text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // h6
               'heading[depth=6]':
-                'text-sm text-neutral-200 font-bold leading-relaxed my-6',
+                'text-sm text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // p
               paragraph:
                 'my-5 text-base font-normal text-neutral-200 leading-relaxed',
@@ -186,15 +189,16 @@ export const plugins = [
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
-      name: `gatsby-starter-default`,
-      short_name: `starter`,
+      name: `Hashpire`,
+      short_name: `Hashpire`,
+      description: 'In Decentralization We Trust',
       start_url: '/',
-      background_color: `#663399`,
+      background_color: `#262626`,
       // This will impact how browsers show your PWA/website
       // https://css-tricks.com/meta-theme-color-and-trickery/
-      // theme_color: `#663399`,
+      theme_color: `#262626`,
       display: `minimal-ui`,
-      icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      icon: `src/images/icon-512x512.png`, // This path is relative to the root of the site.
     },
   },
   // this (optional) plugin enables Progressive Web App + Offline functionality

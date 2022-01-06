@@ -8,6 +8,8 @@ import { useSidebar } from '@/context/sidebar';
 import { useLg } from '@/hooks/responsive';
 import LinkInSvg from '@/icons/link-in.inline.svg';
 import LinkOutSvg from '@/icons/link-out.inline.svg';
+import scrollTo from 'gatsby-plugin-smoothscroll';
+// import { usePrefersReducedMotion } from '@/hooks/motion';
 
 export type NoteTemplatePageContext = {
   title: string;
@@ -16,23 +18,45 @@ export type NoteTemplatePageContext = {
   headings: Array<{ depth: number; id: string; value: string }>;
   outboundReferences: Array<{ url: string; title: string }>;
   inboundReferences: Array<{ url: string; title: string }>;
+  metaImage?: string;
+  metaDescription?: string;
 };
 
 export default function NoteTemplate({
   pageContext,
 }: PageProps<{}, NoteTemplatePageContext>) {
-  const { html, headings, inboundReferences, outboundReferences, title } =
-    pageContext;
+  const {
+    html,
+    headings,
+    inboundReferences,
+    outboundReferences,
+    title,
+    metaImage,
+    metaDescription,
+  } = pageContext;
 
   const isLg = useLg();
+  // const prefersReducedMotion = usePrefersReducedMotion();
+
   const { dispatch } = useSidebar();
 
   const handleTOCItemClick = useCallback(
     (id: string) => {
       !isLg && dispatch({ type: 'CLOSE_MOBILE_LEFT_SIDEBAR' });
-      navigate(`#${id}`);
+
+      // TODO: Disabled because prefersReducedMotion causes sidebar to rerender, which causes animation to flash
+      // if (prefersReducedMotion) {
+      //   navigate(`#${id}`);
+      // } else {
+      scrollTo(`#${id}`);
+      history.pushState(null, '', `#${id}`);
+      // }
     },
-    [dispatch, isLg],
+    [
+      dispatch,
+      isLg,
+      // prefersReducedMotion
+    ],
   );
 
   const handleLinkClick = useCallback(
@@ -79,7 +103,7 @@ export default function NoteTemplate({
           </>
         }
       >
-        <Seo title={title} />
+        <Seo title={title} image={metaImage} description={metaDescription} />
         <div
           dangerouslySetInnerHTML={{ __html: html }}
           className="px-4 py-6 font-open-sans md:p-6 lg:px-12 lg:py-10"
@@ -88,12 +112,14 @@ export default function NoteTemplate({
     ),
     [
       headings,
-      title,
-      html,
-      inboundReferences,
-      outboundReferences,
       handleTOCItemClick,
+      inboundReferences,
       handleLinkClick,
+      outboundReferences,
+      title,
+      metaImage,
+      metaDescription,
+      html,
     ],
   );
 

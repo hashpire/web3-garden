@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import LeftSidebarSvg from '@icons/left-sidebar.inline.svg';
 import RightSidebarSvg from '@icons/right-sidebar.inline.svg';
+import { usePrefersReducedMotion } from '@/hooks/motion';
 
 type MobileRibbonProps = {
   onLeftSidebarClick: () => void;
@@ -11,9 +12,13 @@ export default function MobileRibbon({
   onLeftSidebarClick,
   onRightSidebarClick,
 }: MobileRibbonProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
   const scrollToTop = useCallback(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scroll({
+      top: 0,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    });
+  }, [prefersReducedMotion]);
 
   const [stuck, setStuck] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

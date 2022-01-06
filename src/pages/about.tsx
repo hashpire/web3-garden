@@ -62,7 +62,10 @@ const digitalGarden = [
 
 const AboutPage: React.FC<{}> = () => (
   <Layout>
-    <Seo title="About" />
+    <Seo
+      title="About"
+      description="Hashpire is a collaborative space for people to learn, share and discuss all things Web3"
+    />
     {/* Section 1 */}
     <section
       className="px-6 bg-no-repeat bg-cover py-24 md:px-10 md:py-36 lg:py-36"
