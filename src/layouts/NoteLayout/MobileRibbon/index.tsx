@@ -39,7 +39,7 @@ export default function MobileRibbon({
 
   return (
     <div
-      className="sticky z-10 flex items-center justify-between h-16 px-4 py-2 -top-px bg-background-darker"
+      className="sticky z-10 flex items-center justify-between h-16 px-4 py-2 border-b -top-px bg-background-darker border-brand-grey"
       ref={ref}
     >
       <div
