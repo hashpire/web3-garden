@@ -95,7 +95,7 @@ const CommunityPage: React.FC<PageProps<GatsbyTypes.CommunityPageQuery>> = ({
               <li key={index}>
                 <a
                   href={href}
-                  className="block mx-2 mt-3 text-gray-200 hover:text-gray-500"
+                  className="block mx-2 mt-3 text-gray-200 transition duration-300 ease-in-out hover:-translate-y-1 hover:text-primary"
                 >
                   <span className="sr-only">{screenReaderText}</span>
                   <Icon className="w-14 h-14" />
