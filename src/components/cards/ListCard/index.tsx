@@ -31,7 +31,7 @@ export default function ListCard({
             <h3 className="block text-base font-semibold text-neutral-100 line-clamp-2 lg:text-xl">
               {title}
             </h3>
-            <p className="block mt-2 text-sm font-normal text-neutral-400 line-clamp-2">
+            <p className="block mt-2 text-sm font-normal leading-relaxed text-neutral-400 line-clamp-2">
               {excerpt}
             </p>
           </div>
@@ -39,7 +39,10 @@ export default function ListCard({
             <span className="text-xs font-normal text-neutral-400">
               {publishedAt}
             </span>
-            <ContributorList contributors={contributors} className="ml-4" />
+            {contributors.length > 0 && (
+              <div className="w-1 h-1 mx-2 rounded-full bg-neutral-400" />
+            )}
+            <ContributorList contributors={contributors} />
           </div>
         </div>
 
