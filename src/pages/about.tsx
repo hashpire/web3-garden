@@ -68,17 +68,17 @@ const AboutPage: React.FC<{}> = () => (
     />
     {/* Section 1 */}
     <section
-      className="px-6 bg-no-repeat bg-cover py-24 md:px-10 md:py-36 lg:py-36"
+      className="px-6 py-24 bg-no-repeat bg-cover md:px-10 md:py-36 lg:py-36"
       style={{
         backgroundImage: `url(${backgroundDot})`,
       }}
     >
-      <div className="mx-auto text-left md:text-center max-w-5xl lg:whitespace-pre-line">
-        <h1 className="text-4xl leading-snug font-semibold whitespace-pre-line md:text-6xl md:leading-snug text-neutral-200 lg:whitespace-normal">
+      <div className="max-w-5xl mx-auto text-left md:text-center lg:whitespace-pre-line">
+        <h1 className="text-4xl font-semibold leading-snug whitespace-pre-line md:text-6xl md:leading-snug text-neutral-200 lg:whitespace-normal">
           <span className="block md:hidden">{`In\n Decentralization\n We Trust`}</span>
           <span className="hidden md:block">{`In Decentralization\n We Trust`}</span>
         </h1>
-        <p className="mt-10 text-2xl leading-normal font-semibold whitespace-pre-line text-neutral-400 lg:text-3xl lg:leading-normal">
+        <p className="mt-10 text-2xl font-semibold leading-normal whitespace-pre-line text-neutral-400 lg:text-3xl lg:leading-normal">
           <span className="text-primary">hashpire</span>
           <span className="inline md:hidden">
             {
@@ -96,16 +96,16 @@ const AboutPage: React.FC<{}> = () => (
 
     {/* Section 2 */}
     <section className="px-6 py-16 bg-background-darker md:py-28 md:px-8">
-      <div className="mx-auto text-center max-w-6xl">
-        <h2 className="text-4xl font-semibold text-primary">Our Goals</h2>
+      <div className="max-w-6xl mx-auto text-center">
+        <h2 className="text-4xl font-normal text-primary">Our Goals</h2>
         <div className="grid grid-cols-1 gap-8 mt-12 lg:mt-14 md:grid-cols-3 md:gap-6">
           {communityGoals.map((goal, key) => (
             <div
-              className="flex text-left md:text-center md:flex-col py-4 px-6 items-center bg-background md:py-12 md:px-6 rounded-3xl shadow-1"
+              className="flex items-center px-6 py-4 text-left md:text-center md:flex-col bg-background md:py-12 md:px-6 rounded-3xl shadow-1"
               key={key}
             >
               {goal.icon}
-              <span className="ml-6 block md:mt-6 md:ml-0 text-base font-semibold text-neutral-200 lg:text-xl lg:whitespace-pre-line">
+              <span className="block ml-6 text-base font-semibold md:mt-6 md:ml-0 text-neutral-200 lg:text-xl lg:whitespace-pre-line">
                 {goal.title}
               </span>
             </div>
@@ -116,9 +116,9 @@ const AboutPage: React.FC<{}> = () => (
 
     {/* Section 3 */}
     <section className="px-6 py-16 bg-background md:py-20 md:px-8 lg:py-28">
-      <div className="mx-auto text-center max-w-6xl xl:grid xl:grid-rows-2 xl:grid-flow-col gap-x-12">
-        <div className="xl:mt-8 text-left md:text-center">
-          <h2 className="text-3xl leading-snug whitespace-pre-line md:whitespace-normal font-semibold text-primary md:text-4xl">
+      <div className="max-w-6xl mx-auto text-center xl:grid xl:grid-rows-2 xl:grid-flow-col gap-x-12">
+        <div className="text-left xl:mt-8 md:text-center">
+          <h2 className="text-3xl font-semibold leading-snug whitespace-pre-line md:whitespace-normal text-primary md:text-4xl">
             {`Building a Web3 \nDigital Garden`}
           </h2>
           <p className="mt-6 text-base font-normal text-neutral-400 md:text-xl md:max-w-5xl md:mx-auto xl:max-w-none">
@@ -136,7 +136,7 @@ const AboutPage: React.FC<{}> = () => (
               <span className="block mt-6 text-xl font-semibold text-primary md:font-bold">
                 {element.title}
               </span>
-              <span className="block mt-2 text-base font-semibold md:mt-3 text-neutral-200">
+              <span className="block mt-2 text-base font-normal md:mt-3 text-neutral-200">
                 {element.description}
               </span>
             </div>
@@ -147,7 +147,7 @@ const AboutPage: React.FC<{}> = () => (
 
     {/* Section 4 */}
     <section className="px-6 py-16 bg-background-darker md:py-20 md:px-8 lg:py-28 lg:px-16">
-      <div className="mx-auto text-center max-w-6xl">
+      <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-semibold text-primary md:text-4xl">
           Community Perks
         </h2>
