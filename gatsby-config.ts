@@ -145,7 +145,7 @@ export const plugins = [
                 'text-sm text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0',
               // p
               paragraph:
-                'my-5 text-base font-normal text-neutral-200 leading-relaxed',
+                'my-5 text-base font-normal text-neutral-400 leading-relaxed',
               // a
               link: 'text-primary text-sm font-normal hover:underline active:text-primary-dark',
               // table
