@@ -1,6 +1,11 @@
 name: Check PR
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   run-ci:
@@ -24,10 +29,10 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-        
+
       - name: Fetch git submodule
         run: git submodule update --init
-        
+
       - name: Build
         run: yarn build
 
