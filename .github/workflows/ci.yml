@@ -21,6 +21,7 @@ jobs:
         with:
           fetch-depth: 0
           submodules: true
+          lfs: true
 
       - name: Set up Node
         uses: actions/setup-node@v2
