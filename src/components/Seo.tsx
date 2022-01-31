@@ -13,26 +13,44 @@ type SeoProps = {
   description?: string;
   lang?: string;
   meta?: Array<{ name: string; content: string }>;
+  image?: string;
   title: string;
 };
 
-function Seo({ description = '', lang = 'en', meta = [], title }: SeoProps) {
-  const { site } = useStaticQuery(
+function Seo({
+  description = '',
+  lang = 'en',
+  meta = [],
+  image,
+  title,
+}: SeoProps) {
+  const { site } = useStaticQuery<GatsbyTypes.SeoQuery>(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title
             description
-            author
+            twitter
+            defaultMetaImage
+            siteUrl
           }
         }
       }
     `,
   );
 
-  const metaDescription = description || site.siteMetadata.description;
-  const defaultTitle = site.siteMetadata?.title;
+  const {
+    description: siteDescription,
+    title: siteTitle,
+    siteUrl,
+    twitter,
+    defaultMetaImage,
+  } = site?.siteMetadata || {};
+
+  const metaDescription = description || siteDescription;
+  const defaultTitle = siteTitle;
+  const metaImage = `${siteUrl}${image || defaultMetaImage}`;
 
   return (
     <Helmet
@@ -59,12 +77,16 @@ function Seo({ description = '', lang = 'en', meta = [], title }: SeoProps) {
           content: `website`,
         },
         {
+          property: `og:image`,
+          content: metaImage,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          content: twitter,
         },
         {
           name: `twitter:title`,
@@ -73,6 +95,10 @@ function Seo({ description = '', lang = 'en', meta = [], title }: SeoProps) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `twitter:image`,
+          content: metaImage,
         },
       ].concat(meta)}
     />

@@ -4,5 +4,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "conventionalCommits.scopes": ["deps"],
+  "path-intellisense.mappings": {
+    "@icons": "${workspaceFolder}/src/icons",
+    "@images": "${workspaceFolder}/src/images"
+  }
 }

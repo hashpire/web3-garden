@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Tong Hua Labs",
+    "position": "Main Sponsor & Contributor",
+    "shortIntro": "An Innovation and Creativity Lab under Tong Hua Holding Public Company Limited",
+    "imageUrl": "https://avatars.githubusercontent.com/u/59106243",
+    "contactInfo": {
+      "website": "https://tonghualabs.com",
+      "email": "hello@tonghualabs.com",
+      "github": "tonghualabs",
+      "twitter": "tonghualabs",
+      "facebook": "tonghualabs"
+    }
+  },
+  {
+    "name": "Anakorn Kyavatanakij",
+    "position": "Contributor",
+    "shortIntro": "Lab Manager at Tong Hua Labs. Motivated by coffee and chocolate.",
+    "imageUrl": "https://avatars.githubusercontent.com/u/8156002",
+    "contactInfo": {
+      "website": "https://anakornk.com",
+      "email": "anakornk@tonghualabs.com",
+      "github": "anakornk",
+      "twitter": "anakornk",
+      "facebook": "anak0rn"
+    }
+  },
+  {
+    "name": "John",
+    "position": "Contributor",
+    "imageUrl": "https://avatars.githubusercontent.com/u/8156002",
+    "contactInfo": {
+      "website": "https://anakornk.com",
+      "email": "anakornk@tonghualabs.com",
+      "github": "anakornk"
+    }
+  },
+  {
+    "name": "Bob",
+    "position": "Contributor",
+    "shortIntro": "Hi there",
+    "imageUrl": "https://avatars.githubusercontent.com/u/8156002"
+  }
+]

@@ -1,15 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scrollbar-color: theme('colors.scrollbar.DEFAULT');
+  }
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+  @apply w-4;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  @apply bg-background border-y-0 border-r-0 border-l border-solid border-brand-grey;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-grey border-4 border-solid border-transparent rounded-full bg-clip-content;
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500 bg-clip-content;
+}
+
+@layer components {
+  .navbar-active {
+    @apply text-primary !important;
+  }
+}
+
+/**
+ * Hashpire
+ * A - Highlight Line Background Color
+ * B - Highlight Line Left Border
+ * C - Background Color of Code Block. (Same as theme)
+ * D - Command Line Prompt Text Color
+ */
+
 .gatsby-highlight-code-line {
-  background-color: #feb;
+  background-color: rgba(245, 245, 245, 0.1); /* A */
   display: block;
   margin-right: -1em;
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid #f99;
+  border-left: 0.25em solid #ff9700; /* B */
 }
 
 /**
@@ -17,7 +60,7 @@
  * and overflow that we removed from <pre>.
  */
 .gatsby-highlight {
-  background-color: #fdf6e3;
+  background-color: #2d2d2d; /* C */
   border-radius: 0.3em;
   margin: 0.5em 0;
   padding: 1em;
@@ -45,7 +88,7 @@
 }
 
 .command-line-prompt > span:before {
-  color: #999;
+  color: #999; /* D */
   content: ' ';
   display: block;
   padding-right: 0.8em;
