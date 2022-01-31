@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Fetch git submodule
-        run: git submodule update --init
-
       - name: Clean
         run: yarn clean
 
