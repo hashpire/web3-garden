@@ -12,7 +12,15 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@images/*": ["./src/images/*"],
+      "@icons/*": ["./src/icons/*"]
+    }
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "gatsby-*.ts"]
 }

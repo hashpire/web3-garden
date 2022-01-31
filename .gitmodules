@@ -1,0 +1,3 @@
+[submodule "src/garden"]
+	path = src/garden
+	url = git@github.com:hashpire/eureka-web3.git

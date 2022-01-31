@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scrollbar-color: theme('colors.scrollbar.DEFAULT');
+  }
+}
+
+/* scrollbar width */
+::-webkit-scrollbar {
+  @apply w-4;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  @apply bg-background border-y-0 border-r-0 border-l border-solid border-brand-grey;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-brand-grey border-4 border-solid border-transparent rounded-full bg-clip-content;
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500 bg-clip-content;
+}
+
+@layer components {
+  .navbar-active {
+    @apply text-primary !important;
+  }
+}
+
+/**
+ * Hashpire
+ * A - Highlight Line Background Color
+ * B - Highlight Line Left Border
+ * C - Background Color of Code Block. (Same as theme)
+ * D - Command Line Prompt Text Color
+ */
+
+.gatsby-highlight-code-line {
+  background-color: rgba(245, 245, 245, 0.1); /* A */
+  display: block;
+  margin-right: -1em;
+  margin-left: -1em;
+  padding-right: 1em;
+  padding-left: 0.75em;
+  border-left: 0.25em solid #ff9700; /* B */
+}
+
+/**
+ * Add back the container background-color, border-radius, padding, margin
+ * and overflow that we removed from <pre>.
+ */
+.gatsby-highlight {
+  background-color: #2d2d2d; /* C */
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+/**
+ * Remove the default PrismJS theme background-color, border-radius, margin,
+ * padding and overflow.
+ * 1. Make the element just wide enough to fit its content.
+ * 2. Always fill the visible space in .gatsby-highlight.
+ * 3. Adjust the position of the line numbers
+ */
+.gatsby-highlight pre[class*='language-'] {
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  overflow: initial;
+  float: left; /* 1 */
+  min-width: 100%; /* 2 */
+}
+
+.gatsby-highlight pre[class*='language-'].line-numbers {
+  padding-left: 2.8em;
+}
+
+.command-line-prompt > span:before {
+  color: #999; /* D */
+  content: ' ';
+  display: block;
+  padding-right: 0.8em;
+}
+
+/* Prompt for all users */
+.command-line-prompt > span[data-user]:before {
+  content: '[' attr(data-user) '@' attr(data-host) '] $';
+}
+
+/* Prompt for root */
+.command-line-prompt > span[data-user='root']:before {
+  content: '[' attr(data-user) '@' attr(data-host) '] #';
+}
+
+.command-line-prompt > span[data-prompt]:before {
+  content: attr(data-prompt);
+}

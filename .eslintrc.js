@@ -6,6 +6,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
   ],
   settings: {
@@ -43,7 +44,10 @@ module.exports = {
       {
         env: 'relay',
         tagName: 'graphql',
-        schemaJsonFilepath: path.resolve(__dirname, 'src/__generated__/gatsby-introspection.json'),
+        schemaJsonFilepath: path.resolve(
+          __dirname,
+          'src/__generated__/gatsby-introspection.json',
+        ),
       },
     ],
   },
