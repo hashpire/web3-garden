@@ -9,9 +9,6 @@ on:
 
 jobs:
   run-ci:
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     name: Run Type Check & Linters
     runs-on: ubuntu-latest
 
@@ -31,9 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-
-      - name: Clean
-        run: yarn clean
 
       - name: Build
         run: yarn build
