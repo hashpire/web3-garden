@@ -51,14 +51,7 @@ export const plugins = [
     resolve: `gatsby-source-filesystem`,
     options: {
       name: `garden`,
-      path: `${__dirname}/src/garden/notes`,
-    },
-  },
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `gardenFiles`,
-      path: `${__dirname}/src/garden/Files`,
+      path: `${__dirname}/src/garden/00 - Notes`,
     },
   },
   {

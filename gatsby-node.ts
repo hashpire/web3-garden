@@ -268,7 +268,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
                   query: {
                     filter: {
                       base: { eq: cover_image },
-                      sourceInstanceName: { eq: 'gardenFiles' },
+                      sourceInstanceName: { eq: 'garden' },
                     },
                   },
                 });
@@ -326,9 +326,8 @@ export const onCreateNode: GatsbyNode['onCreateNode'] = async ({
 
   if (node.internal.type === 'MarkdownRemark' && node.parent) {
     // git author time
-    const gitAuthorTime = execSync(
-      `git log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`,
-    ).toString();
+    const command = `git -C src/garden log -1 --pretty=format:%aI "${node.fileAbsolutePath}"`;
+    const gitAuthorTime = execSync(command).toString();
     actions.createNodeField({
       node,
       name: 'gitAuthorTime',
