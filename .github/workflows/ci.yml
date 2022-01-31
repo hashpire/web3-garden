@@ -34,6 +34,9 @@ jobs:
       - name: Fetch git submodule
         run: git submodule update --init
 
+      - name: Clean
+        run: yarn clean
+
       - name: Build
         run: yarn build
 
