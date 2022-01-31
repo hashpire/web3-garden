@@ -1,0 +1,42 @@
+name: Check Pull Request
+
+on:
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+jobs:
+  run-ci:
+    name: Run Type Check & Linters
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+          lfs: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Check types
+        run: yarn type-check
+
+      - name: Check linting
+        run: yarn lint
+
+      - name: Check commits
+        uses: wagoid/commitlint-github-action@v4
