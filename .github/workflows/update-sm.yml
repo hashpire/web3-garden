@@ -1,0 +1,21 @@
+name: Update submodules
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          token: ${{ secrets.PAT }}
+      - name: Pull & update submodules
+        run: |
+          git submodule update --remote
+      - name: Commit & push changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update submodules
