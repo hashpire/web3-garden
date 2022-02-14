@@ -9,6 +9,9 @@
   html {
     scrollbar-color: theme('colors.scrollbar.DEFAULT');
   }
+  body {
+    @apply bg-background-darker
+  }
 }
 
 /* scrollbar width */
