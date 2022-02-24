@@ -80,6 +80,7 @@ export const plugins = [
           resolve: `gatsby-remark-images`,
           options: {
             maxWidth: 896,
+            wrapperStyle: 'margin: 0 !important',
           },
         },
         {

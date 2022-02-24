@@ -97,7 +97,9 @@ const AboutPage: React.FC<{}> = () => (
     {/* Section 2 */}
     <section className="px-6 py-16 bg-background-darker md:py-28 md:px-8">
       <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-normal text-primary">Our Goals</h2>
+        <h2 className="text-4xl font-normal font-semibold text-primary">
+          Our Goals
+        </h2>
         <div className="grid grid-cols-1 gap-8 mt-12 lg:mt-14 md:grid-cols-3 md:gap-6">
           {communityGoals.map((goal, key) => (
             <div
