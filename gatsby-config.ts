@@ -62,6 +62,20 @@ export const plugins = [
           resolve: 'gatsby-remark-hard-breaks',
         },
         {
+          resolve: 'gatsby-remark-mermaid',
+          options: {
+            language: 'mermaid',
+            theme: 'default',
+            viewport: {
+              width: 200,
+              height: 200,
+            },
+            mermaidOptions: {
+              themeCSS: '.node rect { fill: cornflowerblue; }',
+            },
+          },
+        },
+        {
           resolve: `gatsby-remark-enhanced-wikilink`,
           // must be before copy-linked-files and images. as below uses images and links from here
           options: {
