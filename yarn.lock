@@ -6428,6 +6428,13 @@ gatsby-remark-enhanced-wikilink@^1.0.1:
     github-slugger "^1.4.0"
     unist-util-visit "^2.0.2"
 
+gatsby-remark-hard-breaks@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-hard-breaks/-/gatsby-remark-hard-breaks-1.0.0.tgz#014b3a8e37d53d7a221246d795d9578a1a425b4b"
+  integrity sha512-op0VhWEPcV8/8GWXlD11VeGfzI66G5xJgR7VxhqBu0aB3icjZAzOlvHJoOmWFlxgvOg2KpUA0jtIhVadCbwqiA==
+  dependencies:
+    remark-breaks "^2.0.0"
+
 gatsby-remark-images@^6.4.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-remark-images/-/gatsby-remark-images-6.4.0.tgz#8a4c72a133bfedd056c432f071f3e1a3c66d2f34"
@@ -11060,6 +11067,13 @@ relay-runtime@12.0.0:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.0"
     invariant "^2.2.4"
+
+remark-breaks@^2.0.0:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/remark-breaks/-/remark-breaks-2.0.2.tgz#55fdec6c7da84f659aa7fdb1aa95b632870cee8d"
+  integrity sha512-LsQnPPQ7Fzp9RTjj4IwdEmjPOr9bxe9zYKWhs9ZQOg9hMg8rOfeeqQ410cvVdIK87Famqza1CKRxNkepp2EvUA==
+  dependencies:
+    unist-util-visit "^2.0.0"
 
 remark-footnotes@^3.0.0:
   version "3.0.0"

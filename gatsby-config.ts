@@ -59,6 +59,9 @@ export const plugins = [
     options: {
       plugins: [
         {
+          resolve: 'gatsby-remark-hard-breaks',
+        },
+        {
           resolve: `gatsby-remark-enhanced-wikilink`,
           // must be before copy-linked-files and images. as below uses images and links from here
           options: {
