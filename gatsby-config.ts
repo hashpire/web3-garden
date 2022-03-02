@@ -65,13 +65,24 @@ export const plugins = [
           resolve: 'gatsby-remark-mermaid',
           options: {
             language: 'mermaid',
-            theme: 'default',
+            theme: 'neutral',
             viewport: {
               width: 200,
               height: 200,
             },
             mermaidOptions: {
-              themeCSS: '.node rect { fill: cornflowerblue; }',
+              themeCSS: `
+              .node polygon { fill: #FF9700; stroke: none; }
+              .edgePaths .path { stroke: #A3A3A3; }
+              .arrowheadPath { fill: #A3A3A3; }
+              .flowchart-link { stroke: #A3A3A3; }
+              .marker { fill: #A3A3A3; stroke: #A3A3A3; }
+              .nodes { font-size: 14px; line-height: 1.2rem; color: #171717; }
+              .edgeLabel { font-size: 12px; color: #E5E5E5; background: #1E1E1E; }
+              .edgeLabel rect { opacity: 0; }
+              .cluster rect { fill: #262626; stroke: #3C3C3C; }
+              .cluster .nodeLabel { font-size: 12px; color: #E5E5E5; }
+              .messageText { fill: #FF9700; stroke: none; }`,
             },
           },
         },
