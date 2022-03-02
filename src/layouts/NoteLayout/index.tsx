@@ -4,6 +4,7 @@ import { useLg } from '../../hooks/responsive';
 import MobileSidebar from './MobileSidebar';
 import { useSidebar } from '@/context/sidebar';
 import MobileRibbon from './MobileRibbon';
+import 'katex/dist/katex.min.css';
 
 export type NoteLayoutProps = {
   leftSidebarContent?: React.ReactNode;
