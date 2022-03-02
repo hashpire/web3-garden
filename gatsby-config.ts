@@ -87,6 +87,12 @@ export const plugins = [
           },
         },
         {
+          resolve: `gatsby-remark-katex`,
+          options: {
+            // Add any KaTeX options from https://github.com/KaTeX/KaTeX/blob/master/docs/options.md here
+          },
+        },
+        {
           resolve: `gatsby-remark-enhanced-wikilink`,
           // must be before copy-linked-files and images. as below uses images and links from here
           options: {

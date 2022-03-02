@@ -187,3 +187,8 @@
 .markdown hr {
   @apply border-brand-grey;
 }
+
+/* katex math equation */
+.katex-html {
+@apply text-neutral-200;
+}
