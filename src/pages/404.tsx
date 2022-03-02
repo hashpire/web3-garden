@@ -14,10 +14,10 @@ const NotFoundPage: React.FC<PageProps> = () => (
     <Seo title="Page Not Found" />
     <NotFoundSvg />
     <h1 className="text-3xl font-semibold text-center whitespace-pre mt-7 text-primary md:text-4xl md:whitespace-normal">
-      {`Opps! Looks like \nyou're lost...`}
+      {`Oops! Looks like \nyou're lost...`}
     </h1>
     <p className="mt-4 text-base font-semibold text-center text-neutral-200 md:mt-6 md:text-xl">
-      Head back or help us create new path
+      Head back or help us create a new path
     </p>
     <div className="flex flex-col justify-center w-full max-w-xs mt-10 text-center md:mt-12 md:flex-row-reverse md:max-w-none">
       <a
