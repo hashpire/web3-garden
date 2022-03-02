@@ -110,3 +110,8 @@
 .command-line-prompt > span[data-prompt]:before {
   content: attr(data-prompt);
 }
+
+/* katex math equation */
+.katex-html {
+@apply text-neutral-200;
+}
