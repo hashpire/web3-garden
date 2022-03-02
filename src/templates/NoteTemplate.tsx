@@ -106,7 +106,7 @@ export default function NoteTemplate({
         <Seo title={title} image={metaImage} description={metaDescription} />
         <div
           dangerouslySetInnerHTML={{ __html: html }}
-          className="px-4 font-open-sans md:px-6 lg:px-12"
+          className="px-4 font-open-sans md:px-6 lg:px-12 markdown"
         />
       </NoteLayout>
     ),
