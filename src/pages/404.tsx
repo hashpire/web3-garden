@@ -4,8 +4,6 @@ import Seo from '@/components/Seo';
 import NotFoundSvg from '@images/not-found.inline.svg';
 import background from '@images/page-not-found.svg';
 
-console.log(location);
-
 const NotFoundPage: React.FC<PageProps> = () => (
   <main
     className="flex flex-col items-center justify-center flex-1 px-4 py-12 bg-no-repeat bg-cover md:bg-center 2xl:bg-bottom"
