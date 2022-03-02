@@ -111,6 +111,83 @@
   content: attr(data-prompt);
 }
 
+/* Markdown Styling */
+.markdown h1 {
+  @apply text-4xl font-bold text-primary leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown h2 {
+  @apply text-3xl text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown h3 {
+  @apply text-2xl text-neutral-200 font-bold leading-relaxed my-5 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown h4 {
+  @apply text-xl text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown h5 {
+  @apply text-base text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown h6 {
+  @apply text-sm text-neutral-200 font-bold leading-relaxed my-6 scroll-mt-16 lg:scroll-mt-0;
+}
+
+.markdown p {
+  @apply my-5 text-base font-normal text-neutral-400 leading-relaxed;
+}
+
+.markdown strong {
+  @apply font-bold;
+}
+
+.markdown a {
+  @apply text-primary text-sm font-normal hover:underline active:text-primary-dark;
+}
+
+.markdown img {
+  @apply w-full rounded-lg;
+}
+
+.markdown blockquote {
+  @apply my-6 ml-4 border-l-2 border-brand-yellow pl-6 italic;
+}
+
+.markdown blockquote > blockquote {
+  @apply ml-4 mt-4;
+}
+
+.markdown blockquote > paragraph {
+  @apply text-base text-neutral-400 font-medium;
+}
+
+.markdown table {
+  @apply text-base font-normal text-neutral-200 border border-brand-grey;
+}
+
+.markdown table tr > th,td {
+  @apply border border-brand-grey py-1 px-2;
+}
+
+.markdown table > thead > tr > th {
+  @apply text-primary font-semibold text-center;
+}
+
+.markdown ul {
+  @apply ml-8 list-disc text-base font-normal text-neutral-200 marker:text-primary;
+}
+
+.markdown ol {
+  @apply ml-8 list-decimal text-base font-normal text-neutral-200 marker:text-primary;
+}
+
+.markdown hr {
+  @apply border-brand-grey;
+}
+
 /* katex math equation */
 .katex-html {
 @apply text-neutral-200;
