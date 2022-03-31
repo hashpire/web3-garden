@@ -192,3 +192,15 @@
 .katex-html {
 @apply text-neutral-200;
 }
+
+.katex-display > .katex {
+  @apply overflow-x-auto;
+}
+
+.katex-html > .base {
+  @apply mr-2;
+}
+
+.katex-html > .tag {
+  @apply static !important
+}
