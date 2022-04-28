@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import LeftSidebarSvg from '@icons/left-sidebar.inline.svg';
-import RightSidebarSvg from '@icons/right-sidebar.inline.svg';
+import LeftPaneSvg from '@icons/left-pane.inline.svg';
+import RightPaneSvg from '@icons/right-pane.inline.svg';
+import CopyLinkSvg from '@/icons/copy-link.inline.svg';
 import { usePrefersReducedMotion } from '@/hooks/motion';
 
 type MobileRibbonProps = {
@@ -23,6 +24,16 @@ export default function MobileRibbon({
   const [stuck, setStuck] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
+  const copyUrl = () => {
+    // ref: https://blog.dadops.co/2021/03/17/copy-and-paste-in-a-react-app/
+    const el = document.createElement('input');
+    el.value = window.location.href;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
   useEffect(() => {
     const cachedRef = ref.current;
     if (!cachedRef) return;
@@ -39,28 +50,33 @@ export default function MobileRibbon({
 
   return (
     <div
-      className="sticky z-10 flex items-center justify-between h-16 px-4 py-2 border-b -top-px bg-background-darker border-brand-grey"
+      className="sticky z-10 flex items-center justify-between px-4 py-2 border-b h-14 -top-px bg-background-darker border-brand-grey"
       ref={ref}
     >
       <div
         className="flex items-center justify-center w-12 h-12 cursor-pointer text-neutral-500 hover:text-primary"
         onClick={onLeftSidebarClick}
       >
-        <LeftSidebarSvg className="w-7 h-7 " />
+        <LeftPaneSvg className="w-7 h-7" />
       </div>
       {stuck && (
-        <div
-          className="flex items-center justify-center flex-1 h-full cursor-pointer text-neutral-500"
-          onClick={scrollToTop}
-        >
-          <span>scroll to top</span>
+        <div className="flex items-center justify-between flex-1 h-full px-2 cursor-pointer">
+          <span onClick={scrollToTop} className="block text-neutral-400">
+            Scroll to top
+          </span>
+          <label
+            className="flex items-center justify-center w-8 h-8 rounded-full bg-background"
+            onClick={copyUrl}
+          >
+            <CopyLinkSvg className="w-6 h-6 text-neutral-200" />
+          </label>
         </div>
       )}
       <div
         className="flex items-center justify-center w-12 h-12 cursor-pointer text-neutral-500 hover:text-primary"
         onClick={onRightSidebarClick}
       >
-        <RightSidebarSvg className="w-7 h-7 " />
+        <RightPaneSvg className="w-7 h-7" />
       </div>
     </div>
   );
