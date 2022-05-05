@@ -38,7 +38,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               className="flex items-center justify-center h-full text-gray-400 w-14 md:w-auto hover:text-primary"
               activeClassName="navbar-active"
             >
-              <Icon className="w-7 h-7 lg:w-6 lg:h-6" />
+              <Icon className="w-6 h-6" />
               <span className="hidden ml-2 text-sm font-semibold md:inline-block">
                 {text}
               </span>

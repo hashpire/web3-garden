@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchSvg from '@icons/search.inline.svg';
 import DiscussSvg from '@icons/discuss.inline.svg';
-import SearchInput from '@/components/SearchInput';
+// import SearchSvg from '@icons/search.inline.svg';
+// import SearchInput from '@/components/SearchInput';
 import classNames from 'classnames';
 
 type LinkToDiscussProps = {
@@ -11,12 +11,12 @@ type LinkToDiscussProps = {
 const LinkToDiscuss: React.FC<LinkToDiscussProps> = ({ className }) => {
   return (
     <ul className={classNames('space-x-4 flex', className)}>
-      <li>
+      {/* <li>
         <label className="flex justify-center rounded-full lg:hidden bg-background w-9 h-9">
           <SearchSvg className="w-9 h-9 text-neutral-200" />
         </label>
         <SearchInput className="hidden lg:block" />
-      </li>
+      </li> */}
       <li>
         <a
           target="_blank"

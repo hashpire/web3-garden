@@ -8,7 +8,7 @@ type HeaderProps = {};
 
 const Header: React.FC<HeaderProps> = () => {
   return (
-    <header className="flex flex-col items-center px-4 md:px-6 bg-background-darker">
+    <header className="flex flex-col items-center px-4 border-b border-brand-grey md:px-6 bg-background-darker lg:bg-background lg:border-b-0">
       <div className="flex items-center w-full">
         <Link to="/" className="flex h-14 lg:h-16">
           <span className="sr-only">Hashpire</span>
@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = () => {
         <LinkToDiscuss className="ml-auto lg:ml-6" />
         <Navbar className="hidden h-16 lg:flex lg:ml-auto" />
       </div>
-      <Navbar className="w-full lg:hidden h-14" />
+      <Navbar className="w-full h-12 lg:hidden" />
     </header>
   );
 };
