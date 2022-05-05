@@ -29,16 +29,16 @@ const navbarItems = [
 
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
-    <nav className={classNames('flex h-16', className)}>
-      <ul className="flex md:space-x-8">
+    <nav className={classNames('flex', className)}>
+      <ul className="flex justify-around w-full lg:w-auto lg:justify-start lg:space-x-8">
         {navbarItems.map(({ Icon, text, to }, index) => (
           <li key={index}>
             <Link
               to={to}
-              className="flex items-center justify-center w-14 h-full text-gray-400 md:w-auto hover:text-primary"
+              className="flex items-center justify-center h-full text-gray-400 w-14 md:w-auto hover:text-primary"
               activeClassName="navbar-active"
             >
-              <Icon className="w-7 h-7 lg:w-6 lg:h-6" />
+              <Icon className="w-6 h-6" />
               <span className="hidden ml-2 text-sm font-semibold md:inline-block">
                 {text}
               </span>
